@@ -5,21 +5,14 @@ public class PlayerController : Photon.MonoBehaviour
 {
     public float speed = 10f;
     private bool isMine;
-
-    private double syncTimestamp;
-    private Vector3 syncPosition;
-    private Vector3 syncVelocity;
+    public ClientPlayerController clientController;
+    public ServerPlayerController serverController;
 
     void Update()
     {
         if (isMine)
         {
             InputColorChange();
-        }
-        
-        if (!PhotonNetwork.isMasterClient)
-        {
-            SyncedMovement();
         }
     }
 
@@ -30,16 +23,16 @@ public class PlayerController : Photon.MonoBehaviour
 
         Debug.Log("Created " + photonView.viewID);
 
-        syncTimestamp = double.NaN;
-
         if (!PhotonNetwork.isMasterClient)
         {
-            Destroy(this.GetComponent<Rigidbody>());
+            // Destroy(this.GetComponent<Rigidbody>());
             Destroy(this.GetComponent<ServerPlayerController>());
+            serverController = null;
         }
         else
         {
-            Destroy(this.GetComponent<ServerPlayerController>());
+            clientController = null;
+            Destroy(this.GetComponent<ClientPlayerController>());
         }
     }
 
@@ -63,60 +56,21 @@ public class PlayerController : Photon.MonoBehaviour
     [RPC]
     void InputBasedMovement(float moveHorizontal, float moveVertical)
     {
-        Debug.Log("Applying force on " + photonView.viewID);
+        // Debug.Log("Applying force on " + photonView.viewID);
         Vector3 movement = new Vector3(moveHorizontal, 0f, moveVertical);
         rigidbody.AddForce(movement * speed * Time.deltaTime);
     }
 
     void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
-        if (stream.isWriting)
+        if (clientController != null)
         {
-            if (!PhotonNetwork.isMasterClient)
-            {
-                return;
-            }
-            // only server sends
-            // tell everyone where stuff 
-            stream.SendNext(rigidbody.position);
-            stream.SendNext(rigidbody.velocity);
+            clientController.OnPhotonSerializeView(stream, info);
         }
-        else
+        if (serverController != null)
         {
-            // only client receives
-            if (!PhotonNetwork.isMasterClient)
-            {
-                syncPosition = (Vector3)stream.ReceiveNext();
-                syncVelocity = (Vector3)stream.ReceiveNext();
-
-                if (double.IsNaN(syncTimestamp))
-                {
-                    // this is the first time we're updating position, so just directly set it
-                    transform.position = syncPosition;
-                }
-                syncTimestamp = info.timestamp;
-            }
+            serverController.OnPhotonSerializeView(stream, info);
         }
-    }
-
-    private void SyncedMovement()
-    {
-        if (double.IsNaN(syncTimestamp))
-        {
-            return; // still haven't received data from the server
-        }
-        float pingInSeconds = (float)PhotonNetwork.GetPing() * 0.001f;
-        float timeSinceLastUpdate = (float)(PhotonNetwork.time - syncTimestamp);
-        float totalTimePassed = pingInSeconds + timeSinceLastUpdate;
-
-        Vector3 extrapolatedTargetPosition = syncPosition + syncVelocity * totalTimePassed;
-
-        Vector3 newPosition = Vector3.MoveTowards(transform.position, extrapolatedTargetPosition,
-            syncVelocity.magnitude * Time.deltaTime);
-
-        // todo teleport check
-
-        transform.position = newPosition;
     }
 
     private void InputColorChange()

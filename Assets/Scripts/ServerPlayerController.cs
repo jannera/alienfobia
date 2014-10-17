@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ServerPlayerController : MonoBehaviour {
-    public PhotonView photonView;
+public class ServerPlayerController : MonoBehaviour
+{
     public float maximumVelocity = 4;
     private float maxVelSqr;
+    public PhotonView photonView;
 
 	// Use this for initialization
 	void Start () {
@@ -32,5 +33,15 @@ public class ServerPlayerController : MonoBehaviour {
         renderer.material.color = new Color(color.x, color.y, color.z, 1f);
 
         photonView.RPC("ChangeColorTo", PhotonTargets.OthersBuffered, color);
+    }
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (!stream.isWriting)
+        {
+            return; // server only sends
+        }
+        stream.SendNext(rigidbody.position);
+        stream.SendNext(rigidbody.velocity);
     }
 }

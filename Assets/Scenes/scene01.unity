@@ -319,7 +319,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 100000, guid: daff723bf9ff7d64d9aebdc883aaf588, type: 2}
-  photonView: {fileID: 1278411619}
 --- !u!4 &1278411618
 Transform:
   m_ObjectHideFlags: 0

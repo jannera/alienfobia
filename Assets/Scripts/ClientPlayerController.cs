@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ClientPlayerController : MonoBehaviour {
+public class ClientPlayerController : MonoBehaviour
+{
     private double syncTimestamp;
     private Vector3 syncPosition;
     private Vector3 syncVelocity;
@@ -36,7 +37,7 @@ public class ClientPlayerController : MonoBehaviour {
         transform.position = newPosition;
     }
 
-    void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
         if (stream.isWriting)
         {

@@ -1,10 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class NetworkManager : MonoBehaviour {
+public class NetworkManager : Photon.MonoBehaviour
+{
     public GameObject playerPrefab;
-
-    public PhotonView photonView;
 
     void Start()
     {

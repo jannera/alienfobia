@@ -101,6 +101,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2000
+  clientController: {fileID: 11400004}
+  serverController: {fileID: 11400006}
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -129,11 +131,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0384692777799b041b5db3bc222f078f, type: 3}
+  m_Script: {fileID: 11500000, guid: 8e804e7be144c1c468863b14dcadab6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  photonView: {fileID: 11400002}
-  maximumVelocity: 8
 --- !u!114 &11400006
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -142,9 +142,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ab1ee00e2a7cf241b8439689624ca2c, type: 3}
+  m_Script: {fileID: 11500000, guid: c7ae17428fee884409dccd3b43ca638f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maximumVelocity: 4
+  photonView: {fileID: 11400002}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
