@@ -29,4 +29,6 @@ MonoBehaviour:
   - PunRespawn
   - RequestForPickupTimes
   - ChangeColorTo
+  - CreatePlayer
+  - InputBasedMovement
   DisableAutoOpenWizard: 0

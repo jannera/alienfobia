@@ -4,6 +4,8 @@ using System.Collections;
 public class NetworkManager : MonoBehaviour {
     public GameObject playerPrefab;
 
+    public PhotonView photonView;
+
     void Start()
     {
         PhotonNetwork.ConnectUsingSettings("0.1");
@@ -43,6 +45,21 @@ public class NetworkManager : MonoBehaviour {
     void OnJoinedRoom()
     {
         Debug.Log("Connected to Room");
-        PhotonNetwork.Instantiate(playerPrefab.name, Vector3.up * 5, Quaternion.identity, 0);
+        if (PhotonNetwork.isMasterClient)
+        {
+            CreatePlayer(PhotonNetwork.player.ID);
+        }
+        else
+        {
+            // ask the server to create the prefab
+            photonView.RPC("CreatePlayer", PhotonTargets.MasterClient, PhotonNetwork.player.ID);
+        }
+    }
+
+    [RPC]
+    void CreatePlayer(int ownerId)
+    {
+        object[] p = { ownerId };
+        PhotonNetwork.InstantiateSceneObject(playerPrefab.name, Vector3.up * 5, Quaternion.identity, 0, p);
     }
 }

@@ -98,7 +98,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abbc25c9d2bea0b45b7d5f6468d81f33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 2000
+  networkManager: {fileID: 0}
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -115,7 +116,7 @@ MonoBehaviour:
   group: 0
   prefixBackup: -1
   observed: {fileID: 11400000}
-  synchronization: 1
+  synchronization: 2
   onSerializeTransformOption: 0
   onSerializeRigidBodyOption: 2
   instantiationId: -1

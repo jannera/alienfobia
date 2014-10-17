@@ -3,20 +3,128 @@ using System.Collections;
 
 public class PlayerController : Photon.MonoBehaviour
 {
-
     public float speed = 10f;
+
+    private bool isMine;
+
+    private double syncTimestamp;
+    private Vector3 syncPosition;
+    private Vector3 syncVelocity;
 
     void Update()
     {
-        if (photonView.isMine)
+        if (isMine)
         {
-            InputMovement();
             InputColorChange();
         }
-        else
+        
+        if (!PhotonNetwork.isMasterClient)
         {
             SyncedMovement();
         }
+    }
+
+    void Start()
+    {
+        int ownerId = (int)photonView.instantiationData[0];
+        isMine =  ownerId == PhotonNetwork.player.ID;
+
+        Debug.Log("Created " + photonView.viewID);
+
+        syncTimestamp = double.NaN;
+        syncVelocity = rigidbody.velocity;
+        syncPosition = transform.position;
+
+        if (!PhotonNetwork.isMasterClient)
+        {
+            // rigidbody.isKinematic = true;
+        }
+    }
+
+    void FixedUpdate()
+    {
+        if (!isMine)
+        {
+            return;
+        }
+
+        float moveHorizontal = Input.GetAxis("Horizontal");
+        float moveVertical = Input.GetAxis("Vertical");
+
+        if (moveVertical == 0 && moveHorizontal == 0)
+        {
+            return;
+        }
+
+        if (PhotonNetwork.isMasterClient)
+        {
+            InputBasedMovement(moveHorizontal, moveVertical);
+        }
+        else
+        {
+            object[] p = {moveHorizontal, moveVertical};
+            photonView.RPC("InputBasedMovement", PhotonTargets.MasterClient, p);
+        }
+
+    }
+
+    [RPC]
+    void InputBasedMovement(float moveHorizontal, float moveVertical)
+    {
+        Debug.Log("Applying force on " + photonView.viewID);
+        Vector3 movement = new Vector3(moveHorizontal, 0f, moveVertical);
+        rigidbody.AddForce(movement * speed * Time.deltaTime);
+    }
+
+    void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.isWriting)
+        {
+            if (!PhotonNetwork.isMasterClient)
+            {
+                return;
+            }
+            // only server sends
+            // tell everyone where stuff 
+            stream.SendNext(rigidbody.position);
+            stream.SendNext(rigidbody.velocity);
+        }
+        else
+        {
+            // only client receives
+            if (!PhotonNetwork.isMasterClient)
+            {
+                syncPosition = (Vector3)stream.ReceiveNext();
+                syncVelocity = (Vector3)stream.ReceiveNext();
+
+                if (double.IsNaN(syncTimestamp))
+                {
+                    // this is the first time we're updating position, so just directly set it
+                    transform.position = syncPosition;
+                }
+                syncTimestamp = info.timestamp;
+            }
+        }
+    }
+
+    private void SyncedMovement()
+    {
+        if (double.IsNaN(syncTimestamp))
+        {
+            return; // still haven't received data from the server
+        }
+        float pingInSeconds = (float)PhotonNetwork.GetPing() * 0.001f;
+        float timeSinceLastUpdate = (float)(PhotonNetwork.time - syncTimestamp);
+        float totalTimePassed = pingInSeconds + timeSinceLastUpdate;
+
+        Vector3 extrapolatedTargetPosition = syncPosition + syncVelocity * totalTimePassed;
+
+        Vector3 newPosition = Vector3.MoveTowards(transform.position, extrapolatedTargetPosition,
+            syncVelocity.magnitude * Time.deltaTime);
+
+        // todo teleport check
+
+        transform.position = newPosition;
     }
 
     private void InputColorChange()
@@ -30,55 +138,7 @@ public class PlayerController : Photon.MonoBehaviour
     {
         renderer.material.color = new Color(color.x, color.y, color.z, 1f);
 
-        if (photonView.isMine)
+        if (isMine)
             photonView.RPC("ChangeColorTo", PhotonTargets.OthersBuffered, color);
-    }
-
-    private void SyncedMovement()
-    {
-        syncTime += Time.deltaTime;
-        rigidbody.position = Vector3.Lerp(syncStartPosition, syncEndPosition, syncTime / syncDelay);
-    }
-
-    void InputMovement()
-    {
-        if (Input.GetKey(KeyCode.W))
-            rigidbody.MovePosition(rigidbody.position + Vector3.forward * speed * Time.deltaTime);
-
-        if (Input.GetKey(KeyCode.S))
-            rigidbody.MovePosition(rigidbody.position - Vector3.forward * speed * Time.deltaTime);
-
-        if (Input.GetKey(KeyCode.D))
-            rigidbody.MovePosition(rigidbody.position + Vector3.right * speed * Time.deltaTime);
-
-        if (Input.GetKey(KeyCode.A))
-            rigidbody.MovePosition(rigidbody.position - Vector3.right * speed * Time.deltaTime);
-    }
-
-    private float lastSynchronizationTime = 0f;
-    private float syncDelay = 0f;
-    private float syncTime = 0f;
-    private Vector3 syncStartPosition = Vector3.zero;
-    private Vector3 syncEndPosition = Vector3.zero;
-
-    void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-    {
-        if (stream.isWriting)
-        {
-            stream.SendNext(rigidbody.position);
-            stream.SendNext(rigidbody.velocity);
-        }
-        else
-        {
-            Vector3 syncPosition = (Vector3)stream.ReceiveNext();
-            Vector3 syncVelocity = (Vector3)stream.ReceiveNext();
-
-            syncTime = 0f;
-            syncDelay = Time.time - lastSynchronizationTime;
-            lastSynchronizationTime = Time.time;
-
-            syncEndPosition = syncPosition + syncVelocity * syncDelay;
-            syncStartPosition = rigidbody.position;
-        }
     }
 }
