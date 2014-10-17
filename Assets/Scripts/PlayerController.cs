@@ -4,7 +4,6 @@ using System.Collections;
 public class PlayerController : Photon.MonoBehaviour
 {
     public float speed = 10f;
-
     private bool isMine;
 
     private double syncTimestamp;
@@ -32,40 +31,33 @@ public class PlayerController : Photon.MonoBehaviour
         Debug.Log("Created " + photonView.viewID);
 
         syncTimestamp = double.NaN;
-        syncVelocity = rigidbody.velocity;
-        syncPosition = transform.position;
 
         if (!PhotonNetwork.isMasterClient)
         {
-            // rigidbody.isKinematic = true;
+            Destroy(this.GetComponent<Rigidbody>());
+            Destroy(this.GetComponent<ServerPlayerController>());
+        }
+        else
+        {
+            Destroy(this.GetComponent<ServerPlayerController>());
         }
     }
 
     void FixedUpdate()
     {
-        if (!isMine)
+        if (isMine)
         {
-            return;
-        }
+            float moveHorizontal = Input.GetAxis("Horizontal");
+            float moveVertical = Input.GetAxis("Vertical");
 
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
+            if (moveVertical == 0 && moveHorizontal == 0)
+            {
+                return;
+            }
 
-        if (moveVertical == 0 && moveHorizontal == 0)
-        {
-            return;
-        }
-
-        if (PhotonNetwork.isMasterClient)
-        {
-            InputBasedMovement(moveHorizontal, moveVertical);
-        }
-        else
-        {
-            object[] p = {moveHorizontal, moveVertical};
+            object[] p = { moveHorizontal, moveVertical };
             photonView.RPC("InputBasedMovement", PhotonTargets.MasterClient, p);
         }
-
     }
 
     [RPC]
@@ -129,16 +121,17 @@ public class PlayerController : Photon.MonoBehaviour
 
     private void InputColorChange()
     {
-        if (Input.GetKeyDown(KeyCode.R))
-            ChangeColorTo(new Vector3(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f)));
+        if (Input.GetKeyDown(KeyCode.R) && isMine)
+        {
+            Debug.Log("trying to change color");
+            Vector3 color = new Vector3(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
+            photonView.RPC("RequestColorChange", PhotonTargets.MasterClient, color);
+        }
     }
 
     [RPC]
     void ChangeColorTo(Vector3 color)
     {
         renderer.material.color = new Color(color.x, color.y, color.z, 1f);
-
-        if (isMine)
-            photonView.RPC("ChangeColorTo", PhotonTargets.OthersBuffered, color);
     }
 }

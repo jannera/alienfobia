@@ -31,4 +31,6 @@ MonoBehaviour:
   - ChangeColorTo
   - CreatePlayer
   - InputBasedMovement
+  - AskColorChange
+  - RequestColorChange
   DisableAutoOpenWizard: 0
