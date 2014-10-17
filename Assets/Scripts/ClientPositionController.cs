@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ClientPlayerController : MonoBehaviour
+public class ClientPositionController : MonoBehaviour
 {
     private double syncTimestamp;
     private Vector3 syncPosition;

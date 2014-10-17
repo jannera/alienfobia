@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ServerPlayerController : MonoBehaviour
+public class ServerPositionController : MonoBehaviour
 {
     public float maximumVelocity = 4;
     private float maxVelSqr;
     public PhotonView photonView;
+
+    public float speed = 3000;
 
 	// Use this for initialization
 	void Start () {
@@ -43,5 +45,12 @@ public class ServerPlayerController : MonoBehaviour
         }
         stream.SendNext(rigidbody.position);
         stream.SendNext(rigidbody.velocity);
+    }
+
+    [RPC]
+    void ApplyForce(float moveHorizontal, float moveVertical)
+    {
+        Vector3 movement = new Vector3(moveHorizontal, 0f, moveVertical);
+        rigidbody.AddForce(movement * speed * Time.deltaTime);
     }
 }
