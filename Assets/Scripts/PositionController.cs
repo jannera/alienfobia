@@ -16,7 +16,7 @@ public class PositionController : Photon.MonoBehaviour
 
         if (!PhotonNetwork.isMasterClient)
         {
-            // Destroy(this.GetComponent<Rigidbody>());
+            Destroy(this.GetComponent<Rigidbody>());
             Destroy(this.GetComponent<ServerPositionController>());
             serverController = null;
         }

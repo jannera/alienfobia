@@ -32,6 +32,7 @@ public class ClientPositionController : MonoBehaviour
         Vector3 newPosition = Vector3.MoveTowards(transform.position, extrapolatedTargetPosition,
             syncVelocity.magnitude * Time.deltaTime);
 
+        // Debug.Log(transform.position + " -> " + newPosition);
         // todo teleport check
 
         transform.position = newPosition;
