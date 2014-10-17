@@ -3,17 +3,15 @@ using System.Collections;
 
 public class PlayerController : Photon.MonoBehaviour
 {
-    public float speed = 10f;
     private bool isMine;
     public ClientPlayerController clientController;
     public ServerPlayerController serverController;
 
+    public float speed = 3000;
+
     void Update()
     {
-        if (isMine)
-        {
-            InputColorChange();
-        }
+        
     }
 
     void Start()
@@ -34,31 +32,11 @@ public class PlayerController : Photon.MonoBehaviour
             clientController = null;
             Destroy(this.GetComponent<ClientPlayerController>());
         }
-    }
 
-    void FixedUpdate()
-    {
-        if (isMine)
+        if (!isMine)
         {
-            float moveHorizontal = Input.GetAxis("Horizontal");
-            float moveVertical = Input.GetAxis("Vertical");
-
-            if (moveVertical == 0 && moveHorizontal == 0)
-            {
-                return;
-            }
-
-            object[] p = { moveHorizontal, moveVertical };
-            photonView.RPC("InputBasedMovement", PhotonTargets.MasterClient, p);
+            Destroy(this.GetComponent<PlayerInputController>());
         }
-    }
-
-    [RPC]
-    void InputBasedMovement(float moveHorizontal, float moveVertical)
-    {
-        // Debug.Log("Applying force on " + photonView.viewID);
-        Vector3 movement = new Vector3(moveHorizontal, 0f, moveVertical);
-        rigidbody.AddForce(movement * speed * Time.deltaTime);
     }
 
     void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
@@ -73,19 +51,16 @@ public class PlayerController : Photon.MonoBehaviour
         }
     }
 
-    private void InputColorChange()
-    {
-        if (Input.GetKeyDown(KeyCode.R) && isMine)
-        {
-            Debug.Log("trying to change color");
-            Vector3 color = new Vector3(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
-            photonView.RPC("RequestColorChange", PhotonTargets.MasterClient, color);
-        }
-    }
-
     [RPC]
     void ChangeColorTo(Vector3 color)
     {
         renderer.material.color = new Color(color.x, color.y, color.z, 1f);
+    }
+
+    [RPC]
+    void ApplyForce(float moveHorizontal, float moveVertical)
+    {
+        Vector3 movement = new Vector3(moveHorizontal, 0f, moveVertical);
+        rigidbody.AddForce(movement * speed * Time.deltaTime);
     }
 }

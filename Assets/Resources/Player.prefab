@@ -16,6 +16,7 @@ GameObject:
   - 114: {fileID: 11400000}
   - 114: {fileID: 11400004}
   - 114: {fileID: 11400006}
+  - 114: {fileID: 11400008}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -100,7 +101,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abbc25c9d2bea0b45b7d5f6468d81f33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2000
   clientController: {fileID: 11400004}
   serverController: {fileID: 11400006}
 --- !u!114 &11400002
@@ -147,6 +147,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maximumVelocity: 4
   photonView: {fileID: 11400002}
+--- !u!114 &11400008
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c342e21cc55e0943b35c38bb6e4a369, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  photonView: {fileID: 11400002}
+  speed: 3000
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

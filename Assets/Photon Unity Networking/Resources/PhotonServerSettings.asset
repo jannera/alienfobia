@@ -19,7 +19,10 @@ MonoBehaviour:
   AppID: 25b77803-b4bd-4e38-b586-c38f877d0231
   PingCloudServersOnAwake: 0
   RpcList:
+  - ApplyForce
+  - ChangeColorTo
   - Chat
+  - CreatePlayer
   - DestroyRpc
   - InstantiateRpc
   - OnAwakeRPC
@@ -27,10 +30,6 @@ MonoBehaviour:
   - PunPickup
   - PunPickupSimple
   - PunRespawn
-  - RequestForPickupTimes
-  - ChangeColorTo
-  - CreatePlayer
-  - InputBasedMovement
-  - AskColorChange
   - RequestColorChange
+  - RequestForPickupTimes
   DisableAutoOpenWizard: 0
