@@ -403,6 +403,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd2e004c80fb6480396d898a2b6444c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slider: {fileID: 11400010}
+  hitImage: {fileID: 11400008}
+  flashSpeed: 5
+  flashColour: {r: 1, g: 0, b: 0, a: .100000001}
 --- !u!222 &22200000
 CanvasRenderer:
   m_ObjectHideFlags: 1
