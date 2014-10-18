@@ -99,7 +99,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1134d79b2e2a43045b30e115d9a2d8c1, type: 3}
+  m_Script: {fileID: 11500000, guid: c998bede0a53dbc439621ce143f225e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   clientController: {fileID: 11400004}
@@ -120,7 +120,7 @@ MonoBehaviour:
   group: 0
   prefixBackup: -1
   observed: {fileID: 11400000}
-  synchronization: 2
+  synchronization: 3
   onSerializeTransformOption: 0
   onSerializeRigidBodyOption: 2
   instantiationId: -1
@@ -132,7 +132,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5597fc09c93896c479ff968a4cb12416, type: 3}
+  m_Script: {fileID: 11500000, guid: f97d3ee72529b6340bf1eb76d04f3228, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &11400006
@@ -143,7 +143,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e08d3bf63519f5498004dd85ea2d4da, type: 3}
+  m_Script: {fileID: 11500000, guid: 8de494d2e3387a44c986f023deb0ac30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maximumVelocity: 4
@@ -157,7 +157,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c342e21cc55e0943b35c38bb6e4a369, type: 3}
+  m_Script: {fileID: 11500000, guid: 4668f7022edb0604198691acd28c1692, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   photonView: {fileID: 11400002}
@@ -169,7 +169,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac2a6361828bfa1468b3e8e5b582e08e, type: 3}
+  m_Script: {fileID: 11500000, guid: abbc25c9d2bea0b45b7d5f6468d81f33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &100100000
