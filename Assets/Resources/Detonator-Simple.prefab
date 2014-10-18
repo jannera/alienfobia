@@ -93,7 +93,7 @@ MonoBehaviour:
   synchronization: 0
   onSerializeTransformOption: 3
   onSerializeRigidBodyOption: 2
-  instantiationId: 0
+  instantiationId: -1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

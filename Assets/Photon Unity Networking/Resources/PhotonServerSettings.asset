@@ -33,4 +33,6 @@ MonoBehaviour:
   - RequestColorChange
   - RequestForPickupTimes
   - Move
+  - CreateRocket
+  - CreateExplosion
   DisableAutoOpenWizard: 0

@@ -40,6 +40,7 @@ GameObject:
   - 120: {fileID: 12000000}
   - 108: {fileID: 10800000}
   - 114: {fileID: 11400004}
+  - 114: {fileID: 11400014}
   m_Layer: 0
   m_Name: GunBarrelEnd
   m_TagString: Untagged
@@ -414,7 +415,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damagePerShot: 20
   timeBetweenBullets: .150000006
+  timeBetweenRockets: 2
   range: 100
+  photonView: {fileID: 11400014}
+  rocketPreFab: {fileID: 100000, guid: b743cdf137c1571409b16c5c9f7cf9d2, type: 2}
 --- !u!114 &11400006
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -470,6 +474,26 @@ MonoBehaviour:
   prefixBackup: -1
   observed: {fileID: 11400010}
   synchronization: 3
+  onSerializeTransformOption: 3
+  onSerializeRigidBodyOption: 2
+  instantiationId: -1
+--- !u!114 &11400014
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 795cb0460d5c7c64499938f2b4df2033, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  subId: 0
+  ownerId: 0
+  group: 0
+  prefixBackup: -1
+  observed: {fileID: 0}
+  synchronization: 0
   onSerializeTransformOption: 3
   onSerializeRigidBodyOption: 2
   instantiationId: -1

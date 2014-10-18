@@ -23,6 +23,11 @@ namespace CompleteProject
 
         void Update ()
         {
+            if (player == null)
+            {
+                Debug.Log("Enemy could not find player");
+                return;
+            }
             // If the enemy and the player have health left...
             if(enemyHealth.currentHealth > 0 && playerHealth.currentHealth > 0)
             {

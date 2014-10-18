@@ -6,10 +6,12 @@ namespace CompleteProject
     {
         public int damagePerShot = 20;                  // The damage inflicted by each bullet.
         public float timeBetweenBullets = 0.15f;        // The time between each shot.
+        public float timeBetweenRockets = 2f;
         public float range = 100f;                      // The distance the gun can fire.
 
 
         float timer;                                    // A timer to determine when to fire.
+        float rocketTimer;
         Ray shootRay;                                   // A ray from the gun end forwards.
         RaycastHit shootHit;                            // A raycast hit to get information about what was hit.
         int shootableMask;                              // A layer mask so the raycast only hits things on the shootable layer.
@@ -19,6 +21,8 @@ namespace CompleteProject
         Light gunLight;                                 // Reference to the light component.
         float effectsDisplayTime = 0.2f;                // The proportion of the timeBetweenBullets that the effects will display for.
 
+        public PhotonView photonView;
+        public GameObject rocketPreFab;
 
         void Awake ()
         {
@@ -37,12 +41,18 @@ namespace CompleteProject
         {
             // Add the time since Update was last called to the timer.
             timer += Time.deltaTime;
+            rocketTimer += Time.deltaTime;
 
             // If the Fire1 button is being press and it's time to fire...
             if(Input.GetButton ("Fire1") && timer >= timeBetweenBullets)
             {
                 // ... shoot the gun.
                 Shoot ();
+            }
+
+            if (Input.GetButton("Fire2") && rocketTimer >= timeBetweenRockets)
+            {
+                ShootRocket();
             }
 
             // If the timer has exceeded the proportion of timeBetweenBullets that the effects should be displayed for...
@@ -106,6 +116,28 @@ namespace CompleteProject
             {
                 // ... set the second position of the line renderer to the fullest extent of the gun's range.
                 gunLine.SetPosition (1, shootRay.origin + shootRay.direction * range);
+            }
+        }
+
+        void ShootRocket()
+        {
+            rocketTimer = 0f;
+
+            // TODO: play the rocket audio
+
+            // TODO: enable the rocket launch visual effects
+            object[] p = { transform.position, transform.rotation.eulerAngles.y };
+            photonView.RPC("CreateRocket", PhotonTargets.MasterClient, p);
+        }
+
+
+        [RPC]
+        void CreateRocket(Vector3 pos, float angle)
+        {
+            if (PhotonNetwork.isMasterClient)
+            {
+                object[] p = { angle };
+                PhotonNetwork.InstantiateSceneObject(rocketPreFab.name, pos, Quaternion.identity, 0, p);
             }
         }
     }

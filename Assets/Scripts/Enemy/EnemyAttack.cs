@@ -51,6 +51,11 @@ namespace CompleteProject
 
         void Update ()
         {
+            if (player == null)
+            {
+                Debug.Log("Enemy could not find player");
+                return;
+            }
             // Add the time since Update was last called to the timer.
             timer += Time.deltaTime;
 
