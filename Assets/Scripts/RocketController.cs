@@ -13,7 +13,7 @@ namespace CompleteProject
         private Vector3 push;
 
         public GameObject explosionPreFab;
-
+        public AudioSource explosionSound;
 
 
         // todo: needs still some kind of position syncing
@@ -37,6 +37,7 @@ namespace CompleteProject
             // pretty much any collision should explode it right?
             object[] p = { };
             photonView.RPC("CreateExplosion", PhotonTargets.MasterClient, p);
+            explosionSound.Play();
         }
 
         [RPC]
