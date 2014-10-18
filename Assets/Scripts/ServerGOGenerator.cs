@@ -43,8 +43,7 @@ public class ServerGOGenerator : MonoBehaviour
 
 		private void UpdateTimers() {
 		    spawnTimer += Time.deltaTime;
-		    elapsedTime += Time.deltaTime;
-		    Debug.Log("Current time " + spawnTimer) ;
+		    elapsedTime += Time.deltaTime;		    
 		    
 		    if(elapsedTime >= activateAfter) {
 		      isActive = true;
