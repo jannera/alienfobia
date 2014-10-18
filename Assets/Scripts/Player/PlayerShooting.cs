@@ -11,7 +11,7 @@ namespace CompleteProject
 
 
         float timer;                                    // A timer to determine when to fire.
-        float rocketTimer;
+        float rocketTimer = 0;
         Ray shootRay;                                   // A ray from the gun end forwards.
         RaycastHit shootHit;                            // A raycast hit to get information about what was hit.
         int shootableMask;                              // A layer mask so the raycast only hits things on the shootable layer.
@@ -22,7 +22,9 @@ namespace CompleteProject
         float effectsDisplayTime = 0.2f;                // The proportion of the timeBetweenBullets that the effects will display for.
 
         public PhotonView photonView;
-        public GameObject rocketPreFab;
+        public GameObject grenadePreFab;
+
+        public int grenades = 3;
 
 
         void Awake ()
@@ -51,9 +53,10 @@ namespace CompleteProject
                 Shoot ();
             }
 
-            if (Input.GetButton("Fire2") && rocketTimer >= timeBetweenRockets)
+            if (Input.GetButton("Fire2") && rocketTimer >= timeBetweenRockets && grenades > 0)
             {
-                ShootRocket();
+                Debug.Log("throwing gren");
+                ThrowGrenade();
             }
 
             // If the timer has exceeded the proportion of timeBetweenBullets that the effects should be displayed for...
@@ -120,25 +123,23 @@ namespace CompleteProject
             }
         }
 
-        void ShootRocket()
+        void ThrowGrenade()
         {
             rocketTimer = 0f;
+            grenades--;
 
-            // TODO: play the rocket audio
-
-            // TODO: enable the rocket launch visual effects
             object[] p = { transform.position, transform.rotation.eulerAngles.y };
-            photonView.RPC("CreateRocket", PhotonTargets.MasterClient, p);
+            photonView.RPC("CreateGrenade", PhotonTargets.MasterClient, p);
         }
 
 
         [RPC]
-        void CreateRocket(Vector3 pos, float angle)
+        void CreateGrenade(Vector3 pos, float angle)
         {
             if (PhotonNetwork.isMasterClient)
             {
                 object[] p = { angle };
-                PhotonNetwork.InstantiateSceneObject(rocketPreFab.name, pos, Quaternion.identity, 0, p);
+                PhotonNetwork.InstantiateSceneObject(grenadePreFab.name, pos, Quaternion.identity, 0, p);
             }
         }
     }

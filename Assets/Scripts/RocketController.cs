@@ -15,6 +15,9 @@ namespace CompleteProject
         public GameObject explosionPreFab;
         public AudioSource explosionSound;
 
+        public float explosionTime = 2f;
+        public float startTime;
+
 
         // todo: needs still some kind of position syncing
 
@@ -23,22 +26,22 @@ namespace CompleteProject
             float angle = (float) photonView.instantiationData[0];
             Debug.Log("angle " + angle);
             angle *= Mathf.Deg2Rad;
+            startTime = Time.time;
         
             rigidbody.velocity = new Vector3(Mathf.Sin(angle), 0, Mathf.Cos(angle)) * startSpeed;
 	    }
 	
 	    // Update is called once per frame
 	    void FixedUpdate () {
-            // rigidbody.AddForce(push);
+            if (Time.time - startTime > explosionTime)
+            {
+                // pretty much any collision should explode it right?
+                object[] p = { };
+                photonView.RPC("CreateExplosion", PhotonTargets.MasterClient, p);
+                explosionSound.Play();
+                Destroy(gameObject);
+            }
 	    }
-
-        void OnTriggerEnter(Collider other)
-        {
-            // pretty much any collision should explode it right?
-            object[] p = { };
-            photonView.RPC("CreateExplosion", PhotonTargets.MasterClient, p);
-            explosionSound.Play();
-        }
 
         [RPC]
         void CreateExplosion()
@@ -73,7 +76,7 @@ namespace CompleteProject
                     fromExplosion.Normalize();
                     fromExplosion  *= explosionForce;
 
-                    Debug.Log("causing force " + fromExplosion);
+                    // Debug.Log("causing force " + fromExplosion);
                     go.rigidbody.AddForce(fromExplosion);
                 }
                 object[] p = { };

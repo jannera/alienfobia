@@ -415,7 +415,8 @@ MonoBehaviour:
   timeBetweenRockets: 2
   range: 100
   photonView: {fileID: 11400014}
-  rocketPreFab: {fileID: 100000, guid: b743cdf137c1571409b16c5c9f7cf9d2, type: 2}
+  grenadePreFab: {fileID: 100000, guid: b743cdf137c1571409b16c5c9f7cf9d2, type: 2}
+  grenades: 3
 --- !u!114 &11400006
 MonoBehaviour:
   m_ObjectHideFlags: 1
