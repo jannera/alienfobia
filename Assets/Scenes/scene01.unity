@@ -2028,6 +2028,7 @@ MonoBehaviour:
   secBetweenWaves: 10
   spawnedPerWave: 20
   maxwaves: 10
+  activateAfter: 0
 --- !u!4 &1255646100
 Transform:
   m_ObjectHideFlags: 0

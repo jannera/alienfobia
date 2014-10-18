@@ -3,14 +3,17 @@ using System.Collections;
 
 public class ServerGOGenerator : MonoBehaviour
 {		
-		public GameObject toBeGenerated;		
+		public GameObject toBeGenerated;				
 		public int spawnRange = 1;
 		public int secBetweenWaves = 5;
 		public int spawnedPerWave = 10;
 		public int maxwaves = 10;
+		public float activateAfter = 0.0f;
 		
-		private float currentTime = 0.0f;
+		private float elapsedTime = 0.0f;
+		private float spawnTimer = 0.0f;
 		private int spawnedWaves = 0;
+		private bool isActive = false;
 
 		// Use this for initialization
 		void Start ()
@@ -30,14 +33,27 @@ public class ServerGOGenerator : MonoBehaviour
 						return;
 				}
 
-				currentTime += Time.deltaTime;
-				Debug.Log("Current time " + currentTime) ;
-				
-				if (currentTime >= secBetweenWaves) {
+				UpdateTimers();
+
+				if (ShouldSpawn()) {
 					GenerateGameObjects(spawnedPerWave);	
-					currentTime -= (int)currentTime;								
+					spawnTimer -= (int)spawnTimer;								
 				}
 		}
+
+		private void UpdateTimers() {
+		    spawnTimer += Time.deltaTime;
+		    elapsedTime += Time.deltaTime;
+		    Debug.Log("Current time " + spawnTimer) ;
+		    
+		    if(elapsedTime >= activateAfter) {
+		      isActive = true;
+		    }
+		  }
+  
+ 		private bool ShouldSpawn() {
+			return isActive && (spawnTimer >= secBetweenWaves);
+        }
 	
 		private void GenerateGameObjects (int count)
 		{
