@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
 		int floorMask;                      // A layer mask so that a ray can be cast just at gameobjects on the floor layer.
 		float camRayLength = 100f;          // The length of the ray from the camera into the scene.
 
+        public GameObject explosionPreFab;
 
 		void Awake ()
 		{
@@ -54,6 +55,12 @@ public class PlayerMovement : MonoBehaviour
 
 			// Animate the player.
 			Animating (v, h);
+
+            if (Input.GetKey(KeyCode.F))
+            {
+                object[] p = { };
+                PhotonNetwork.InstantiateSceneObject(explosionPreFab.name, transform.position, Quaternion.identity, 0, p);
+            }
 		}
 
 		void Move (float h, float v)

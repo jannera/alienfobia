@@ -382,8 +382,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingHealth: 100
   currentHealth: 0
-  healthSlider: {fileID: 11400002, guid: 936ac24bbf62d43558ba93d47cd5ef9d, type: 2}
-  damageImage: {fileID: 11400000, guid: 936ac24bbf62d43558ba93d47cd5ef9d, type: 2}
+  healthSlider: {fileID: 0}
+  damageImage: {fileID: 0}
   deathClip: {fileID: 8300000, guid: d36a393bca4582043982db9089e1694f, type: 3}
   flashSpeed: 5
   flashColour: {r: 1, g: 0, b: 0, a: .0980392173}
@@ -400,6 +400,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 6
   photonView: {fileID: 11400012}
+  explosionPreFab: {fileID: 100000, guid: 5199f6d2be20e184f879573d3f65c0ac, type: 2}
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
