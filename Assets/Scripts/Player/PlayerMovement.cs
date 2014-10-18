@@ -23,18 +23,37 @@ public class PlayerMovement : MonoBehaviour
 
 		void FixedUpdate ()
 		{
-				// Store the input axes.
-				float h = Input.GetAxisRaw ("Horizontal");
-				float v = Input.GetAxisRaw ("Vertical");
+            float h = 0, v = 0;
+            if (Input.GetKey(KeyCode.W))
+            {
+                v += 1;
+                h += 1;
+            }
+            if (Input.GetKey(KeyCode.A))
+            {
+                v -= 1;
+                h += 1;
+            }
+            if (Input.GetKey(KeyCode.S))
+            {
+                v -= 1;
+                h -= 1;
+                
+            }
+            if (Input.GetKey(KeyCode.D))
+            {
+                v += 1;
+                h -= 1;
+            }
+            
+			// Move the player around the scene.
+			Move (v, h);
 
-				// Move the player around the scene.
-				Move (h, v);
+			// Turn the player to face the mouse cursor.
+			Turning ();
 
-				// Turn the player to face the mouse cursor.
-				Turning ();
-
-				// Animate the player.
-				Animating (h, v);
+			// Animate the player.
+			Animating (v, h);
 		}
 
 		void Move (float h, float v)
