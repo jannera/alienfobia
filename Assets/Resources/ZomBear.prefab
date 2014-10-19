@@ -239,7 +239,7 @@ MonoBehaviour:
   startingHealth: 100
   currentHealth: 0
   sinkSpeed: 2.5
-  scoreValue: 10
+  scoreValue: 15
   deathClip: {fileID: 8300000, guid: 62366b8d2c37a49dca550841c741317f, type: 3}
   pickUpGenChance: .0399999991
   droppedPickUp: {fileID: 100000, guid: bba06026d75ef5f45957a3b1577b9067, type: 2}

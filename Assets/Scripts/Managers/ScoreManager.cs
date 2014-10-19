@@ -7,25 +7,24 @@ namespace CompleteProject
     public class ScoreManager : MonoBehaviour
     {
         public static int score;        // The player's score.
-
-
-        Text text;                      // Reference to the Text component.
+		public static int kills;        // The player's total kills
+		public Text killsText;
+		public Text scoreText;
 
 
         void Awake ()
         {
-            // Set up the reference.
-            text = GetComponent <Text> ();
-
             // Reset the score.
             score = 0;
+			kills = 0;
         }
 
 
         void Update ()
         {
             // Set the displayed text to be the word "Score" followed by the score value.
-            text.text = "Kills: " + score;
+            killsText.text = "Kills: " + kills;
+			scoreText.text = "Score: " + score;
         }
     }
 }
