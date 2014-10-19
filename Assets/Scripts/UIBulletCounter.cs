@@ -7,11 +7,11 @@ namespace CompleteProject
     public class UIBulletCounter : MonoBehaviour
     {
 
-        private Text text;
+        private Slider slider;
         // Use this for initialization
         void Start()
         {
-            text = GetComponent<Text>();
+            slider = GetComponent<Slider>();
         }
 
         // Update is called once per frame
@@ -20,16 +20,19 @@ namespace CompleteProject
             GameObject playerGun = GameObject.FindGameObjectWithTag("PlayerGun");
             if (playerGun == null)
             {
-                text.text = "";
+                slider.value = 0;
                 return;
             }
+
             PlayerShooting playerShooting = playerGun.GetComponent<PlayerShooting>();
+            slider.maxValue = PlayerShooting.clipSize;
             int bullets = playerShooting.bullets;
             if (bullets == 0) {
-                text.text = "RELOADING!";
+                // todo slide based on 
+                slider.value = slider.maxValue * playerShooting.ReloadStatus();
             }
             else {
-                text.text = "Bullets: " + bullets;
+                slider.value = bullets;
             }
             
         }

@@ -173,5 +173,11 @@ namespace CompleteProject
                 PhotonNetwork.InstantiateSceneObject(grenadePreFab.name, pos, Quaternion.identity, 0, p);
             }
         }
+
+        // returns a number between 0 and 1 that tells how ready reloading is
+        public float ReloadStatus()
+        {
+            return Mathf.Clamp(reloadTimer / timeToReload, 0, 1);
+        }
     }
 }	
