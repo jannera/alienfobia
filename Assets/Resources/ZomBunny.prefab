@@ -241,8 +241,8 @@ MonoBehaviour:
   sinkSpeed: 2.5
   scoreValue: 10
   deathClip: {fileID: 8300000, guid: 1d3bfb9269f136947bf8ac164cace1ff, type: 3}
-  pickUpGenChance: .400000006
-  droppedPickUp: {fileID: 0}
+  pickUpGenChance: .200000003
+  droppedPickUp: {fileID: 100000, guid: c67c54f4243bb4d4bb92376f3d7b4b65, type: 2}
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1

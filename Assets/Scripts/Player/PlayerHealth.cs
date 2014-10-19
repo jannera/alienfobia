@@ -86,6 +86,16 @@ namespace CompleteProject
             // Turn off the movement and shooting scripts.
             playerMovement.enabled = false;
             playerShooting.enabled = false;
-        }		
+        }	
+
+		public void AddHealth (int amount) {
+
+			currentHealth = currentHealth += amount;
+			if (currentHealth > startingHealth) {
+				currentHealth = startingHealth;
+			}
+
+			Debug.Log("Gained health: " + currentHealth);
+		}
     }
 }
