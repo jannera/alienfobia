@@ -20,6 +20,8 @@ namespace CompleteProject
         bool isDead;                                                // Whether the player is dead.
         bool damaged;                                               // True when the player gets damaged.
 
+        public ParticleSystem bloodParticles;
+
 
         void Awake ()
         {
@@ -39,7 +41,7 @@ namespace CompleteProject
         }
 
 
-        public void TakeDamage (int amount)
+        public void TakeDamage (int amount, Vector3 attackerPosition)
         {
             // Set the damaged flag so the screen will flash.
             damaged = true;
@@ -49,6 +51,13 @@ namespace CompleteProject
 
             // Play the hurt sound effect.
             playerAudio.Play ();
+
+
+
+            // bloodParticles.transform.rotation.SetFromToRotation(transform.position, attackerPosition);
+            object[] p = {};
+            GameObject blood = PhotonNetwork.InstantiateSceneObject(bloodParticles.name, transform.position, Quaternion.identity, 0, p);
+            blood.GetComponent<ParticleSystem>().Play();
 
             // If the player has lost all it's health and the death flag hasn't been set yet...
             if(currentHealth <= 0 && !isDead)

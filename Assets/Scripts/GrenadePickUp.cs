@@ -19,12 +19,10 @@ namespace CompleteProject
 
         void OnTriggerEnter(Collider other)
         {
-            Debug.Log("grenade pickup collided with someone");
             GameObject go = other.gameObject;
             // If the entering collider is the player...
             if (go.CompareTag("Player"))
             {
-                Debug.Log("grenade pickup collided with player");
                 PlayerShooting shooting = go.GetComponentInChildren<PlayerShooting>();
                 shooting.grenades++;
                 Destroy(gameObject);
