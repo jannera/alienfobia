@@ -7,11 +7,13 @@ namespace CompleteProject
         public int damagePerShot = 20;                  // The damage inflicted by each bullet.
         public float timeBetweenBullets = 0.15f;        // The time between each shot.
         public float timeBetweenRockets = 2f;
+		public float timeToReload = 1f;
         public float range = 100f;                      // The distance the gun can fire.
 
 
         float timer;                                    // A timer to determine when to fire.
         float rocketTimer = 0;
+		float reloadTimer = 0;
         Ray shootRay;                                   // A ray from the gun end forwards.
         RaycastHit shootHit;                            // A raycast hit to get information about what was hit.
         int shootableMask;                              // A layer mask so the raycast only hits things on the shootable layer.
@@ -20,6 +22,8 @@ namespace CompleteProject
         AudioSource gunAudio;                           // Reference to the audio source.
         Light gunLight;                                 // Reference to the light component.
         float effectsDisplayTime = 0.2f;                // The proportion of the timeBetweenBullets that the effects will display for.
+		public const int clipSize = 60;
+		int bullets = clipSize;
 
         public PhotonView photonView;
         public GameObject grenadePreFab;
@@ -45,6 +49,11 @@ namespace CompleteProject
             // Add the time since Update was last called to the timer.
             timer += Time.deltaTime;
             rocketTimer += Time.deltaTime;
+			reloadTimer += Time.deltaTime;
+
+			if (reloadTimer >= timeToReload && bullets == 0) {
+				bullets = clipSize;
+			}
 
             // If the Fire1 button is being press and it's time to fire...
             if(Input.GetButton ("Fire1") && timer >= timeBetweenBullets)
@@ -78,6 +87,13 @@ namespace CompleteProject
 
         void Shoot ()
         {
+			if (bullets == 0) {
+				return;
+			}
+			--bullets;
+			if (bullets == 0) {
+				reloadTimer = 0f;
+			}
             // Reset the timer.
             timer = 0f;
 
