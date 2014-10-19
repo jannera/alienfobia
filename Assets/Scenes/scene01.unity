@@ -9645,9 +9645,10 @@ MonoBehaviour:
   toBeGenerated: {fileID: 100000, guid: ea3c2728ef33e3a4d99527a86cda6465, type: 2}
   spawnRange: 20
   secBetweenWaves: 10
-  spawnedPerWave: 20
-  maxwaves: 10
-  activateAfter: 0
+  spawnedPerWave: 5
+  wavesPerLevel: 4
+  increase: 5
+  maxSpawns: 30
 --- !u!4 &1255646100
 Transform:
   m_ObjectHideFlags: 0
@@ -15123,10 +15124,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   toBeGenerated: {fileID: 100000, guid: 548c56f4bcf4db24b8aa057e9846a005, type: 2}
   spawnRange: 15
-  secBetweenWaves: 30
+  secBetweenWaves: 20
   spawnedPerWave: 2
-  maxwaves: 5
-  activateAfter: 0
+  wavesPerLevel: 4
+  increase: 2
+  maxSpawns: 4
 --- !u!4 &1778951742
 Transform:
   m_ObjectHideFlags: 0

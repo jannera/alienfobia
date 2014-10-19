@@ -6,19 +6,20 @@ public class ServerGOGenerator : MonoBehaviour
 		public GameObject toBeGenerated;				
 		public int spawnRange = 1;
 		public int secBetweenWaves = 5;
-		public int spawnedPerWave = 10;
-		public int maxwaves = 10;
-		public float activateAfter = 0.0f;
+		public int spawnedPerWave = 5;
+		public int wavesPerLevel = 4;
+		public int increase = 5;
+		public int maxSpawns = 30; 
 		
+		private int currentWave = 1;
+		private int currentSpawns;
 		private float elapsedTime = 0.0f;
-		private float spawnTimer = 0.0f;
-		private int spawnedWaves = 0;
-		private bool isActive = false;
+		private float spawnTimer = 0.0f;		
 
 		// Use this for initialization
 		void Start ()
 		{
-        
+			currentSpawns = spawnedPerWave;
 		}
 	
 		// Update is called once per frame
@@ -36,7 +37,8 @@ public class ServerGOGenerator : MonoBehaviour
 				UpdateTimers();
 
 				if (ShouldSpawn()) {
-					GenerateGameObjects(spawnedPerWave);	
+					UpdateSpawnCounts();
+					GenerateGameObjects(currentSpawns);	
 					spawnTimer -= (int)spawnTimer;								
 				}
 		}
@@ -44,28 +46,29 @@ public class ServerGOGenerator : MonoBehaviour
 		private void UpdateTimers() {
 		    spawnTimer += Time.deltaTime;
 		    elapsedTime += Time.deltaTime;		    
-		    
-		    if(elapsedTime >= activateAfter) {
-		      isActive = true;
-		    }
 		  }
   
  		private bool ShouldSpawn() {
-			return isActive && (spawnTimer >= secBetweenWaves);
+			return (spawnTimer >= secBetweenWaves);
         }
+
+		private void UpdateSpawnCounts() {
+			if(currentWave % wavesPerLevel == 0) {	
+				if(currentWave < maxSpawns) {			
+					currentSpawns += increase;
+					Debug.Log("Increasing monster count per wave to " + currentSpawns);
+				}
+			}
+			++currentWave;
+		}
 	
 		private void GenerateGameObjects (int count)
 		{
-			if (spawnedWaves <= maxwaves) {
-				Debug.Log("Spawning wave " + spawnedWaves) ;
-				object[] p = { PhotonNetwork.player.ID };
-				for (int i = 0; i <= count; ++i) {
-					SpawnWithinRange(p);
-				}
-				++spawnedWaves;	
-			} else {
-				Debug.Log("No more spawns");
-			}
+			Debug.Log("Spawning wave " + currentWave) ;
+			object[] p = { PhotonNetwork.player.ID };
+			for (int i = 0; i <= count; ++i) {
+				SpawnWithinRange(p);
+			}		
 		}
 
 		private void SpawnWithinRange(object[] playerId) {
