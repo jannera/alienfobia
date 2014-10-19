@@ -68,6 +68,11 @@ namespace CompleteProject
                     {
                         continue;
                     }
+
+                    if (go.CompareTag("Player"))
+                    {
+                        continue; // don't throw players around
+                    }
                 
                     Vector3 fromExplosion = go.transform.position - transform.position;
                     float forceMultiplier = explosionRadius / fromExplosion.magnitude;
