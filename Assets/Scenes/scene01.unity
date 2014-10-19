@@ -1220,6 +1220,52 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2058152507}
   m_RootOrder: 0
+--- !u!1 &36620361
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 36620362}
+  - 114: {fileID: 36620363}
+  m_Layer: 0
+  m_Name: BunnyGenerator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &36620362
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 36620361}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1414394990}
+  m_RootOrder: 2
+--- !u!114 &36620363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 36620361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e59f662998a0b04cb3f7151d05590b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  toBeGenerated: {fileID: 100002, guid: e5171f72421770240bd7c3989fe351e3, type: 2}
+  spawnRange: 20
+  secBetweenWaves: 10
+  spawnedPerWave: 5
+  wavesPerLevel: 4
+  increase: 5
+  maxSpawns: 20
 --- !u!1 &45787890
 GameObject:
   m_ObjectHideFlags: 0
@@ -1770,7 +1816,7 @@ Transform:
   m_LocalScale: {x: .649999976, y: 1, z: 2}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 11
 --- !u!1 &178839447
 GameObject:
   m_ObjectHideFlags: 0
@@ -7198,6 +7244,33 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 475078365}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &483894517
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 483894518}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &483894518
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 483894517}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
 --- !u!1 &493859370
 GameObject:
   m_ObjectHideFlags: 0
@@ -7718,7 +7791,7 @@ Transform:
   - {fileID: 75133606}
   - {fileID: 94608718}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
 --- !u!1 &600508033
 GameObject:
   m_ObjectHideFlags: 0
@@ -7979,7 +8052,7 @@ Transform:
   - {fileID: 548817662}
   - {fileID: 908090410}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
 --- !u!1 &703759553
 GameObject:
   m_ObjectHideFlags: 0
@@ -11996,7 +12069,7 @@ GameObject:
   - 4: {fileID: 1255646100}
   - 114: {fileID: 1255646099}
   m_Layer: 0
-  m_Name: MonsterGenerator
+  m_Name: BearGenerator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12019,7 +12092,7 @@ MonoBehaviour:
   spawnedPerWave: 5
   wavesPerLevel: 4
   increase: 5
-  maxSpawns: 30
+  maxSpawns: 20
 --- !u!4 &1255646100
 Transform:
   m_ObjectHideFlags: 0
@@ -12030,8 +12103,8 @@ Transform:
   m_LocalPosition: {x: -8.13809967, y: .5, z: -2.35780001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_Father: {fileID: 1414394990}
+  m_RootOrder: 1
 --- !u!1 &1259288204
 GameObject:
   m_ObjectHideFlags: 0
@@ -12071,7 +12144,7 @@ Transform:
   - {fileID: 68903653}
   - {fileID: 503213686}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
 --- !u!1 &1277889525
 GameObject:
   m_ObjectHideFlags: 0
@@ -14702,7 +14775,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
 --- !u!1 &1405937685
 GameObject:
   m_ObjectHideFlags: 0
@@ -14842,6 +14915,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 676219108}
   m_RootOrder: 9
+--- !u!1 &1414394989
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1414394990}
+  m_Layer: 0
+  m_Name: MonsterGenerators
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1414394990
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1414394989}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1778951742}
+  - {fileID: 1255646100}
+  - {fileID: 36620362}
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
 --- !u!1 &1418158198
 GameObject:
   m_ObjectHideFlags: 0
@@ -15122,7 +15225,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
 --- !u!1 &1506479691
 GameObject:
   m_ObjectHideFlags: 0
@@ -17440,7 +17543,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 12
 --- !u!1 &1760574846
 GameObject:
   m_ObjectHideFlags: 0
@@ -17719,8 +17822,8 @@ Transform:
   m_LocalPosition: {x: 0, y: .5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_Father: {fileID: 1414394990}
+  m_RootOrder: 0
 --- !u!1 &1790125807
 GameObject:
   m_ObjectHideFlags: 0
@@ -18103,7 +18206,7 @@ RectTransform:
   - {fileID: 1760574847}
   - {fileID: 45787893}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -18506,7 +18609,7 @@ Transform:
   - {fileID: 384315705}
   - {fileID: 207527858}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
 --- !u!1 &2072820068
 GameObject:
   m_ObjectHideFlags: 0
