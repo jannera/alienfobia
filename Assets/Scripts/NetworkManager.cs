@@ -4,10 +4,16 @@ using System.Collections;
 public class NetworkManager : Photon.MonoBehaviour
 {
 		public GameObject playerPrefab;
+		public AudioSource menuMusic;		
+
+		void Awake() {
+			menuMusic.loop = true;
+			menuMusic.Play();
+		}
 
 		void Start ()
 		{
-				PhotonNetwork.ConnectUsingSettings ("0.1");
+				PhotonNetwork.ConnectUsingSettings ("0.1");				
 		}
 
 		private const string roomName = "RoomName";
@@ -52,5 +58,6 @@ public class NetworkManager : Photon.MonoBehaviour
 		{
 				object[] p = { ownerId };
 				PhotonNetwork.InstantiateSceneObject (playerPrefab.name, Vector3.up * 0.5f, Quaternion.identity, 0, p);
+				menuMusic.Stop();
 		}
 }
