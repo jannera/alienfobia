@@ -18,6 +18,9 @@ namespace CompleteProject
         bool isDead;                                // Whether the enemy is dead.
         bool isSinking;                             // Whether the enemy has started sinking through the floor.
 
+        public float pickUpGenChance = 0.4f;
+        public GameObject droppedPickUp;
+
 
         void Awake ()
         {
@@ -71,7 +74,7 @@ namespace CompleteProject
         }
 
 
-        void Death ()
+        void Death()
         {
             // The enemy is dead.
             isDead = true;
@@ -80,11 +83,18 @@ namespace CompleteProject
             capsuleCollider.isTrigger = true;
 
             // Tell the animator that the enemy is dead.
-            anim.SetTrigger ("Dead");
+            anim.SetTrigger("Dead");
 
             // Change the audio clip of the audio source to the death clip and play it (this will stop the hurt clip playing).
             enemyAudio.clip = deathClip;
-            enemyAudio.Play ();
+            enemyAudio.Play();
+
+            // randomly generate a pickup
+            if (Random.Range(0f, 1f) < pickUpGenChance)
+            {
+                object[] p = { };
+                PhotonNetwork.InstantiateSceneObject(droppedPickUp.name, transform.position + Vector3.up * 1f, Quaternion.identity, 0, p);
+            }
         }
 
 
