@@ -33,13 +33,49 @@ LevelGameManager:
 LightmapSettings:
   m_ObjectHideFlags: 0
   m_LightProbes: {fileID: 0}
-  m_Lightmaps: []
+  m_Lightmaps:
+  - m_Lightmap: {fileID: 2800000, guid: a0a671fd31e3f50409eed2a5379066b3, type: 3}
+    m_IndirectLightmap: {fileID: 2800000, guid: 953697d23a9237c4b9d1a5bd157005d5,
+      type: 3}
+  - m_Lightmap: {fileID: 2800000, guid: 25e2f60222295604297ada96dcd38248, type: 3}
+    m_IndirectLightmap: {fileID: 2800000, guid: 17e14a33cbea7d4419093d11819a2746,
+      type: 3}
+  - m_Lightmap: {fileID: 2800000, guid: 9b4e14e83a3b149448462a01145efa60, type: 3}
+    m_IndirectLightmap: {fileID: 2800000, guid: e2ee9187dcc12c046ae69e0118e90845,
+      type: 3}
+  - m_Lightmap: {fileID: 2800000, guid: 1d49977ffba2d62478e4c43757179716, type: 3}
+    m_IndirectLightmap: {fileID: 2800000, guid: 025d83b86716e6f41948e62e389f80a7,
+      type: 3}
+  - m_Lightmap: {fileID: 2800000, guid: 137135b866934104eacb605f41ea427b, type: 3}
+    m_IndirectLightmap: {fileID: 2800000, guid: 1ee4a95214f0a9c48aeb997e2740643c,
+      type: 3}
+  - m_Lightmap: {fileID: 2800000, guid: 5ac689968d40a2b4ba6d7dc42fa48b0d, type: 3}
+    m_IndirectLightmap: {fileID: 2800000, guid: 1ac95fa80970de0429a8588c39c3adb4,
+      type: 3}
+  - m_Lightmap: {fileID: 2800000, guid: fa391e5173833fa4e9887bdaf46b6073, type: 3}
+    m_IndirectLightmap: {fileID: 2800000, guid: 8214492351981b84eae6d1e29681195a,
+      type: 3}
+  - m_Lightmap: {fileID: 2800000, guid: 28936f62aec8b0540b7701bb8b9871ca, type: 3}
+    m_IndirectLightmap: {fileID: 2800000, guid: 139fa5eac83ca354198ac7d63bd5fa2a,
+      type: 3}
+  - m_Lightmap: {fileID: 2800000, guid: 5a5cb4168fa92354db8872d64886ea93, type: 3}
+    m_IndirectLightmap: {fileID: 2800000, guid: d7c77931a87cfd44fa608adac1eef483,
+      type: 3}
+  - m_Lightmap: {fileID: 2800000, guid: c3915efba24c70d41bec05303406e398, type: 3}
+    m_IndirectLightmap: {fileID: 2800000, guid: e8d43b9914dc6714dbafe23ddf1bce42,
+      type: 3}
+  - m_Lightmap: {fileID: 2800000, guid: 8e4b3f8e577f4624db282c5bc20058b8, type: 3}
+    m_IndirectLightmap: {fileID: 2800000, guid: 8238fc0c2a2008b4ab17f89f0ebd48aa,
+      type: 3}
+  - m_Lightmap: {fileID: 2800000, guid: aff9b1c0472494a40b30141729fb8d61, type: 3}
+    m_IndirectLightmap: {fileID: 2800000, guid: aff1cacd80e247a4390ec739ea18c7f6,
+      type: 3}
   m_LightmapsMode: 1
   m_BakedColorSpace: 0
   m_UseDualLightmapsInForward: 0
   m_LightmapEditorSettings:
     m_Resolution: 50
-    m_LastUsedResolution: 0
+    m_LastUsedResolution: 50
     m_TextureWidth: 1024
     m_TextureHeight: 1024
     m_BounceBoost: 1
@@ -1196,7 +1232,7 @@ Light:
     m_SoftnessFade: 1
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
-  m_ActuallyLightmapped: 0
+  m_ActuallyLightmapped: 1
   m_Flare: {fileID: 0}
   m_RenderMode: 0
   m_CullingMask:
@@ -1367,8 +1403,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 8
+  m_LightmapTilingOffset: {x: .244140625, y: .244140625, z: .705078125, w: .624023438}
   m_Materials:
   - {fileID: 2100000, guid: 1dce91da3425fd74bbc9462caed5712c, type: 2}
   m_SubsetIndices: 
@@ -1428,7 +1464,7 @@ Transform:
   m_Children:
   - {fileID: 211789601}
   m_Father: {fileID: 590840114}
-  m_RootOrder: 5
+  m_RootOrder: 4
 --- !u!23 &75133607
 Renderer:
   m_ObjectHideFlags: 0
@@ -1438,8 +1474,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 1
+  m_LightmapTilingOffset: {x: .3046875, y: .3046875, z: .296516359, w: .770830512}
   m_Materials:
   - {fileID: 2100000, guid: ca75ef4e9d4dfeb4c9aaa0bcbae4873a, type: 2}
   m_SubsetIndices: 
@@ -1564,7 +1600,7 @@ Transform:
   m_Children:
   - {fileID: 1506479692}
   m_Father: {fileID: 590840114}
-  m_RootOrder: 6
+  m_RootOrder: 5
 --- !u!23 &94608719
 Renderer:
   m_ObjectHideFlags: 0
@@ -1574,8 +1610,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 1
+  m_LightmapTilingOffset: {x: .3046875, y: .3046875, z: -.00328833004, w: .770830512}
   m_Materials:
   - {fileID: 2100000, guid: ca75ef4e9d4dfeb4c9aaa0bcbae4873a, type: 2}
   m_SubsetIndices: 
@@ -1645,8 +1681,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 10
+  m_LightmapTilingOffset: {x: .298828125, y: .298828125, z: .30078125, w: 0}
   m_Materials:
   - {fileID: 2100000, guid: 65e4a7d46ec2a5847a7b295320eeca42, type: 2}
   m_SubsetIndices: 
@@ -1702,8 +1738,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 2
+  m_LightmapTilingOffset: {x: .243164062, y: .243164048, z: -.00262434036, w: .77135694}
   m_Materials:
   - {fileID: 2100000, guid: c067f8d8266e2e540be0164a38d1f5ca, type: 2}
   m_SubsetIndices: 
@@ -1746,7 +1782,7 @@ Transform:
   - {fileID: 1614755709}
   - {fileID: 274015396}
   m_Father: {fileID: 590840114}
-  m_RootOrder: 1
+  m_RootOrder: 0
 --- !u!1 &156126850
 GameObject:
   m_ObjectHideFlags: 0
@@ -1844,8 +1880,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 4
+  m_LightmapTilingOffset: {x: .23828125, y: .238281265, z: .71387732, w: .77247107}
   m_Materials:
   - {fileID: 2100000, guid: c067f8d8266e2e540be0164a38d1f5ca, type: 2}
   m_SubsetIndices: 
@@ -1925,8 +1961,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 4
+  m_LightmapTilingOffset: {x: .23828125, y: .238281265, z: .4755961, w: .77247107}
   m_Materials:
   - {fileID: 2100000, guid: c067f8d8266e2e540be0164a38d1f5ca, type: 2}
   m_SubsetIndices: 
@@ -2006,7 +2042,7 @@ Light:
     m_SoftnessFade: 1
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
-  m_ActuallyLightmapped: 0
+  m_ActuallyLightmapped: 1
   m_Flare: {fileID: 0}
   m_RenderMode: 0
   m_CullingMask:
@@ -2057,8 +2093,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 4
+  m_LightmapTilingOffset: {x: .23828125, y: .238281265, z: .237314835, w: .77247107}
   m_Materials:
   - {fileID: 2100000, guid: c067f8d8266e2e540be0164a38d1f5ca, type: 2}
   m_SubsetIndices: 
@@ -4325,8 +4361,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 1
+  m_LightmapTilingOffset: {x: .243164062, y: .243164048, z: .596985042, w: .77135694}
   m_Materials:
   - {fileID: 2100000, guid: c067f8d8266e2e540be0164a38d1f5ca, type: 2}
   m_SubsetIndices: 
@@ -4367,7 +4403,7 @@ Transform:
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 590840114}
-  m_RootOrder: 2
+  m_RootOrder: 1
 --- !u!1 &289674089
 GameObject:
   m_ObjectHideFlags: 0
@@ -5532,7 +5568,7 @@ Light:
     m_SoftnessFade: 1
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
-  m_ActuallyLightmapped: 0
+  m_ActuallyLightmapped: 1
   m_Flare: {fileID: 0}
   m_RenderMode: 0
   m_CullingMask:
@@ -5583,8 +5619,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 2
+  m_LightmapTilingOffset: {x: .119140625, y: .119140632, z: .772954285, w: .0786183551}
   m_Materials:
   - {fileID: 2100000, guid: 8b94b267d9841e74195326303518ba3f, type: 2}
   m_SubsetIndices: 
@@ -5640,8 +5676,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 11
+  m_LightmapTilingOffset: {x: .358398438, y: .358398438, z: -.00145358033, w: -.00145358033}
   m_Materials:
   - {fileID: 2100000, guid: c067f8d8266e2e540be0164a38d1f5ca, type: 2}
   m_SubsetIndices: 
@@ -5721,8 +5757,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 8
+  m_LightmapTilingOffset: {x: .244140625, y: .244140625, z: .705078125, w: .356445312}
   m_Materials:
   - {fileID: 2100000, guid: 1dce91da3425fd74bbc9462caed5712c, type: 2}
   m_SubsetIndices: 
@@ -5791,8 +5827,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 4
+  m_LightmapTilingOffset: {x: .23828125, y: .238281265, z: -.000966413063, w: .77247107}
   m_Materials:
   - {fileID: 2100000, guid: c067f8d8266e2e540be0164a38d1f5ca, type: 2}
   m_SubsetIndices: 
@@ -5942,8 +5978,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 10
+  m_LightmapTilingOffset: {x: .298828125, y: .298828125, z: 0, w: 0}
   m_Materials:
   - {fileID: 2100000, guid: 65e4a7d46ec2a5847a7b295320eeca42, type: 2}
   m_SubsetIndices: 
@@ -7085,8 +7121,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 10
+  m_LightmapTilingOffset: {x: .358398438, y: .358398438, z: .355968297, w: .533702672}
   m_Materials:
   - {fileID: 2100000, guid: c067f8d8266e2e540be0164a38d1f5ca, type: 2}
   m_SubsetIndices: 
@@ -7295,8 +7331,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 9
+  m_LightmapTilingOffset: {x: .298828125, y: .298828125, z: .659179688, w: .53515625}
   m_Materials:
   - {fileID: 2100000, guid: 65e4a7d46ec2a5847a7b295320eeca42, type: 2}
   m_SubsetIndices: 
@@ -7395,7 +7431,7 @@ Light:
     m_SoftnessFade: 1
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
-  m_ActuallyLightmapped: 0
+  m_ActuallyLightmapped: 1
   m_Flare: {fileID: 0}
   m_RenderMode: 0
   m_CullingMask:
@@ -7458,7 +7494,7 @@ Light:
     m_SoftnessFade: 1
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
-  m_ActuallyLightmapped: 0
+  m_ActuallyLightmapped: 1
   m_Flare: {fileID: 0}
   m_RenderMode: 0
   m_CullingMask:
@@ -7664,8 +7700,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 10
+  m_LightmapTilingOffset: {x: .358398438, y: .358398438, z: .355968297, w: .299327672}
   m_Materials:
   - {fileID: 2100000, guid: c067f8d8266e2e540be0164a38d1f5ca, type: 2}
   m_SubsetIndices: 
@@ -7721,8 +7757,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 9
+  m_LightmapTilingOffset: {x: .365234375, y: .365234375, z: -.00394178042, w: .264453083}
   m_Materials:
   - {fileID: 2100000, guid: 8b94b267d9841e74195326303518ba3f, type: 2}
   m_SubsetIndices: 
@@ -7803,7 +7839,7 @@ Light:
     m_SoftnessFade: 1
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
-  m_ActuallyLightmapped: 0
+  m_ActuallyLightmapped: 1
   m_Flare: {fileID: 0}
   m_RenderMode: 0
   m_CullingMask:
@@ -7852,13 +7888,15 @@ Transform:
   m_LocalPosition: {x: -18.2320671, y: 3.15493965, z: 15.9714737}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 2055008438}
   - {fileID: 136640225}
   - {fileID: 274978715}
   - {fileID: 1136571106}
   - {fileID: 1771169179}
   - {fileID: 75133606}
   - {fileID: 94608718}
+  - {fileID: 1395321561}
+  - {fileID: 1069290426}
+  - {fileID: 1672960545}
   m_Father: {fileID: 0}
   m_RootOrder: 7
 --- !u!1 &600508033
@@ -7888,8 +7926,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 11
+  m_LightmapTilingOffset: {x: .358398438, y: .358398438, z: -.00145358033, w: .232921422}
   m_Materials:
   - {fileID: 2100000, guid: c067f8d8266e2e540be0164a38d1f5ca, type: 2}
   m_SubsetIndices: 
@@ -8052,7 +8090,7 @@ Light:
     m_SoftnessFade: 1
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
-  m_ActuallyLightmapped: 0
+  m_ActuallyLightmapped: 1
   m_Flare: {fileID: 0}
   m_RenderMode: 0
   m_CullingMask:
@@ -8161,8 +8199,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 2
+  m_LightmapTilingOffset: {x: .119140625, y: .119140632, z: .772954285, w: -.000483206561}
   m_Materials:
   - {fileID: 2100000, guid: 8b94b267d9841e74195326303518ba3f, type: 2}
   m_SubsetIndices: 
@@ -8243,8 +8281,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 9
+  m_LightmapTilingOffset: {x: .298828125, y: .298828125, z: .358398438, w: .53515625}
   m_Materials:
   - {fileID: 2100000, guid: 65e4a7d46ec2a5847a7b295320eeca42, type: 2}
   m_SubsetIndices: 
@@ -8403,8 +8441,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 7
+  m_LightmapTilingOffset: {x: .48828125, y: .48828125, z: .490234375, w: .490234375}
   m_Materials:
   - {fileID: 2100000, guid: 1dce91da3425fd74bbc9462caed5712c, type: 2}
   m_SubsetIndices: 
@@ -8461,8 +8499,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 9
+  m_LightmapTilingOffset: {x: .365234375, y: .365234375, z: .354456663, w: -.00312504428}
   m_Materials:
   - {fileID: 2100000, guid: 8b94b267d9841e74195326303518ba3f, type: 2}
   m_SubsetIndices: 
@@ -8531,8 +8569,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 1
+  m_LightmapTilingOffset: {x: .119140625, y: .119140632, z: .838383973, w: .852055848}
   m_Materials:
   - {fileID: 2100000, guid: 8b94b267d9841e74195326303518ba3f, type: 2}
   m_SubsetIndices: 
@@ -8638,8 +8676,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 9
+  m_LightmapTilingOffset: {x: .365234375, y: .365234375, z: .354456663, w: .264453083}
   m_Materials:
   - {fileID: 2100000, guid: c067f8d8266e2e540be0164a38d1f5ca, type: 2}
   m_SubsetIndices: 
@@ -8720,8 +8758,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 8
+  m_LightmapTilingOffset: {x: .344726562, y: .344726562, z: 0, w: .356445312}
   m_Materials:
   - {fileID: 2100000, guid: 1dce91da3425fd74bbc9462caed5712c, type: 2}
   m_SubsetIndices: 
@@ -8803,8 +8841,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 7
+  m_LightmapTilingOffset: {x: .48828125, y: .48828125, z: .490234375, w: 0}
   m_Materials:
   - {fileID: 2100000, guid: 65e4a7d46ec2a5847a7b295320eeca42, type: 2}
   m_SubsetIndices: 
@@ -9958,8 +9996,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 4
+  m_LightmapTilingOffset: {x: .771484375, y: .771484375, z: 0, w: 0}
   m_Materials:
   - {fileID: 2100000, guid: 65e4a7d46ec2a5847a7b295320eeca42, type: 2}
   m_SubsetIndices: 
@@ -10016,8 +10054,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 9
+  m_LightmapTilingOffset: {x: .365234375, y: .365234375, z: -.00394178042, w: .532031178}
   m_Materials:
   - {fileID: 2100000, guid: c067f8d8266e2e540be0164a38d1f5ca, type: 2}
   m_SubsetIndices: 
@@ -10098,7 +10136,7 @@ Light:
     m_SoftnessFade: 1
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
-  m_ActuallyLightmapped: 0
+  m_ActuallyLightmapped: 1
   m_Flare: {fileID: 0}
   m_RenderMode: 0
   m_CullingMask:
@@ -10161,8 +10199,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 3
+  m_LightmapTilingOffset: {x: .23828125, y: .238281265, z: .71387732, w: .77247107}
   m_Materials:
   - {fileID: 2100000, guid: 8b94b267d9841e74195326303518ba3f, type: 2}
   m_SubsetIndices: 
@@ -10230,8 +10268,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 9
+  m_LightmapTilingOffset: {x: .365234375, y: .365234375, z: -.00394178042, w: -.00312504428}
   m_Materials:
   - {fileID: 2100000, guid: 8b94b267d9841e74195326303518ba3f, type: 2}
   m_SubsetIndices: 
@@ -10288,8 +10326,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 3
+  m_LightmapTilingOffset: {x: .23828125, y: .238281265, z: -.000966413063, w: .77247107}
   m_Materials:
   - {fileID: 2100000, guid: 8b94b267d9841e74195326303518ba3f, type: 2}
   m_SubsetIndices: 
@@ -10369,7 +10407,7 @@ Light:
     m_SoftnessFade: 1
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
-  m_ActuallyLightmapped: 0
+  m_ActuallyLightmapped: 1
   m_Flare: {fileID: 0}
   m_RenderMode: 0
   m_CullingMask:
@@ -10432,8 +10470,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 5
+  m_LightmapTilingOffset: {x: .682617188, y: .682617188, z: 0, w: 0}
   m_Materials:
   - {fileID: 2100000, guid: 1dce91da3425fd74bbc9462caed5712c, type: 2}
   m_SubsetIndices: 
@@ -10490,8 +10528,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 1
+  m_LightmapTilingOffset: {x: .119140625, y: .119140632, z: .838383973, w: .772954285}
   m_Materials:
   - {fileID: 2100000, guid: 8b94b267d9841e74195326303518ba3f, type: 2}
   m_SubsetIndices: 
@@ -10532,6 +10570,75 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2058152507}
   m_RootOrder: 1
+--- !u!1 &1069290425
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1069290426}
+  - 33: {fileID: 1069290429}
+  - 65: {fileID: 1069290428}
+  - 23: {fileID: 1069290427}
+  m_Layer: 0
+  m_Name: Cube
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1069290426
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1069290425}
+  m_LocalRotation: {x: 0, y: .707106829, z: 0, w: .707106829}
+  m_LocalPosition: {x: -.61473, y: 0, z: 7.53149986}
+  m_LocalScale: {x: 3, y: .5, z: .25}
+  m_Children: []
+  m_Father: {fileID: 590840114}
+  m_RootOrder: 7
+--- !u!23 &1069290427
+Renderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1069290425}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_LightmapIndex: 255
+  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_Materials:
+  - {fileID: 2100000, guid: 746abf76163f2ac41a207424a2ed4628, type: 2}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_LightProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+--- !u!65 &1069290428
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1069290425}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!33 &1069290429
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1069290425}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1079379226
 GameObject:
   m_ObjectHideFlags: 0
@@ -10571,8 +10678,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 1
+  m_LightmapTilingOffset: {x: .119140625, y: .119140632, z: .772954285, w: .632329285}
   m_Materials:
   - {fileID: 2100000, guid: 8b94b267d9841e74195326303518ba3f, type: 2}
   m_SubsetIndices: 
@@ -10628,8 +10735,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 8
+  m_LightmapTilingOffset: {x: .365234375, y: .365234375, z: .342737913, w: .620898366}
   m_Materials:
   - {fileID: 2100000, guid: 8b94b267d9841e74195326303518ba3f, type: 2}
   m_SubsetIndices: 
@@ -10698,8 +10805,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 11
+  m_LightmapTilingOffset: {x: .358398438, y: .358398438, z: .355968297, w: -.00145358033}
   m_Materials:
   - {fileID: 2100000, guid: c067f8d8266e2e540be0164a38d1f5ca, type: 2}
   m_SubsetIndices: 
@@ -10770,7 +10877,7 @@ Transform:
   m_Children:
   - {fileID: 446334}
   m_Father: {fileID: 590840114}
-  m_RootOrder: 3
+  m_RootOrder: 2
 --- !u!23 &1136571107
 Renderer:
   m_ObjectHideFlags: 0
@@ -10780,8 +10887,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 8
+  m_LightmapTilingOffset: {x: .487304688, y: .487304688, z: .473256409, w: -.00416951114}
   m_Materials:
   - {fileID: 2100000, guid: c067f8d8266e2e540be0164a38d1f5ca, type: 2}
   m_SubsetIndices: 
@@ -10866,7 +10973,7 @@ Light:
     m_SoftnessFade: 1
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
-  m_ActuallyLightmapped: 0
+  m_ActuallyLightmapped: 1
   m_Flare: {fileID: 0}
   m_RenderMode: 0
   m_CullingMask:
@@ -10917,8 +11024,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 1
+  m_LightmapTilingOffset: {x: .119140625, y: .119140632, z: .772954285, w: .553227723}
   m_Materials:
   - {fileID: 2100000, guid: 8b94b267d9841e74195326303518ba3f, type: 2}
   m_SubsetIndices: 
@@ -10986,8 +11093,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 7
+  m_LightmapTilingOffset: {x: .48828125, y: .48828125, z: 0, w: .490234375}
   m_Materials:
   - {fileID: 2100000, guid: 1dce91da3425fd74bbc9462caed5712c, type: 2}
   m_SubsetIndices: 
@@ -11069,8 +11176,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 7
+  m_LightmapTilingOffset: {x: .48828125, y: .48828125, z: 0, w: 0}
   m_Materials:
   - {fileID: 2100000, guid: 65e4a7d46ec2a5847a7b295320eeca42, type: 2}
   m_SubsetIndices: 
@@ -12227,8 +12334,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 3
+  m_LightmapTilingOffset: {x: .771484375, y: .771484375, z: 0, w: 0}
   m_Materials:
   - {fileID: 2100000, guid: 65e4a7d46ec2a5847a7b295320eeca42, type: 2}
   m_SubsetIndices: 
@@ -12374,8 +12481,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 1
+  m_LightmapTilingOffset: {x: .119140625, y: .119140632, z: .772954285, w: .47412616}
   m_Materials:
   - {fileID: 2100000, guid: 8b94b267d9841e74195326303518ba3f, type: 2}
   m_SubsetIndices: 
@@ -12431,8 +12538,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 2
+  m_LightmapTilingOffset: {x: .23828125, y: .238281265, z: .716807008, w: .77247107}
   m_Materials:
   - {fileID: 2100000, guid: 8b94b267d9841e74195326303518ba3f, type: 2}
   m_SubsetIndices: 
@@ -14857,8 +14964,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 1
+  m_LightmapTilingOffset: {x: .119140625, y: .119140632, z: .772954285, w: .395024598}
   m_Materials:
   - {fileID: 2100000, guid: 8b94b267d9841e74195326303518ba3f, type: 2}
   m_SubsetIndices: 
@@ -14914,8 +15021,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 1
+  m_LightmapTilingOffset: {x: .119140625, y: .119140632, z: .772954285, w: .315923035}
   m_Materials:
   - {fileID: 2100000, guid: 8b94b267d9841e74195326303518ba3f, type: 2}
   m_SubsetIndices: 
@@ -14995,8 +15102,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 1
+  m_LightmapTilingOffset: {x: .119140625, y: .119140632, z: .772954285, w: .236821488}
   m_Materials:
   - {fileID: 2100000, guid: 8b94b267d9841e74195326303518ba3f, type: 2}
   m_SubsetIndices: 
@@ -15168,8 +15275,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 9
+  m_LightmapTilingOffset: {x: .23828125, y: .238281265, z: .715830445, w: .266611725}
   m_Materials:
   - {fileID: 2100000, guid: c067f8d8266e2e540be0164a38d1f5ca, type: 2}
   m_SubsetIndices: 
@@ -15225,8 +15332,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 10
+  m_LightmapTilingOffset: {x: .358398438, y: .358398438, z: -.00145358033, w: .533702672}
   m_Materials:
   - {fileID: 2100000, guid: c067f8d8266e2e540be0164a38d1f5ca, type: 2}
   m_SubsetIndices: 
@@ -15267,6 +15374,75 @@ Transform:
   m_Children: []
   m_Father: {fileID: 676219108}
   m_RootOrder: 0
+--- !u!1 &1395321560
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1395321561}
+  - 33: {fileID: 1395321564}
+  - 65: {fileID: 1395321563}
+  - 23: {fileID: 1395321562}
+  m_Layer: 0
+  m_Name: Cube
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1395321561
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1395321560}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -5.27720022, y: 0, z: 3.10750008}
+  m_LocalScale: {x: 3, y: .5, z: .25}
+  m_Children: []
+  m_Father: {fileID: 590840114}
+  m_RootOrder: 6
+--- !u!23 &1395321562
+Renderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1395321560}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_LightmapIndex: 255
+  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_Materials:
+  - {fileID: 2100000, guid: 746abf76163f2ac41a207424a2ed4628, type: 2}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_LightProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+--- !u!65 &1395321563
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1395321560}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!33 &1395321564
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1395321560}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1403670254
 GameObject:
   m_ObjectHideFlags: 0
@@ -15306,13 +15482,13 @@ Light:
     m_SoftnessFade: 1
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
-  m_ActuallyLightmapped: 0
+  m_ActuallyLightmapped: 1
   m_Flare: {fileID: 0}
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_Lightmapping: 2
+  m_Lightmapping: 1
   m_ShadowSamples: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -15325,7 +15501,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1403670254}
   m_LocalRotation: {x: .0664522871, y: .909843743, z: -.160430014, w: .376869619}
-  m_LocalPosition: {x: -18.8549995, y: 4.48549986, z: 18.816}
+  m_LocalPosition: {x: -24.1140003, y: 4.48549986, z: 24.5319996}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -15369,8 +15545,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 8
+  m_LightmapTilingOffset: {x: .244140625, y: .244140625, z: 0, w: .703125}
   m_Materials:
   - {fileID: 2100000, guid: 1dce91da3425fd74bbc9462caed5712c, type: 2}
   m_SubsetIndices: 
@@ -15427,8 +15603,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 10
+  m_LightmapTilingOffset: {x: .358398438, y: .358398438, z: -.00145358033, w: .299327672}
   m_Materials:
   - {fileID: 2100000, guid: c067f8d8266e2e540be0164a38d1f5ca, type: 2}
   m_SubsetIndices: 
@@ -15538,8 +15714,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 3
+  m_LightmapTilingOffset: {x: .23828125, y: .238281265, z: .4755961, w: .77247107}
   m_Materials:
   - {fileID: 2100000, guid: 8b94b267d9841e74195326303518ba3f, type: 2}
   m_SubsetIndices: 
@@ -15595,8 +15771,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 5
+  m_LightmapTilingOffset: {x: .244140625, y: .244140625, z: .716796875, w: .684570312}
   m_Materials:
   - {fileID: 2100000, guid: 1dce91da3425fd74bbc9462caed5712c, type: 2}
   m_SubsetIndices: 
@@ -15677,8 +15853,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 2
+  m_LightmapTilingOffset: {x: .771484375, y: .771484375, z: 0, w: 0}
   m_Materials:
   - {fileID: 2100000, guid: 65e4a7d46ec2a5847a7b295320eeca42, type: 2}
   m_SubsetIndices: 
@@ -15735,8 +15911,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 1
+  m_LightmapTilingOffset: {x: .119140625, y: .119140632, z: .772954285, w: .157719925}
   m_Materials:
   - {fileID: 2100000, guid: 8b94b267d9841e74195326303518ba3f, type: 2}
   m_SubsetIndices: 
@@ -15900,7 +16076,7 @@ Light:
     m_SoftnessFade: 1
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
-  m_ActuallyLightmapped: 0
+  m_ActuallyLightmapped: 1
   m_Flare: {fileID: 0}
   m_RenderMode: 0
   m_CullingMask:
@@ -15951,8 +16127,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 11
+  m_LightmapTilingOffset: {x: .358398438, y: .358398438, z: .355968297, w: .467296422}
   m_Materials:
   - {fileID: 2100000, guid: c067f8d8266e2e540be0164a38d1f5ca, type: 2}
   m_SubsetIndices: 
@@ -16020,8 +16196,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 9
+  m_LightmapTilingOffset: {x: .23828125, y: .238281265, z: -.000966413063, w: .801767945}
   m_Materials:
   - {fileID: 2100000, guid: c067f8d8266e2e540be0164a38d1f5ca, type: 2}
   m_SubsetIndices: 
@@ -16102,8 +16278,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 5
+  m_LightmapTilingOffset: {x: .298828125, y: .298828125, z: .684570312, w: .30078125}
   m_Materials:
   - {fileID: 2100000, guid: 65e4a7d46ec2a5847a7b295320eeca42, type: 2}
   m_SubsetIndices: 
@@ -16159,8 +16335,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 2
+  m_LightmapTilingOffset: {x: .243164062, y: .243164048, z: .475891292, w: .77135694}
   m_Materials:
   - {fileID: 2100000, guid: c067f8d8266e2e540be0164a38d1f5ca, type: 2}
   m_SubsetIndices: 
@@ -16217,8 +16393,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 11
+  m_LightmapTilingOffset: {x: .358398438, y: .358398438, z: .355968297, w: .232921422}
   m_Materials:
   - {fileID: 2100000, guid: c067f8d8266e2e540be0164a38d1f5ca, type: 2}
   m_SubsetIndices: 
@@ -16394,8 +16570,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 8
+  m_LightmapTilingOffset: {x: .365234375, y: .365234375, z: .342737913, w: .353320271}
   m_Materials:
   - {fileID: 2100000, guid: 8b94b267d9841e74195326303518ba3f, type: 2}
   m_SubsetIndices: 
@@ -17562,8 +17738,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 11
+  m_LightmapTilingOffset: {x: .358398438, y: .358398438, z: -.00145358033, w: .701671422}
   m_Materials:
   - {fileID: 2100000, guid: c067f8d8266e2e540be0164a38d1f5ca, type: 2}
   m_SubsetIndices: 
@@ -17631,8 +17807,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 5
+  m_LightmapTilingOffset: {x: .365234375, y: .365234375, z: .354456663, w: .681445241}
   m_Materials:
   - {fileID: 2100000, guid: 8b94b267d9841e74195326303518ba3f, type: 2}
   m_SubsetIndices: 
@@ -17713,8 +17889,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 9
+  m_LightmapTilingOffset: {x: .23828125, y: .238281265, z: .715830445, w: -.000966413121}
   m_Materials:
   - {fileID: 2100000, guid: c067f8d8266e2e540be0164a38d1f5ca, type: 2}
   m_SubsetIndices: 
@@ -17813,6 +17989,75 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1663193449}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1672960544
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1672960545}
+  - 33: {fileID: 1672960548}
+  - 65: {fileID: 1672960547}
+  - 23: {fileID: 1672960546}
+  m_Layer: 0
+  m_Name: Cube
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1672960545
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1672960544}
+  m_LocalRotation: {x: 0, y: -.382683486, z: 0, w: .923879564}
+  m_LocalPosition: {x: -1.82599998, y: 0, z: 4.20849991}
+  m_LocalScale: {x: 3, y: .5, z: .25}
+  m_Children: []
+  m_Father: {fileID: 590840114}
+  m_RootOrder: 8
+--- !u!23 &1672960546
+Renderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1672960544}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_LightmapIndex: 255
+  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_Materials:
+  - {fileID: 2100000, guid: 746abf76163f2ac41a207424a2ed4628, type: 2}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_LightProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+--- !u!65 &1672960547
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1672960544}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!33 &1672960548
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1672960544}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1677079177
 GameObject:
   m_ObjectHideFlags: 0
@@ -17948,8 +18193,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 6
+  m_LightmapTilingOffset: {x: .48828125, y: .48828125, z: .490234375, w: .490234375}
   m_Materials:
   - {fileID: 2100000, guid: 65e4a7d46ec2a5847a7b295320eeca42, type: 2}
   m_SubsetIndices: 
@@ -17993,8 +18238,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 3
+  m_LightmapTilingOffset: {x: .23828125, y: .238281265, z: .237314835, w: .77247107}
   m_Materials:
   - {fileID: 2100000, guid: 8b94b267d9841e74195326303518ba3f, type: 2}
   m_SubsetIndices: 
@@ -18062,8 +18307,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 10
+  m_LightmapTilingOffset: {x: .358398438, y: .358398438, z: .600108922, w: -.00145358033}
   m_Materials:
   - {fileID: 2100000, guid: c067f8d8266e2e540be0164a38d1f5ca, type: 2}
   m_SubsetIndices: 
@@ -18143,8 +18388,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 1
+  m_LightmapTilingOffset: {x: .119140625, y: .119140632, z: .772954285, w: .0786183551}
   m_Materials:
   - {fileID: 2100000, guid: 8b94b267d9841e74195326303518ba3f, type: 2}
   m_SubsetIndices: 
@@ -18212,7 +18457,7 @@ Light:
     m_SoftnessFade: 1
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
-  m_ActuallyLightmapped: 0
+  m_ActuallyLightmapped: 1
   m_Flare: {fileID: 0}
   m_RenderMode: 0
   m_CullingMask:
@@ -18429,7 +18674,7 @@ Transform:
   m_Children:
   - {fileID: 1316745537}
   m_Father: {fileID: 590840114}
-  m_RootOrder: 4
+  m_RootOrder: 3
 --- !u!23 &1771169180
 Renderer:
   m_ObjectHideFlags: 0
@@ -18439,8 +18684,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 8
+  m_LightmapTilingOffset: {x: .487304688, y: .487304688, z: -.00525922002, w: -.00416951114}
   m_Materials:
   - {fileID: 2100000, guid: c067f8d8266e2e540be0164a38d1f5ca, type: 2}
   m_SubsetIndices: 
@@ -18543,8 +18788,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 1
+  m_LightmapTilingOffset: {x: .771484375, y: .771484375, z: 0, w: 0}
   m_Materials:
   - {fileID: 2100000, guid: 65e4a7d46ec2a5847a7b295320eeca42, type: 2}
   m_SubsetIndices: 
@@ -18638,8 +18883,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 6
+  m_LightmapTilingOffset: {x: .48828125, y: .48828125, z: 0, w: .490234375}
   m_Materials:
   - {fileID: 2100000, guid: 65e4a7d46ec2a5847a7b295320eeca42, type: 2}
   m_SubsetIndices: 
@@ -18683,8 +18928,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 5
+  m_LightmapTilingOffset: {x: .365234375, y: .365234375, z: -.00394178042, w: .681445241}
   m_Materials:
   - {fileID: 2100000, guid: 8b94b267d9841e74195326303518ba3f, type: 2}
   m_SubsetIndices: 
@@ -18765,7 +19010,7 @@ Light:
     m_SoftnessFade: 1
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
-  m_ActuallyLightmapped: 0
+  m_ActuallyLightmapped: 1
   m_Flare: {fileID: 0}
   m_RenderMode: 0
   m_CullingMask:
@@ -18816,7 +19061,7 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
+  m_LightmapIndex: 0
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
   - {fileID: 2100000, guid: f9fba1399ce772b4bb1a30d91cfd6bae, type: 2}
@@ -19121,8 +19366,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 6
+  m_LightmapTilingOffset: {x: .48828125, y: .48828125, z: .490234375, w: 0}
   m_Materials:
   - {fileID: 2100000, guid: 65e4a7d46ec2a5847a7b295320eeca42, type: 2}
   m_SubsetIndices: 
@@ -19178,8 +19423,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 2
+  m_LightmapTilingOffset: {x: .243164062, y: .243164048, z: .23663348, w: .77135694}
   m_Materials:
   - {fileID: 2100000, guid: c067f8d8266e2e540be0164a38d1f5ca, type: 2}
   m_SubsetIndices: 
@@ -19236,8 +19481,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 11
+  m_LightmapTilingOffset: {x: .358398438, y: .358398438, z: -.00145358033, w: .467296422}
   m_Materials:
   - {fileID: 2100000, guid: c067f8d8266e2e540be0164a38d1f5ca, type: 2}
   m_SubsetIndices: 
@@ -19278,76 +19523,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1259288205}
   m_RootOrder: 1
---- !u!1 &2055008434
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 2055008438}
-  - 33: {fileID: 2055008437}
-  - 136: {fileID: 2055008436}
-  - 23: {fileID: 2055008435}
-  m_Layer: 0
-  m_Name: Capsule
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
---- !u!23 &2055008435
-Renderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2055008434}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
-  m_Materials:
-  - {fileID: 2100000, guid: c067f8d8266e2e540be0164a38d1f5ca, type: 2}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 0
-  m_LightProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
---- !u!136 &2055008436
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2055008434}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: .5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!33 &2055008437
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2055008434}
-  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &2055008438
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2055008434}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.31593323, y: -1.15493965, z: 3.85652542}
-  m_LocalScale: {x: 2, y: 2, z: 2}
-  m_Children: []
-  m_Father: {fileID: 590840114}
-  m_RootOrder: 0
 --- !u!1 &2058152506
 GameObject:
   m_ObjectHideFlags: 0
@@ -19478,8 +19653,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 5
+  m_LightmapTilingOffset: {x: .298828125, y: .298828125, z: .684570312, w: 0}
   m_Materials:
   - {fileID: 2100000, guid: 65e4a7d46ec2a5847a7b295320eeca42, type: 2}
   m_SubsetIndices: 
@@ -19535,8 +19710,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 1
+  m_LightmapTilingOffset: {x: .119140625, y: .119140632, z: .772954285, w: -.000483206561}
   m_Materials:
   - {fileID: 2100000, guid: 8b94b267d9841e74195326303518ba3f, type: 2}
   m_SubsetIndices: 
@@ -19605,8 +19780,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 6
+  m_LightmapTilingOffset: {x: .48828125, y: .48828125, z: 0, w: 0}
   m_Materials:
   - {fileID: 2100000, guid: 65e4a7d46ec2a5847a7b295320eeca42, type: 2}
   m_SubsetIndices: 
