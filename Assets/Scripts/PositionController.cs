@@ -25,11 +25,6 @@ public class PositionController : Photon.MonoBehaviour
             clientController = null;
             Destroy(this.GetComponent<ClientPositionController>());
         }
-
-        if (!isMine)
-        {
-            Destroy(this.GetComponent<PlayerInputController>());
-        }
     }
 
     void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)

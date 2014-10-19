@@ -7,6 +7,8 @@ public class ClientPositionController : MonoBehaviour
 		private Vector3 syncPosition;
 		private Vector3 syncVelocity;
 
+        private float maxVelocityStepInSecond = 10;
+
 		// Use this for initialization
 		void Start ()
 		{
@@ -31,7 +33,7 @@ public class ClientPositionController : MonoBehaviour
 				Vector3 extrapolatedTargetPosition = syncPosition + syncVelocity * totalTimePassed;
 
 				Vector3 newPosition = Vector3.MoveTowards (transform.position, extrapolatedTargetPosition,
-            syncVelocity.magnitude * Time.deltaTime);
+            maxVelocityStepInSecond * Time.deltaTime);
 
 				// Debug.Log(transform.position + " -> " + newPosition);
 				// todo teleport check

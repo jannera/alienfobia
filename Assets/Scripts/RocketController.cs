@@ -28,6 +28,7 @@ namespace CompleteProject
             angle *= Mathf.Deg2Rad;
             startTime = Time.time;
         
+            // TODO all rigidbody stuff should only be done in the server side
             rigidbody.velocity = new Vector3(Mathf.Sin(angle), 0, Mathf.Cos(angle)) * startSpeed;
 	    }
 	
