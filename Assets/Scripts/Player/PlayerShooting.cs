@@ -24,7 +24,7 @@ namespace CompleteProject
         Light gunLight;                                 // Reference to the light component.
         float effectsDisplayTime = 0.2f;                // The proportion of the timeBetweenBullets that the effects will display for.
 		public const int clipSize = 60;
-		int bullets = clipSize;
+		public int bullets = clipSize;
 
         public PhotonView photonView;
         public GameObject grenadePreFab;
