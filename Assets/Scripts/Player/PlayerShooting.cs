@@ -20,6 +20,7 @@ namespace CompleteProject
         ParticleSystem gunParticles;                    // Reference to the particle system.
         LineRenderer gunLine;                           // Reference to the line renderer.
         AudioSource gunAudio;                           // Reference to the audio source.
+        AudioSource gunReload;
         Light gunLight;                                 // Reference to the light component.
         float effectsDisplayTime = 0.2f;                // The proportion of the timeBetweenBullets that the effects will display for.
 		public const int clipSize = 60;
@@ -39,7 +40,8 @@ namespace CompleteProject
             // Set up the references.
             gunParticles = GetComponent<ParticleSystem> ();
             gunLine = GetComponent <LineRenderer> ();
-            gunAudio = GetComponent<AudioSource> ();
+            gunAudio = GetComponents<AudioSource> () [0];
+            gunReload = GetComponents<AudioSource>()[1];
             gunLight = GetComponent<Light> ();
         }
 
@@ -88,11 +90,13 @@ namespace CompleteProject
         void Shoot ()
         {
 			if (bullets == 0) {
-				return;
+                return;
 			}
 			--bullets;
 			if (bullets == 0) {
 				reloadTimer = 0f;
+                gunReload.Play();
+                return;
 			}
             // Reset the timer.
             timer = 0f;
