@@ -76,6 +76,12 @@ namespace CompleteProject
                 // ... disable the effects.
                 DisableEffects ();
             }
+
+            
+            if (Input.GetKey(KeyCode.R))
+            {
+                StartReloading();
+            }
         }
 
 
@@ -86,6 +92,12 @@ namespace CompleteProject
             gunLight.enabled = false;
         }
 
+        void StartReloading()
+        {
+            bullets = 0;
+            reloadTimer = 0f;
+            gunReload.Play();
+        }
 
         void Shoot ()
         {
@@ -94,8 +106,7 @@ namespace CompleteProject
 			}
 			--bullets;
 			if (bullets == 0) {
-				reloadTimer = 0f;
-                gunReload.Play();
+                StartReloading();
                 return;
 			}
             // Reset the timer.
