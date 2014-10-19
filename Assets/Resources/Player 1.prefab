@@ -189,9 +189,10 @@ GameObject:
   - 108: {fileID: 10800002}
   - 114: {fileID: 11400000}
   - 82: {fileID: 8200000}
+  - 114: {fileID: 11400014}
   m_Layer: 0
   m_Name: GunBarrelEnd
-  m_TagString: Untagged
+  m_TagString: PlayerGun
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -456,7 +457,7 @@ Rigidbody:
   m_GameObject: {fileID: 100028}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: Infinity
+  m_Drag: .0500000007
   m_AngularDrag: Infinity
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -766,7 +767,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damagePerShot: 20
   timeBetweenBullets: .0799999982
+  timeBetweenRockets: 2
   range: 100
+  photonView: {fileID: 11400014}
+  grenadePreFab: {fileID: 100000, guid: b743cdf137c1571409b16c5c9f7cf9d2, type: 2}
+  grenades: 3
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -852,11 +857,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingHealth: 100
   currentHealth: 0
-  healthSlider: {fileID: 0}
-  damageImage: {fileID: 0}
   deathClip: {fileID: 8300000, guid: d36a393bca4582043982db9089e1694f, type: 3}
-  flashSpeed: 5
-  flashColour: {r: 1, g: 0, b: 0, a: .0980392173}
+--- !u!114 &11400014
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 795cb0460d5c7c64499938f2b4df2033, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  subId: 0
+  ownerId: 0
+  group: 0
+  prefixBackup: -1
+  observed: {fileID: 0}
+  synchronization: 0
+  onSerializeTransformOption: 3
+  onSerializeRigidBodyOption: 2
+  instantiationId: -1
 --- !u!120 &12000000
 LineRenderer:
   m_ObjectHideFlags: 1
