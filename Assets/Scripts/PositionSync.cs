@@ -11,6 +11,7 @@ using System.Collections;
 public class PositionSync : Photon.MonoBehaviour
 {
     public bool isMine;
+    public float movementEpsilon = 1; // velocity magnitudes above this are considering "moving" (for animations etc)
 
     void Awake()
     {
@@ -116,5 +117,20 @@ public class PositionSync : Photon.MonoBehaviour
         {
             transform.position = newPosition;
         }
+    }
+
+    public bool IsMoving()
+    {
+        Vector3 vel;
+        if (PhotonNetwork.isMasterClient)
+        {
+            vel = rigidbody.velocity;
+        }
+        else
+        {
+            vel = syncVelocity;
+        }
+        Debug.Log(vel.magnitude);
+        return vel.magnitude > movementEpsilon;
     }
 }

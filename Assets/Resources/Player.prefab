@@ -864,6 +864,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isMine: 0
+  movementEpsilon: 1
   speed: 3000
   maximumVelocity: 4
   maxVelocityStepInSecond: 5

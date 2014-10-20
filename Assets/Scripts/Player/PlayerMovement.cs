@@ -34,6 +34,8 @@ public class PlayerMovement : MonoBehaviour
 
 		void FixedUpdate ()
 		{
+            Animating(positionController.IsMoving());
+
             if (!positionController.isMine)
             {
                 return;
@@ -68,8 +70,12 @@ public class PlayerMovement : MonoBehaviour
 			// Turn the player to face the mouse cursor.
 			Turning ();
 
-			// Animate the player.
-			Animating (v, h);
+            if (h != 0f || v != 0f)
+            {
+                // start animating right at the key press (but don't stop straight after player stops pressing keys)
+                Animating(true);
+            }
+			
 		}
 
 		void Move (float h, float v)
@@ -112,12 +118,8 @@ public class PlayerMovement : MonoBehaviour
 				}
 		}
 
-		void Animating (float h, float v)
+		void Animating (bool walking)
 		{
-				// Create a boolean that is true if either of the input axes is non-zero.
-				bool walking = h != 0f || v != 0f;
-
-				// Tell the animator whether or not the player is walking.
 				anim.SetBool ("IsWalking", walking);
 		}
 }
