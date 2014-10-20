@@ -14,15 +14,24 @@ namespace CompleteProject
         void Awake ()
         {
             // Set up the references.
-            player = GameObject.FindGameObjectWithTag ("Player").transform;
-            playerHealth = player.GetComponent <PlayerHealth> ();
-            enemyHealth = GetComponent <EnemyHealth> ();
-            nav = GetComponent <NavMeshAgent> ();
+            if (PhotonNetwork.isMasterClient)
+            {
+                player = GameObject.FindGameObjectWithTag("Player").transform;
+                playerHealth = player.GetComponent<PlayerHealth>();
+                enemyHealth = GetComponent<EnemyHealth>();
+                nav = GetComponent<NavMeshAgent>();
+            }
+            else
+            {
+                Destroy(GetComponent<NavMeshAgent>());
+                Destroy(this);
+            }
         }
 
 
         void Update ()
         {
+            // todo now and then change player, based on proximity and chance
             if (player == null)
             {
                 Debug.Log("Enemy could not find player");

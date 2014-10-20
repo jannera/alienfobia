@@ -40,6 +40,7 @@ public class ClientPositionController : MonoBehaviour
                 {
                     // if position has fallen too far out of sync, just teleport
                     transform.position = extrapolatedTargetPosition;
+                    Debug.Log("teleported " + gameObject);
                 }
                 else
                 {
