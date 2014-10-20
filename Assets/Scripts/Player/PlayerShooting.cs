@@ -46,7 +46,7 @@ namespace CompleteProject
             gunReload = GetComponents<AudioSource>()[1];
             gunLight = GetComponent<Light> ();
 
-            isMine = gameObject.GetComponentInParent<PositionController>().isMine;
+            isMine = gameObject.GetComponentInParent<PositionSync>().isMine;
         }
 
 

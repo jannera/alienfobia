@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
 
         public GameObject rotationSyncPreFab;
 
-        public PositionController positionController;
+        public PositionSync positionController;
 
 		void Awake ()
 		{

@@ -12,7 +12,7 @@ namespace CompleteProject
         {
             foreach(GameObject go in GameObject.FindGameObjectsWithTag("Player")) 
             {
-                if (go.GetComponent<PositionController>().isMine)
+                if (go.GetComponent<PositionSync>().isMine)
                 {
                     return go;
                 }
