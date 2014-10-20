@@ -25,14 +25,18 @@ public class NetworkManager : Photon.MonoBehaviour
 						GUILayout.Label (PhotonNetwork.connectionStateDetailed.ToString ());
 				} else if (PhotonNetwork.room == null) {
 						// Create Room
-						if (GUI.Button (new Rect (100, 100, 250, 100), "Start Server"))
-								PhotonNetwork.CreateRoom (roomName + System.Guid.NewGuid ().ToString ("N"), true, true, 5);
+                        if (GUI.Button(new Rect(100, 100, 250, 100), "Start Server"))
+                        {
+                            PhotonNetwork.CreateRoom(roomName + System.Guid.NewGuid().ToString("N"));
+                        }
  
 						// Join Room
 						if (roomsList != null) {
 								for (int i = 0; i < roomsList.Length; i++) {
-										if (GUI.Button (new Rect (100, 250 + (110 * i), 250, 100), "Join " + roomsList [i].name))
-												PhotonNetwork.JoinRoom (roomsList [i].name);
+                                    if (GUI.Button(new Rect(100, 250 + (110 * i), 250, 100), "Join " + roomsList[i].name))
+                                    {
+                                        PhotonNetwork.JoinRoom(roomsList[i].name);
+                                    }
 								}
 						}
 				}

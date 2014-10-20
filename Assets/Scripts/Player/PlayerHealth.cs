@@ -18,7 +18,6 @@ namespace CompleteProject
         PlayerMovement playerMovement;                              // Reference to the player's movement.
         PlayerShooting playerShooting;                              // Reference to the PlayerShooting script.
         bool isDead;                                                // Whether the player is dead.
-        bool damaged;                                               // True when the player gets damaged.
 
         public ParticleSystem bloodParticles;
 
@@ -43,9 +42,6 @@ namespace CompleteProject
 
         public void TakeDamage (int amount, Vector3 attackerPosition)
         {
-            // Set the damaged flag so the screen will flash.
-            damaged = true;
-
             // Reduce the current health by the damage amount.
             currentHealth -= amount;
 
@@ -90,7 +86,7 @@ namespace CompleteProject
 
 		public void AddHealth (int amount) {
 
-			currentHealth = currentHealth += amount;
+			currentHealth += amount;
 			if (currentHealth > startingHealth) {
 				currentHealth = startingHealth;
 			}

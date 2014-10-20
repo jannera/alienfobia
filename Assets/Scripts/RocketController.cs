@@ -3,6 +3,7 @@ using System.Collections;
 
 namespace CompleteProject
 {
+    // TODO rename to grenade controller
     public class RocketController : MonoBehaviour {
         public PhotonView photonView;
         public float startSpeed = 10;
@@ -69,7 +70,7 @@ namespace CompleteProject
                     {
                         continue;
                     }
-
+ 
                     if (go.CompareTag("Player"))
                     {
                         continue; // don't throw players around
@@ -80,7 +81,7 @@ namespace CompleteProject
                     // bigger force at the center, lesser on the sides
 
                     fromExplosion.Normalize();
-                    fromExplosion  *= explosionForce;
+                    fromExplosion *= explosionForce * forceMultiplier;
 
                     // Debug.Log("causing force " + fromExplosion);
                     go.rigidbody.AddForce(fromExplosion);

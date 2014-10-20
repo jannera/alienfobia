@@ -12,8 +12,6 @@ public class PositionController : Photon.MonoBehaviour
         int ownerId = (int)photonView.instantiationData[0];
         isMine =  ownerId == PhotonNetwork.player.ID;
 
-        Debug.Log("Created " + photonView.viewID);
-
         if (!PhotonNetwork.isMasterClient)
         {
             Destroy(this.GetComponent<Rigidbody>());
