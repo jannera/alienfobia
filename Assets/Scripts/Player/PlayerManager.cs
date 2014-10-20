@@ -10,11 +10,22 @@ namespace CompleteProject
     {
         public static GameObject GetMyPlayer()
         {
-            GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
-            for (int i = 0; i < players.Length; i++)
+            foreach(GameObject go in GameObject.FindGameObjectsWithTag("Player")) 
             {
-                GameObject go = players[i];
                 if (go.GetComponent<PositionController>().isMine)
+                {
+                    return go;
+                }
+            }
+            return null;
+        }
+
+        public static GameObject GetPlayerWithOwnerId(int ownerID)
+        {
+            
+            foreach (GameObject go in GameObject.FindGameObjectsWithTag("Player"))
+            {
+                if (go.GetComponent<OwnerID>().ownerID == ownerID)
                 {
                     return go;
                 }

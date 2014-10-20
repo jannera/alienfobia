@@ -12,6 +12,8 @@ public class PlayerMovement : MonoBehaviour
 		float camRayLength = 100f;          // The length of the ray from the camera into the scene.
         public float smoothTurning = 10f;
 
+        public GameObject rotationSyncPreFab;
+
         public PositionController positionController;
 
 		void Awake ()
@@ -22,6 +24,14 @@ public class PlayerMovement : MonoBehaviour
 				// Set up references.
 				anim = GetComponent <Animator> ();
 				playerRigidbody = GetComponent <Rigidbody> ();
+                
+                int ownerId = (int)photonView.instantiationData[0];
+                if (ownerId == PhotonNetwork.player.ID)
+                {
+                    // create rotation synchronizer
+                    PhotonNetwork.Instantiate(rotationSyncPreFab.name, Vector3.zero, 
+                        Quaternion.identity, 0);
+                }
 		}
 
 		void FixedUpdate ()
