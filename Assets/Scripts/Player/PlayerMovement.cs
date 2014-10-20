@@ -111,17 +111,7 @@ public class PlayerMovement : MonoBehaviour
 						Quaternion newRotation = Quaternion.LookRotation (playerToMouse);
 
 						// Set the player's rotation to this new rotation.
-                        if (PhotonNetwork.isMasterClient)
-                        {
-                            //playerRigidbody.MoveRotation(newRotation);
-                            transform.rotation = Quaternion.Slerp(transform.rotation, newRotation, Time.deltaTime * smoothTurning);
-                        }
-                        else
-                        {
-                            // TODO: find a way to do this in a smoother way. current way causes glitching
-                            transform.rotation = Quaternion.Slerp(transform.rotation, newRotation, Time.deltaTime * smoothTurning);
-                        }
-						
+                        transform.rotation = Quaternion.Slerp(transform.rotation, newRotation, Time.deltaTime * smoothTurning);
 				}
 		}
 
