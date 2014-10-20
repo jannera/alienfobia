@@ -8,7 +8,7 @@ public class NetworkManager : Photon.MonoBehaviour
 
 		void Awake() {
 			menuMusic.loop = true;
-			menuMusic.Play();
+			// menuMusic.Play();
 		}
 
 		void Start ()

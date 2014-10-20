@@ -15,7 +15,7 @@ namespace CompleteProject
 				void FixedUpdate ()
 				{
 					if (target == null) {
-							GameObject player = GameObject.FindWithTag ("Player");
+                            GameObject player = PlayerManager.GetMyPlayer();
 							if (player != null) {
 									target = player.transform;
 							}

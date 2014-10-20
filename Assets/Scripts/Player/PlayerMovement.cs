@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -9,8 +10,9 @@ public class PlayerMovement : MonoBehaviour
 		Rigidbody playerRigidbody;          // Reference to the player's rigidbody.
 		int floorMask;                      // A layer mask so that a ray can be cast just at gameobjects on the floor layer.
 		float camRayLength = 100f;          // The length of the ray from the camera into the scene.
+        public float smoothTurning = 10f;
 
-        public GameObject explosionPreFab;
+        public PositionController positionController;
 
 		void Awake ()
 		{
@@ -24,6 +26,11 @@ public class PlayerMovement : MonoBehaviour
 
 		void FixedUpdate ()
 		{
+            if (!positionController.isMine)
+            {
+                return;
+            }
+
             float h = 0, v = 0;
             if (Input.GetKey(KeyCode.W))
             {
@@ -55,16 +62,14 @@ public class PlayerMovement : MonoBehaviour
 
 			// Animate the player.
 			Animating (v, h);
-
-            if (Input.GetKey(KeyCode.F))
-            {
-                object[] p = { };
-                PhotonNetwork.InstantiateSceneObject(explosionPreFab.name, transform.position, Quaternion.identity, 0, p);
-            }
 		}
 
 		void Move (float h, float v)
 		{
+                if (h == 0 && v == 0)
+                {
+                    return;
+                }
 				// Set the movement vector based on the axis input.
 				movement.Set (h, 0f, v);
             
@@ -96,7 +101,17 @@ public class PlayerMovement : MonoBehaviour
 						Quaternion newRotation = Quaternion.LookRotation (playerToMouse);
 
 						// Set the player's rotation to this new rotation.
-						playerRigidbody.MoveRotation (newRotation);
+                        if (PhotonNetwork.isMasterClient)
+                        {
+                            //playerRigidbody.MoveRotation(newRotation);
+                            transform.rotation = Quaternion.Slerp(transform.rotation, newRotation, Time.deltaTime * smoothTurning);
+                        }
+                        else
+                        {
+                            // TODO: find a way to do this in a smoother way. current way causes glitching
+                            transform.rotation = Quaternion.Slerp(transform.rotation, newRotation, Time.deltaTime * smoothTurning);
+                        }
+						
 				}
 		}
 

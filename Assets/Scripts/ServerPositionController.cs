@@ -30,14 +30,6 @@ public class ServerPositionController : MonoBehaviour
 				}
 		}
 
-		[RPC]
-		void RequestColorChange (Vector3 color)
-		{
-				renderer.material.color = new Color (color.x, color.y, color.z, 1f);
-
-				photonView.RPC ("ChangeColorTo", PhotonTargets.OthersBuffered, color);
-		}
-
 		public void OnPhotonSerializeView (PhotonStream stream, PhotonMessageInfo info)
 		{
 				if (!stream.isWriting) {
@@ -45,12 +37,11 @@ public class ServerPositionController : MonoBehaviour
 				}
 				stream.SendNext (rigidbody.position);
 				stream.SendNext (rigidbody.velocity);
-				stream.SendNext (rigidbody.rotation);
 		}
 
 		[RPC]
 		void Move (Vector3 movement)
 		{
-				rigidbody.MovePosition (transform.position + movement);
+            rigidbody.AddForce(movement * speed * Time.deltaTime);
 		}
 }

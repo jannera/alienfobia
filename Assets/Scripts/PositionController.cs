@@ -3,11 +3,11 @@ using System.Collections;
 
 public class PositionController : Photon.MonoBehaviour
 {
-    private bool isMine;
+    public bool isMine;
     public ClientPositionController clientController;
     public ServerPositionController serverController;
 
-    void Start()
+    void Awake()
     {
         int ownerId = (int)photonView.instantiationData[0];
         isMine =  ownerId == PhotonNetwork.player.ID;

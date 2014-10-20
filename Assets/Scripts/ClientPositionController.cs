@@ -7,7 +7,7 @@ public class ClientPositionController : MonoBehaviour
 		private Vector3 syncPosition;
 		private Vector3 syncVelocity;
 
-        private float maxVelocityStepInSecond = 10;
+        public float maxVelocityStepInSecond = 5;
 
 		// Use this for initialization
 		void Start ()
@@ -33,12 +33,18 @@ public class ClientPositionController : MonoBehaviour
 				Vector3 extrapolatedTargetPosition = syncPosition + syncVelocity * totalTimePassed;
 
 				Vector3 newPosition = Vector3.MoveTowards (transform.position, extrapolatedTargetPosition,
-            maxVelocityStepInSecond * Time.deltaTime);
+                    maxVelocityStepInSecond * Time.deltaTime);
 
 				// Debug.Log(transform.position + " -> " + newPosition);
-				// todo teleport check
-
-				transform.position = newPosition;
+				if ((newPosition - extrapolatedTargetPosition).magnitude > 0.5f)
+                {
+                    // if position has fallen too far out of sync, just teleport
+                    transform.position = extrapolatedTargetPosition;
+                }
+                else
+                {
+                    transform.position = newPosition;
+                }
 		}
 
 		public void OnPhotonSerializeView (PhotonStream stream, PhotonMessageInfo info)
@@ -48,7 +54,6 @@ public class ClientPositionController : MonoBehaviour
 				}
 				syncPosition = (Vector3)stream.ReceiveNext ();
 				syncVelocity = (Vector3)stream.ReceiveNext ();
-				transform.rotation = (Quaternion)stream.ReceiveNext ();
 
 				if (double.IsNaN (syncTimestamp)) {
 						// this is the first time we're updating position, so just directly set it

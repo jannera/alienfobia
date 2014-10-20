@@ -31,6 +31,8 @@ namespace CompleteProject
 
         public int grenades = 3;
 
+        private bool isMine;
+
 
         void Awake ()
         {
@@ -43,11 +45,17 @@ namespace CompleteProject
             gunAudio = GetComponents<AudioSource> () [0];
             gunReload = GetComponents<AudioSource>()[1];
             gunLight = GetComponent<Light> ();
+
+            isMine = gameObject.GetComponentInParent<PositionController>().isMine;
         }
 
 
         void Update ()
         {
+            if (!isMine)
+            {
+                return;
+            }
             // Add the time since Update was last called to the timer.
             timer += Time.deltaTime;
             rocketTimer += Time.deltaTime;
