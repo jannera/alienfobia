@@ -6,7 +6,8 @@ public class NetworkManager : Photon.MonoBehaviour
 		public GameObject playerPrefab;
 		public AudioSource menuMusic;
         public AudioSource gameMusic;
-
+        public bool automaticGameStarting = true; // used for automatically creating a game. if a game already is running on this computer, join it
+        
 		void Awake() {
 			menuMusic.loop = true;
 			menuMusic.Play();
@@ -14,10 +15,11 @@ public class NetworkManager : Photon.MonoBehaviour
 
 		void Start ()
 		{
-				PhotonNetwork.ConnectUsingSettings ("0.1");				
+				PhotonNetwork.ConnectUsingSettings ("0.1");
+                roomName = System.Environment.UserName + "@" + System.Environment.MachineName;
 		}
 
-		private const string roomName = "RoomName";
+        private string roomName;
 		private RoomInfo[] roomsList;
 
 		void OnGUI ()
@@ -25,27 +27,46 @@ public class NetworkManager : Photon.MonoBehaviour
 				if (!PhotonNetwork.connected) {
 						GUILayout.Label (PhotonNetwork.connectionStateDetailed.ToString ());
 				} else if (PhotonNetwork.room == null) {
-						// Create Room
-                        if (GUI.Button(new Rect(100, 100, 250, 100), "Start Server"))
-                        {
-                            PhotonNetwork.CreateRoom(roomName + System.Guid.NewGuid().ToString("N"));
-                        }
+                    if (automaticGameStarting)
+                    {
+                        return;
+                    }
+					// Create Room
+                    if (GUI.Button(new Rect(100, 100, 250, 100), "Start Server"))
+                    {
+                        PhotonNetwork.CreateRoom(roomName);
+                    }
  
-						// Join Room
-						if (roomsList != null) {
-								for (int i = 0; i < roomsList.Length; i++) {
-                                    if (GUI.Button(new Rect(100, 250 + (110 * i), 250, 100), "Join " + roomsList[i].name))
-                                    {
-                                        PhotonNetwork.JoinRoom(roomsList[i].name);
-                                    }
-								}
+					// Join Room
+					if (roomsList != null) {
+						for (int i = 0; i < roomsList.Length; i++) {
+                            if (GUI.Button(new Rect(100, 250 + (110 * i), 250, 100), "Join " + roomsList[i].name))
+                            {
+                                PhotonNetwork.JoinRoom(roomsList[i].name);
+                            }
 						}
+					}
 				}
 		}
 
 		void OnReceivedRoomListUpdate ()
 		{
-				roomsList = PhotonNetwork.GetRoomList ();
+			roomsList = PhotonNetwork.GetRoomList ();
+            if (automaticGameStarting)
+            {
+                foreach (RoomInfo info in roomsList)
+                {
+                    if (info.name.Equals(roomName))
+                    {
+                        PhotonNetwork.JoinRoom(info.name);
+                        return;
+                    }
+                }
+
+                // there was no running game on this computer to join, so set one up
+                PhotonNetwork.CreateRoom(roomName);
+            }
+            
 		}
 		void OnJoinedRoom ()
 		{

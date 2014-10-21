@@ -14250,6 +14250,7 @@ MonoBehaviour:
   playerPrefab: {fileID: 100028, guid: b420279b2c84e47ea9202cca2ca4a04e, type: 2}
   menuMusic: {fileID: 1278411621}
   gameMusic: {fileID: 1278411622}
+  automaticGameStarting: 1
 --- !u!4 &1278411618
 Transform:
   m_ObjectHideFlags: 0
