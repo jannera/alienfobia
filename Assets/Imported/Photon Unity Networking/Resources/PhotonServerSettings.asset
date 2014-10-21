@@ -36,4 +36,5 @@ MonoBehaviour:
   - CreateRocket
   - CreateExplosion
   - CreateGrenade
+  - Death
   DisableAutoOpenWizard: 0

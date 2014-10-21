@@ -244,6 +244,7 @@ MonoBehaviour:
   deathClip: {fileID: 8300000, guid: 62366b8d2c37a49dca550841c741317f, type: 3}
   pickUpGenChance: .0399999991
   droppedPickUp: {fileID: 100000, guid: bba06026d75ef5f45957a3b1577b9067, type: 2}
+  photonView: {fileID: 11400006}
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -289,6 +290,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isMine: 0
+  movementEpsilon: .00100000005
   speed: 3000
   maximumVelocity: 4
   maxVelocityStepInSecond: 5
