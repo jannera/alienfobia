@@ -3,7 +3,8 @@ using System.Collections;
 
 namespace CompleteProject
 {
-    public class GrenadeController : MonoBehaviour {
+    public class GrenadeController : CompleteProject.PhotonBehaviour
+    {
         public PhotonView photonView;
         public float startSpeed = 10;
         public float explosionRadius = 5;
@@ -46,8 +47,7 @@ namespace CompleteProject
             else if (Time.time - startTime > explosionTime)
             {
                 // pretty much any collision should explode it right?
-                object[] p = { };
-                photonView.RPC("CreateExplosion", PhotonTargets.MasterClient, p);
+                RPC(CreateExplosion, PhotonTargets.MasterClient);
                 explosionSound.Play();
                 playingExplosionSound = true;
             }
@@ -82,6 +82,11 @@ namespace CompleteProject
                     if (go.CompareTag("Player"))
                     {
                         continue; // don't throw players around
+                    }
+
+                    if (go == gameObject)
+                    {
+                        continue; // don't throw yourself around
                     }
                 
                     Vector3 fromExplosion = go.transform.position - transform.position;

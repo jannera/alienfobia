@@ -2,7 +2,7 @@
 
 namespace CompleteProject
 {
-    public class PlayerShooting : MonoBehaviour
+    public class PlayerShooting : CompleteProject.PhotonBehaviour
     {
         public int damagePerShot = 20;                  // The damage inflicted by each bullet.
         public float timeBetweenBullets = 0.15f;        // The time between each shot.
@@ -26,7 +26,6 @@ namespace CompleteProject
 		public const int clipSize = 60;
 		public int bullets = clipSize;
 
-        public PhotonView photonView;
         public GameObject grenadePreFab;
 
         public int grenades = 3;
@@ -167,8 +166,8 @@ namespace CompleteProject
             rocketTimer = 0f;
             grenades--;
 
-            object[] p = { transform.position, transform.rotation.eulerAngles.y };
-            photonView.RPC("CreateGrenade", PhotonTargets.MasterClient, p);
+            RPC<Vector3, float>(CreateGrenade, PhotonTargets.MasterClient,
+                transform.position, transform.rotation.eulerAngles.y);
         }
 
 

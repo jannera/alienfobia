@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace CompleteProject
 {
-    public class EnemyHealth : Photon.MonoBehaviour
+    public class EnemyHealth : CompleteProject.PhotonBehaviour
     {
         public int startingHealth = 100;            // The amount of health the enemy starts the game with.
         private int currentHealth;                   // The current health the enemy has.
@@ -71,7 +71,7 @@ namespace CompleteProject
             if(currentHealth <= 0)
             {
                 // ... the enemy is dead.
-                photonView.RPC("Death", PhotonTargets.All, new object[] {});
+                RPC(Death, PhotonTargets.All);
             }
         }
 

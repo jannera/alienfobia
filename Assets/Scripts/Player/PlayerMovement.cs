@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : CompleteProject.PhotonBehaviour
 {
 		public float speed = 6f;            // The speed that the player will move at.
 		public PhotonView photonView;
@@ -91,7 +91,7 @@ public class PlayerMovement : MonoBehaviour
 				movement = movement.normalized * speed * Time.deltaTime;
 
 				// Move the player to it's current position plus the movement.
-				photonView.RPC ("Move", PhotonTargets.MasterClient, movement);
+				RPC<float, float> (Move, PhotonTargets.MasterClient, movement);
 		}
 
 		void Turning ()
