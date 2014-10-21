@@ -3,8 +3,7 @@ using System.Collections;
 
 namespace CompleteProject
 {
-    // TODO rename to grenade controller
-    public class RocketController : MonoBehaviour {
+    public class GrenadeController : MonoBehaviour {
         public PhotonView photonView;
         public float startSpeed = 10;
         public float explosionRadius = 5;
