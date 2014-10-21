@@ -19,6 +19,8 @@ namespace CompleteProject
         public float explosionTime = 2f;
         public float startTime;
 
+        private bool playingExplosionSound = false;
+
 
         // todo: needs still some kind of position syncing
 
@@ -35,13 +37,20 @@ namespace CompleteProject
 	
 	    // Update is called once per frame
 	    void FixedUpdate () {
-            if (Time.time - startTime > explosionTime)
+            if (playingExplosionSound)
+            {
+                if (!explosionSound.isPlaying)
+                {
+                    Destroy(gameObject);
+                }
+            }
+            else if (Time.time - startTime > explosionTime)
             {
                 // pretty much any collision should explode it right?
                 object[] p = { };
                 photonView.RPC("CreateExplosion", PhotonTargets.MasterClient, p);
                 explosionSound.Play();
-                Destroy(gameObject);
+                playingExplosionSound = true;
             }
 	    }
 

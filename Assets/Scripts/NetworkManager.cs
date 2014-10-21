@@ -4,11 +4,12 @@ using System.Collections;
 public class NetworkManager : Photon.MonoBehaviour
 {
 		public GameObject playerPrefab;
-		public AudioSource menuMusic;		
+		public AudioSource menuMusic;
+        public AudioSource gameMusic;
 
 		void Awake() {
 			menuMusic.loop = true;
-			// menuMusic.Play();
+			menuMusic.Play();
 		}
 
 		void Start ()
@@ -49,6 +50,8 @@ public class NetworkManager : Photon.MonoBehaviour
 		void OnJoinedRoom ()
 		{
 				Debug.Log ("Connected to Room");
+                menuMusic.Stop();
+                gameMusic.Play();
 				if (PhotonNetwork.isMasterClient) {
 						CreatePlayer (PhotonNetwork.player.ID);
 				} else {
@@ -62,6 +65,5 @@ public class NetworkManager : Photon.MonoBehaviour
 		{
 				object[] p = { ownerId };
 				PhotonNetwork.InstantiateSceneObject (playerPrefab.name, Vector3.up * 0.5f, Quaternion.identity, 0, p);
-				menuMusic.Stop();
 		}
 }

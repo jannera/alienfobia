@@ -130,7 +130,6 @@ public class PositionSync : Photon.MonoBehaviour
         {
             vel = syncVelocity;
         }
-        Debug.Log(vel.magnitude);
         return vel.magnitude > movementEpsilon;
     }
 }
