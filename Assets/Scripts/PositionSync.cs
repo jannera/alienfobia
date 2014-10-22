@@ -8,7 +8,7 @@ using System.Collections;
  * On client end, estimates positions of objects based
  * on their earlier position, velocity and time since update.
  **/
-public class PositionSync : Photon.MonoBehaviour
+public class PositionSync : CompleteProject.PhotonBehaviour
 {
     public bool isMine;
     public float movementEpsilon = 1; // velocity magnitudes above this are considering "moving" (for animations etc)
@@ -52,7 +52,6 @@ public class PositionSync : Photon.MonoBehaviour
 
     // SERVER specific part
     // TODO maximum velocity limiting could be moved to it's own component
-    public float speed = 3000;
     public float maximumVelocity = 4;
     private float maxVelSqr;
 
@@ -66,13 +65,6 @@ public class PositionSync : Photon.MonoBehaviour
                 rigidbody.velocity = rigidbody.velocity.normalized * maximumVelocity;
             }
         }
-    }
-
-    // TODO: this is probably not the right class for this function
-    [RPC]
-    void Move(Vector3 movement)
-    {
-        rigidbody.AddForce(movement * speed * Time.deltaTime);
     }
 
     // CLIENT specific part

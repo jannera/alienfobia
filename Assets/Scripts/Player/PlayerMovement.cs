@@ -4,12 +4,12 @@ using UnityEngine;
 public class PlayerMovement : CompleteProject.PhotonBehaviour
 {
 		public float speed = 6f;            // The speed that the player will move at.
-		public PhotonView photonView;
 		Vector3 movement;                   // The vector to store the direction of the player's movement.
 		Animator anim;                      // Reference to the animator component.
 		int floorMask;                      // A layer mask so that a ray can be cast just at gameobjects on the floor layer.
 		float camRayLength = 100f;          // The length of the ray from the camera into the scene.
         public float smoothTurning = 10f;
+        public float force = 3000;
 
         public GameObject rotationSyncPreFab;
 
@@ -91,8 +91,14 @@ public class PlayerMovement : CompleteProject.PhotonBehaviour
 				movement = movement.normalized * speed * Time.deltaTime;
 
 				// Move the player to it's current position plus the movement.
-				RPC<float, float> (Move, PhotonTargets.MasterClient, movement);
+                RPC<Vector3>(ApplyForce, PhotonTargets.MasterClient, movement);
 		}
+
+        [RPC]
+        public void ApplyForce(Vector3 movement)
+        {
+            rigidbody.AddForce(movement * force * Time.deltaTime);
+        }
 
 		void Turning ()
 		{

@@ -770,7 +770,6 @@ MonoBehaviour:
   timeToReload: 1
   range: 100
   bullets: 60
-  photonView: {fileID: 11400014}
   grenadePreFab: {fileID: 100000, guid: b743cdf137c1571409b16c5c9f7cf9d2, type: 2}
   grenades: 3
 --- !u!114 &11400002
@@ -806,7 +805,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isMine: 0
   movementEpsilon: 1
-  speed: 3000
   maximumVelocity: 4
   maxVelocityStepInSecond: 5
 --- !u!114 &11400010
@@ -821,8 +819,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 14
-  photonView: {fileID: 11400002}
   smoothTurning: 10
+  force: 3000
   rotationSyncPreFab: {fileID: 100000, guid: d41d16335f364e24c9991b87a104fcc3, type: 2}
   positionController: {fileID: 11400004}
 --- !u!114 &11400012

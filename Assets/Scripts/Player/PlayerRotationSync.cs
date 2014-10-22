@@ -12,7 +12,7 @@ namespace CompleteProject
      * and everyone else listens. Everyone also makes sure that when 
      * someone elses Players rotation changes, the change happens smoothly.
      * */
-    class PlayerRotationSync : Photon.MonoBehaviour
+    class PlayerRotationSync : CompleteProject.PhotonBehaviour
     {
         private Quaternion syncRotation;
         public float smoothTurning = 30;
