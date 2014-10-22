@@ -5,7 +5,6 @@ namespace CompleteProject
 {
     public class GrenadeController : CompleteProject.PhotonBehaviour
     {
-        public PhotonView photonView;
         public float startSpeed = 10;
         public float explosionRadius = 5;
         public float explosionForce = 100;
