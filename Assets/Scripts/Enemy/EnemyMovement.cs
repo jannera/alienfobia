@@ -16,7 +16,7 @@ namespace CompleteProject
             // Set up the references.
             if (PhotonNetwork.isMasterClient)
             {
-                player = GameObject.FindGameObjectWithTag("Player").transform;
+                player = FindClosestPlayer(); 
                 playerHealth = player.GetComponent<PlayerHealth>();
                 enemyHealth = GetComponent<EnemyHealth>();
                 nav = GetComponent<NavMeshAgent>();
@@ -28,10 +28,19 @@ namespace CompleteProject
             }
         }
 
+        private Transform FindClosestPlayer()
+        {
+            return PlayerManager.GetClosestPlayerAlive(transform.position).transform;
+        }
 
         void Update()
         {
-            // todo now and then change player, based on proximity and chance
+            if (Random.Range(0f, 1f) < Time.deltaTime)
+            {
+                // randomly, once every second on average, find the closest player
+                player = FindClosestPlayer(); 
+            }
+
             if (player == null)
             {
                 Debug.Log("Enemy could not find player");

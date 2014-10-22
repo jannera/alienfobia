@@ -42,5 +42,60 @@ namespace CompleteProject
             }
             return null;
         }
+
+        public static GameObject GetClosestPlayer(Vector3 pos)
+        {
+            GameObject closest = null;
+            float closestDst = float.MaxValue;
+            foreach (GameObject go in GameObject.FindGameObjectsWithTag("Player"))
+            {
+                if (closest == null)
+                {
+                    closest = go;
+                    closestDst = Vector2.Distance(closest.transform.position, pos);
+                }
+                else {
+                    float dst = Vector2.Distance(go.transform.position, pos);
+                    if (dst < closestDst) {
+                        closest = go;
+                        closestDst = dst;
+                    }
+                }
+            }
+            return closest;
+        }
+
+        public static GameObject GetClosestPlayerAlive(Vector3 pos)
+        {
+            GameObject closest = null;
+            float closestDst = float.MaxValue;
+            foreach (GameObject go in GameObject.FindGameObjectsWithTag("Player"))
+            {
+                PlayerHealth playerHealth = go.GetComponent<PlayerHealth>();
+                if (playerHealth == null)
+                {
+                    continue;
+                }
+                if (playerHealth.isDead)
+                {
+                    continue;
+                }
+                if (closest == null)
+                {
+                    closest = go;
+                    closestDst = Vector2.Distance(closest.transform.position, pos);
+                }
+                else
+                {
+                    float dst = Vector2.Distance(go.transform.position, pos);
+                    if (dst < closestDst)
+                    {
+                        closest = go;
+                        closestDst = dst;
+                    }
+                }
+            }
+            return closest;
+        }
     }
 }
