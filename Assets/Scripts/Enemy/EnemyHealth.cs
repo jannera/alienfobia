@@ -23,44 +23,44 @@ namespace CompleteProject
         public GameObject droppedPickUp;
 
 
-        void Awake ()
+        void Awake()
         {
             // Setting up the references.
-            anim = GetComponent <Animator> ();
-            enemyAudio = GetComponent <AudioSource> ();
-            hitParticles = GetComponentInChildren <ParticleSystem> ();
-            capsuleCollider = GetComponent <CapsuleCollider> ();
+            anim = GetComponent<Animator>();
+            enemyAudio = GetComponent<AudioSource>();
+            hitParticles = GetComponentInChildren<ParticleSystem>();
+            capsuleCollider = GetComponent<CapsuleCollider>();
 
             // Setting the current health when the enemy first spawns.
             currentHealth = startingHealth;
         }
 
 
-        void Update ()
+        void Update()
         {
             // If the enemy should be sinking...
-            if(isSinking)
+            if (isSinking)
             {
                 // ... move the enemy down by the sinkSpeed per second.
-                transform.Translate (-Vector3.up * sinkSpeed * Time.deltaTime);
+                transform.Translate(-Vector3.up * sinkSpeed * Time.deltaTime);
             }
         }
 
 
-        public void TakeDamage (int amount, Vector3 hitPoint)
+        public void TakeDamage(int amount, Vector3 hitPoint)
         {
             // If the enemy is dead...
-            if(isDead)
+            if (isDead)
                 // ... no need to take damage so exit the function.
                 return;
 
             // TODO: damage each enemy takes must be told to other clients.. and other clients need to play SFXs for enemies when they take damage..
             // Play the hurt sound effect.
-            enemyAudio.Play ();
+            enemyAudio.Play();
 
             // Reduce the current health by the amount of damage sustained.
             currentHealth -= amount;
-            
+
             // Set the position of the particle system to where the hit was sustained.
             hitParticles.transform.position = hitPoint;
 
@@ -68,7 +68,7 @@ namespace CompleteProject
             hitParticles.Play();
 
             // If the current health is less than or equal to zero...
-            if(currentHealth <= 0)
+            if (currentHealth <= 0)
             {
                 // ... the enemy is dead.
                 RPC(Death, PhotonTargets.All);
@@ -104,7 +104,7 @@ namespace CompleteProject
         }
 
 
-        public void StartSinking ()
+        public void StartSinking()
         {
             if (PhotonNetwork.isMasterClient)
             {
@@ -113,14 +113,14 @@ namespace CompleteProject
                 // Find the rigidbody component and make it kinematic (since we use Translate to sink the enemy).
                 GetComponent<Rigidbody>().isKinematic = true;
             }
-            
+
             isSinking = true;
 
             ScoreManager.score += scoreValue;
-			ScoreManager.kills += 1;
+            ScoreManager.kills += 1;
 
             // After 2 seconds destroy the enemy.
-            Destroy (gameObject, 2f);
+            Destroy(gameObject, 2f);
         }
     }
 }

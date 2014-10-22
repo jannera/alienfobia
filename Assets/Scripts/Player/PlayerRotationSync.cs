@@ -47,7 +47,7 @@ namespace CompleteProject
             else
             {
                 // reading is only called for non-owners of the object
-                syncRotation = (Quaternion)stream.ReceiveNext();                
+                syncRotation = (Quaternion)stream.ReceiveNext();
             }
         }
     }

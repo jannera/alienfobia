@@ -3,7 +3,6 @@ using System.Collections;
 
 namespace CompleteProject
 {
-
     public class NetworkManager : CompleteProject.PhotonBehaviour
     {
         public GameObject playerPrefab;

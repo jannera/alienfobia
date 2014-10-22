@@ -27,14 +27,16 @@ namespace CompleteProject
             PlayerShooting playerShooting = playerGun.GetComponent<PlayerShooting>();
             slider.maxValue = PlayerShooting.clipSize;
             int bullets = playerShooting.bullets;
-            if (bullets == 0) {
+            if (bullets == 0)
+            {
                 // todo slide based on 
                 slider.value = slider.maxValue * playerShooting.ReloadStatus();
             }
-            else {
+            else
+            {
                 slider.value = bullets;
             }
-            
+
         }
     }
 

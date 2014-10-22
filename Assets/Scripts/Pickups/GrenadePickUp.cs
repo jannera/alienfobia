@@ -2,20 +2,23 @@
 using System.Collections;
 
 namespace CompleteProject
-{ 
-    public class GrenadePickUp : MonoBehaviour {
+{
+    public class GrenadePickUp : MonoBehaviour
+    {
 
         public float rotationSpeed = 1;
 
-	    // Use this for initialization
-	    void Start () {
-	
-	    }
-	
-	    // Update is called once per frame
-	    void Update () {
-	
-	    }
+        // Use this for initialization
+        void Start()
+        {
+
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+
+        }
 
         void OnTriggerEnter(Collider other)
         {

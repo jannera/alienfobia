@@ -24,19 +24,21 @@ namespace CompleteProject
 
         // todo: needs still some kind of position syncing
 
-	    // Use this for initialization
-	    void Start () {
-            float angle = (float) photonView.instantiationData[0];
+        // Use this for initialization
+        void Start()
+        {
+            float angle = (float)photonView.instantiationData[0];
             Debug.Log("angle " + angle);
             angle *= Mathf.Deg2Rad;
             startTime = Time.time;
-        
+
             // TODO all rigidbody stuff should only be done in the server side
             rigidbody.velocity = new Vector3(Mathf.Sin(angle), 0, Mathf.Cos(angle)) * startSpeed;
-	    }
-	
-	    // Update is called once per frame
-	    void FixedUpdate () {
+        }
+
+        // Update is called once per frame
+        void FixedUpdate()
+        {
             if (playingExplosionSound)
             {
                 if (!explosionSound.isPlaying)
@@ -51,7 +53,7 @@ namespace CompleteProject
                 explosionSound.Play();
                 playingExplosionSound = true;
             }
-	    }
+        }
 
         [RPC]
         void CreateExplosion()
@@ -59,8 +61,8 @@ namespace CompleteProject
             if (PhotonNetwork.isMasterClient)
             {
                 Collider[] hitColliders = Physics.OverlapSphere(transform.position, explosionRadius);
-            
-                for (int i=0; i < hitColliders.Length; i++)
+
+                for (int i = 0; i < hitColliders.Length; i++)
                 {
                     // todo push only enemies?
                     GameObject go = hitColliders[i].gameObject;
@@ -78,7 +80,7 @@ namespace CompleteProject
                     {
                         continue;
                     }
- 
+
                     if (go.CompareTag("Player"))
                     {
                         continue; // don't throw players around
@@ -88,7 +90,7 @@ namespace CompleteProject
                     {
                         continue; // don't throw yourself around
                     }
-                
+
                     Vector3 fromExplosion = go.transform.position - transform.position;
                     float forceMultiplier = explosionRadius / fromExplosion.magnitude;
                     // bigger force at the center, lesser on the sides

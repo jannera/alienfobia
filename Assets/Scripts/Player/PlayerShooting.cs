@@ -154,12 +154,11 @@ namespace CompleteProject
 
                 // Set the second position of the line renderer to the point the raycast hit.
                 firingEndPos = shootHit.point;
-                
             }
             // If the raycast didn't hit anything on the shootable layer...
             else
             {
-                // ... set the second position of the line renderer to the fullest extent of the gun's range.
+                // ... set the second position of the line renderer to the fullest extent of the gun's range
                 firingEndPos = shootRay.origin + shootRay.direction * range;
             }
 

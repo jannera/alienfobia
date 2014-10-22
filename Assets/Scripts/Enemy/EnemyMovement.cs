@@ -11,7 +11,7 @@ namespace CompleteProject
         NavMeshAgent nav;               // Reference to the nav mesh agent.
 
 
-        void Awake ()
+        void Awake()
         {
             // Set up the references.
             if (PhotonNetwork.isMasterClient)
@@ -29,7 +29,7 @@ namespace CompleteProject
         }
 
 
-        void Update ()
+        void Update()
         {
             // todo now and then change player, based on proximity and chance
             if (player == null)
@@ -38,10 +38,10 @@ namespace CompleteProject
                 return;
             }
             // If the enemy and the player have health left...
-            if(!enemyHealth.isDead && playerHealth.currentHealth > 0)
+            if (!enemyHealth.isDead && playerHealth.currentHealth > 0)
             {
                 // ... set the destination of the nav mesh agent to the player.
-                nav.SetDestination (player.position);
+                nav.SetDestination(player.position);
             }
             // Otherwise...
             else

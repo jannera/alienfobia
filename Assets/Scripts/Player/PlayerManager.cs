@@ -10,7 +10,7 @@ namespace CompleteProject
     {
         public static GameObject GetMyPlayer()
         {
-            foreach(GameObject go in GameObject.FindGameObjectsWithTag("Player")) 
+            foreach (GameObject go in GameObject.FindGameObjectsWithTag("Player"))
             {
                 if (go.GetComponent<PositionSync>().isMine)
                 {
@@ -22,7 +22,7 @@ namespace CompleteProject
 
         public static GameObject GetPlayerWithOwnerId(int ownerID)
         {
-            
+
             foreach (GameObject go in GameObject.FindGameObjectsWithTag("Player"))
             {
                 if (go.GetComponent<OwnerID>().ownerID == ownerID)
