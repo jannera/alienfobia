@@ -1647,7 +1647,7 @@ GameObject:
   - 222: {fileID: 89257327}
   - 114: {fileID: 89257326}
   m_Layer: 5
-  m_Name: Image
+  m_Name: FlashingDamageImage
   m_TagString: HealthImage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20469,6 +20469,10 @@ Prefab:
     - target: {fileID: 22400020, guid: 4f93161168608475d9b68750b2b88baf, type: 2}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 4f93161168608475d9b68750b2b88baf, type: 2}
+      propertyPath: m_Name
+      value: FlashingDamageImage
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4f93161168608475d9b68750b2b88baf, type: 2}

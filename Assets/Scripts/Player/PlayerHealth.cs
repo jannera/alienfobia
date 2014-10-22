@@ -9,10 +9,7 @@ namespace CompleteProject
         public int startingHealth = 100;                            // The amount of health the player starts the game with.
         public int currentHealth;                                   // The current health the player has.
 
-        public AudioClip deathClip;                                 // The audio clip to play when the player dies.
-
-
-
+        public AudioClip deathClip;                                 // The audio clip to play when the player dies
         Animator anim;                                              // Reference to the Animator component.
         AudioSource playerAudio;                                    // Reference to the AudioSource component.
         PlayerMovement playerMovement;                              // Reference to the player's movement.

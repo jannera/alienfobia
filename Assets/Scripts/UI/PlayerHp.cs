@@ -19,16 +19,11 @@ namespace CompleteProject
         {
             if (playerHealth == null)
             {
-                GameObject player = GameObject.FindWithTag("Player");
-                if (player != null)
-                {
-                    playerHealth = player.GetComponent<PlayerHealth>();
-                }
-                else
+                playerHealth = PlayerManager.GetComponentFromMyPlayer<PlayerHealth>();
+                if (playerHealth == null)
                 {
                     return;
                 }
-
             }
 
             slider.value = playerHealth.currentHealth;

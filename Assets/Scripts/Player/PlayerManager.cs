@@ -20,6 +20,16 @@ namespace CompleteProject
             return null;
         }
 
+        public static T GetComponentFromMyPlayer<T >() where T : Component
+        {
+            GameObject go = GetMyPlayer();
+            if (go == null)
+            {
+                return null;
+            }
+            return go.GetComponentInChildren<T>();
+        }
+
         public static GameObject GetPlayerWithOwnerId(int ownerID)
         {
 
