@@ -42,7 +42,10 @@ namespace CompleteProject
             {
                 if (!explosionSound.isPlaying)
                 {
-                    Destroy(gameObject);
+                    if (PhotonNetwork.isMasterClient)
+                    {
+                        PhotonNetwork.Destroy(gameObject);
+                    }
                 }
             }
             else if (Time.time - startTime > explosionTime)

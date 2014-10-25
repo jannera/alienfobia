@@ -34,7 +34,7 @@ namespace CompleteProject
 
             if (!PhotonNetwork.isMasterClient)
             {
-                Destroy(this);
+                Destroy(this); // removes this component
                 return;
             }
 

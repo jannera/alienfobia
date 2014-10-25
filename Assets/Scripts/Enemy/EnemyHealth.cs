@@ -21,7 +21,7 @@ namespace CompleteProject
 
         public float pickUpGenChance = 0.4f;
         public GameObject droppedPickUp;
-
+        private float sinkingTimer = 0;
 
         void Awake()
         {
@@ -43,6 +43,12 @@ namespace CompleteProject
             {
                 // ... move the enemy down by the sinkSpeed per second.
                 transform.Translate(-Vector3.up * sinkSpeed * Time.deltaTime);
+                sinkingTimer += Time.deltaTime;
+                if (sinkingTimer > 2 && PhotonNetwork.isMasterClient)
+                {
+                    // after 2 sec sinking destroy the enemy
+                    PhotonNetwork.Destroy(gameObject);
+                }
             }
         }
 
@@ -131,9 +137,6 @@ namespace CompleteProject
 
             ScoreManager.score += scoreValue;
             ScoreManager.kills += 1;
-
-            // After 2 seconds destroy the enemy.
-            Destroy(gameObject, 2f);
         }
     }
 }
