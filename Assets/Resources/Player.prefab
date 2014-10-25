@@ -835,9 +835,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingHealth: 100
-  currentHealth: 0
   deathClip: {fileID: 8300000, guid: d36a393bca4582043982db9089e1694f, type: 3}
-  bloodParticles: {fileID: 19800000, guid: 19a727a78ce0d53489682e12fcda9430, type: 2}
+  bloodParticles: {fileID: 100000, guid: 19a727a78ce0d53489682e12fcda9430, type: 2}
 --- !u!114 &11400014
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -20,23 +20,17 @@ namespace CompleteProject
 
             if (playerHealth == null)
             {
-                GameObject player = GameObject.FindWithTag("Player");
+                playerHealth = PlayerManager.GetComponentFromMyPlayer<PlayerHealth>();
 
-                if (player != null)
-                {
-                    playerHealth = player.GetComponent<PlayerHealth>();
-                }
-                else
+                if (playerHealth == null)
                 {
                     return;
                 }
             }
-            // If the player has run out of health...
-            if (playerHealth.currentHealth <= 0)
+            
+            if (playerHealth.isDead)
             {
-                // ... tell the animator the game is over.
                 anim.SetTrigger("GameOver");
-
             }
         }
     }

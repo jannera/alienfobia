@@ -30,7 +30,12 @@ namespace CompleteProject
 
         private Transform FindClosestPlayer()
         {
-            return PlayerManager.GetClosestPlayerAlive(transform.position).transform;
+            GameObject playerGO = PlayerManager.GetClosestPlayerAlive(transform.position);
+            if (playerGO == null) {
+                return null;
+            }
+            
+            return playerGO.transform;
         }
 
         void Update()
@@ -47,7 +52,7 @@ namespace CompleteProject
                 return;
             }
             // If the enemy and the player have health left...
-            if (!enemyHealth.isDead && playerHealth.currentHealth > 0)
+            if (!enemyHealth.isDead && !playerHealth.isDead)
             {
                 // ... set the destination of the nav mesh agent to the player.
                 nav.SetDestination(player.position);

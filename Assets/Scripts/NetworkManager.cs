@@ -67,11 +67,13 @@ namespace CompleteProject
                     if (info.name.Equals(roomName))
                     {
                         PhotonNetwork.JoinRoom(info.name);
+                        Debug.Log("Joined existing game as client");
                         return;
                     }
                 }
 
                 // there was no running game on this computer to join, so set one up
+                Debug.Log("Created new game and joined it as master client");
                 PhotonNetwork.CreateRoom(roomName);
             }
 

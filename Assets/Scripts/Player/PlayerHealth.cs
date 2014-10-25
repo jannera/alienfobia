@@ -4,10 +4,10 @@ using System.Collections;
 
 namespace CompleteProject
 {
-    public class PlayerHealth : MonoBehaviour
+    public class PlayerHealth : CompleteProject.PhotonBehaviour
     {
         public int startingHealth = 100;                            // The amount of health the player starts the game with.
-        public int currentHealth;                                   // The current health the player has.
+        public int currentHealth { get; private set; }                                   // The current health the player has.
 
         public AudioClip deathClip;                                 // The audio clip to play when the player dies
         Animator anim;                                              // Reference to the Animator component.
@@ -16,7 +16,7 @@ namespace CompleteProject
         PlayerShooting playerShooting;                              // Reference to the PlayerShooting script.
         public bool isDead { get; private set; }                           // Whether the player is dead.
 
-        public ParticleSystem bloodParticles;
+        public GameObject bloodParticles;
 
 
         void Awake()
@@ -42,25 +42,29 @@ namespace CompleteProject
             // Reduce the current health by the damage amount.
             currentHealth -= amount;
 
-            // Play the hurt sound effect.
-            playerAudio.Play();
-
-
-
-            // bloodParticles.transform.rotation.SetFromToRotation(transform.position, attackerPosition);
-            object[] p = { };
-            GameObject blood = PhotonNetwork.InstantiateSceneObject(bloodParticles.name, transform.position, Quaternion.identity, 0, p);
-            blood.GetComponent<ParticleSystem>().Play();
+            RPC(ShowDamageEffects, PhotonTargets.All);
 
             // If the player has lost all it's health and the death flag hasn't been set yet...
             if (currentHealth <= 0 && !isDead)
             {
                 // ... it should die.
-                Death();
+                RPC(Death, PhotonTargets.All);
             }
         }
 
+        [RPC]
+        public void ShowDamageEffects()
+        {
+            // Play the hurt sound effect.
+            playerAudio.Play();
 
+            // bloodParticles.transform.rotation.SetFromToRotation(transform.position, attackerPosition);
+            
+            GameObject blood = (GameObject) Instantiate(bloodParticles, transform.position, Quaternion.identity);
+            blood.GetComponent<ParticleSystem>().Play();
+        }
+
+        [RPC]
         void Death()
         {
             // Set the death flag so this function won't be called again.

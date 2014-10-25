@@ -37,4 +37,6 @@ MonoBehaviour:
   - CreateExplosion
   - CreateGrenade
   - Death
+  - EnableFiringEffects
+  - ShowDamageEffects
   DisableAutoOpenWizard: 0
