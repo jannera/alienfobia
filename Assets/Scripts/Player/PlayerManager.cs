@@ -97,5 +97,17 @@ namespace CompleteProject
             }
             return closest;
         }
+
+        public static bool AreAnyPlayersAlive()
+        {
+            foreach (GameObject go in GameObject.FindGameObjectsWithTag("Player"))
+            {
+                if (!go.GetComponent<PlayerHealth>().isDead)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 }

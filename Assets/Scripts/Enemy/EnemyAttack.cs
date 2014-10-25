@@ -20,7 +20,7 @@ namespace CompleteProject
         void Awake()
         {
             // Setting up the references.
-            player = GameObject.FindGameObjectWithTag("Player");
+            player = PlayerManager.GetMyPlayer();
             playerHealth = player.GetComponent<PlayerHealth>();
             enemyHealth = GetComponent<EnemyHealth>();
             anim = GetComponent<Animator>();
@@ -66,10 +66,8 @@ namespace CompleteProject
                 Attack();
             }
 
-            // If the player has zero or less health...
-            if (playerHealth.currentHealth <= 0)
+            if (!PlayerManager.AreAnyPlayersAlive())
             {
-                // ... tell the animator the player is dead.
                 anim.SetTrigger("PlayerDead");
             }
         }

@@ -21,11 +21,6 @@ namespace CompleteProject
             isMine = ownerId == PhotonNetwork.player.ID;
             syncTimestamp = double.NaN;
             maxVelSqr = maximumVelocity * maximumVelocity;
-
-            if (!PhotonNetwork.isMasterClient)
-            {
-                Destroy(this.GetComponent<Rigidbody>());
-            }
         }
 
         void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
@@ -42,10 +37,13 @@ namespace CompleteProject
                 syncPosition = (Vector3)stream.ReceiveNext();
                 syncVelocity = (Vector3)stream.ReceiveNext();
 
+                rigidbody.velocity = syncVelocity;
+
                 if (double.IsNaN(syncTimestamp))
                 {
                     // this is the first time we're updating position, so just directly set it
                     transform.position = syncPosition;
+                    rigidbody.position = syncPosition;
                 }
                 syncTimestamp = info.timestamp;
             }
@@ -111,6 +109,7 @@ namespace CompleteProject
             {
                 transform.position = newPosition;
             }
+            rigidbody.position = transform.position;
         }
 
         public bool IsMoving()
