@@ -49,23 +49,14 @@ namespace CompleteProject
 
         public void TakeDamage(int amount, Vector3 hitPoint)
         {
-            // If the enemy is dead...
             if (isDead)
-                // ... no need to take damage so exit the function.
+            {
                 return;
-
-            // TODO: damage each enemy takes must be told to other clients.. and other clients need to play SFXs for enemies when they take damage..
-            // Play the hurt sound effect.
-            enemyAudio.Play();
-
-            // Reduce the current health by the amount of damage sustained.
-            currentHealth -= amount;
-
-            // Set the position of the particle system to where the hit was sustained.
-            hitParticles.transform.position = hitPoint;
-
-            // And play the particles.
-            hitParticles.Play();
+            }
+            
+            RPC<int>(ReduceHealth, PhotonTargets.All, amount);
+            Vector3 localDiff = hitPoint - transform.position; // calculate the local position in relation to the enemy, because the enemy's position varies from client to client
+            RPC<Vector3>(StartEffects, PhotonTargets.All, localDiff);
 
             // If the current health is less than or equal to zero...
             if (currentHealth <= 0)
@@ -73,6 +64,28 @@ namespace CompleteProject
                 // ... the enemy is dead.
                 RPC(Death, PhotonTargets.All);
             }
+        }
+
+        [RPC]
+        public void ReduceHealth(int amount)
+        {
+            // Reduce the current health by the amount of damage sustained.
+            currentHealth -= amount;
+        }
+
+        [RPC]
+        public void StartEffects(Vector3 localPoint)
+        {
+            Vector3 hitPoint = localPoint + transform.position;
+
+            // Play the hurt sound effect.
+            enemyAudio.Play();
+
+            // Set the position of the particle system to where the hit was sustained.
+            hitParticles.transform.position = hitPoint;
+
+            // And play the particles.
+            hitParticles.Play();
         }
 
         [RPC]

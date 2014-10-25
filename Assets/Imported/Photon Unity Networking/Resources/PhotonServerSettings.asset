@@ -39,4 +39,6 @@ MonoBehaviour:
   - Death
   - EnableFiringEffects
   - ShowDamageEffects
+  - StartEffects
+  - ReduceHealth
   DisableAutoOpenWizard: 0
