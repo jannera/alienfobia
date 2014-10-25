@@ -94,6 +94,7 @@ namespace CompleteProject
 
             // Move the player to it's current position plus the movement.
             RPC<Vector3>(ApplyForce, PhotonTargets.MasterClient, movement);
+            ApplyForce(movement); // also do it locally to predict
         }
 
         [RPC]

@@ -99,7 +99,7 @@ namespace CompleteProject
                 maxVelocityStepInSecond * Time.deltaTime);
 
             // Debug.Log(transform.position + " -> " + newPosition);
-            if ((newPosition - extrapolatedTargetPosition).magnitude > 0.5f)
+            if ((newPosition - extrapolatedTargetPosition).magnitude > 2f)
             {
                 // if position has fallen too far out of sync, just teleport
                 transform.position = extrapolatedTargetPosition;
