@@ -109,5 +109,17 @@ namespace CompleteProject
             }
             return false;
         }
+
+        public static GameObject GetHumanPlayer()
+        {
+            foreach (GameObject go in GameObject.FindGameObjectsWithTag("Player"))
+            {
+                if (go.GetComponent<NPCController>() == null)
+                {
+                    return go;
+                }
+            }
+            return null;
+        }
     }
 }

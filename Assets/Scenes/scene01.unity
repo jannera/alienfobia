@@ -19627,8 +19627,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1907153935}
-  - 33: {fileID: 1907153934}
   - 64: {fileID: 1907153933}
+  - 33: {fileID: 1907153934}
   - 23: {fileID: 1907153932}
   m_Layer: 8
   m_Name: Floor

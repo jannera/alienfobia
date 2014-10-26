@@ -41,4 +41,5 @@ MonoBehaviour:
   - ShowDamageEffects
   - StartEffects
   - ReduceHealth
+  - RemovePickUp
   DisableAutoOpenWizard: 0
