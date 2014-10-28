@@ -12,11 +12,14 @@ namespace CompleteProject
         public int wavesPerLevel = 4;
         public int increase = 5;
         public int maxSpawns = 30;
+        public float playerSafetyDistance = 10f;
 
         private int currentWave = 1;
         private int currentSpawns;
         private float elapsedTime = 0.0f;
         private float spawnTimer = 0.0f;
+
+        private const int maxSpawnTries = 1000;
 
         // Use this for initialization
         void Start()
@@ -76,19 +79,44 @@ namespace CompleteProject
         {
             Debug.Log("Spawning wave " + currentWave);
             object[] p = { PhotonNetwork.player.ID };
+            GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
             for (int i = 0; i <= count; ++i)
             {
-                SpawnWithinRange(p);
+                SpawnWithinRange(p, players);
             }
         }
 
-        private void SpawnWithinRange(object[] playerId)
+        private void SpawnWithinRange(object[] playerId, GameObject[] players)
         {
             Vector3 spawnLocation = new Vector3(0f, 0f, 0f);
-            spawnLocation.x = transform.position.x + Random.Range(-spawnRange, spawnRange);
-            spawnLocation.z = transform.position.z + Random.Range(-spawnRange, spawnRange);
-
+            int tries = 0;
+            do
+            {
+                spawnLocation.x = transform.position.x + Random.Range(-spawnRange, spawnRange);
+                spawnLocation.z = transform.position.z + Random.Range(-spawnRange, spawnRange);
+                tries++;
+            } while (TooCloseToPlayers(spawnLocation, players) 
+                && tries < maxSpawnTries);
+            
+            if (tries == maxSpawnTries)
+            {
+                // couldn't find a possible location
+                Debug.LogWarning("Canceled a spawn because was unable to find a location!");
+                return;
+            }
             PhotonNetwork.InstantiateSceneObject(toBeGenerated.name, spawnLocation, Quaternion.identity, 0, playerId);
+        }
+
+        private bool TooCloseToPlayers(Vector3 pos, GameObject[] players)
+        {
+            foreach (GameObject go in players)
+            {
+                if ((go.transform.position - pos).magnitude < playerSafetyDistance)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }
