@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEditor;
 
 namespace CompleteProject
 {
@@ -24,6 +23,7 @@ namespace CompleteProject
         private Ray hitRay;
         private RaycastHit shootHit;
         public float forceMultiplier = 3f;
+        private PlayerHealth ownHealth;
 
         void Awake()
         {
@@ -38,6 +38,7 @@ namespace CompleteProject
                 go.transform.Rotate(0, 22.5f, 0, Space.World);
                 meshRenderers = go.GetComponentsInChildren<MeshRenderer>();
                 hitRay = new Ray();
+                ownHealth = GetComponent<PlayerHealth>();
                 Debug.Log("NPC awakening!");
             }
             else
@@ -50,6 +51,10 @@ namespace CompleteProject
 
         void FixedUpdate()
         {
+            if (ownHealth.isDead)
+            {
+                return; // stop moving when dead
+            }
             ResetValues();
             bool needMovingE = ObserveEnemies();
             bool needMovingH = ObserveHumanPlayer();

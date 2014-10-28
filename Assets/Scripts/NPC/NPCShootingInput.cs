@@ -14,6 +14,7 @@ namespace CompleteProject
         GameObject myPlayer;
 
         private Quaternion targetRotation;
+        private PlayerHealth ownHealth;
 
         // Use this for initialization
         void Start()
@@ -26,12 +27,18 @@ namespace CompleteProject
             {
                 myPlayer = PlayerManager.GetMyPlayer();
                 targetRotation = myPlayer.transform.rotation;
+                ownHealth = GetComponentInParent<PlayerHealth>();
             }
         }
 
         // Update is called once per frame
         void Update()
         {
+            if (ownHealth.isDead)
+            {
+                return; // stop moving when dead
+            }
+
             // rotate towards the target
             myPlayer.transform.rotation = Quaternion.Slerp(myPlayer.transform.rotation, targetRotation, Time.deltaTime * smoothTurning);
 

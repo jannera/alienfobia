@@ -90,7 +90,7 @@ GameObject:
   - 23: {fileID: 2300000}
   - 114: {fileID: 11400014}
   m_Layer: 9
-  m_Name: Sphere
+  m_Name: Hightlight Sphere
   m_TagString: HighlightSphere
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

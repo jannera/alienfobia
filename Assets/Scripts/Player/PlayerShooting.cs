@@ -81,7 +81,6 @@ namespace CompleteProject
 
             if (reloadTimer >= timeToReload && isReloading)
             {
-                Debug.Log("reloading ready!");
                 bullets = clipSize;
                 isReloading = false;
             }
