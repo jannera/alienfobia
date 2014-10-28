@@ -1,11 +1,12 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace CompleteProject
 {
-    public class EnemyHealth : MonoBehaviour
+    public class EnemyHealth : CompleteProject.PhotonBehaviour
     {
         public int startingHealth = 100;            // The amount of health the enemy starts the game with.
-        public int currentHealth;                   // The current health the enemy has.
+        private int currentHealth;                   // The current health the enemy has.
         public float sinkSpeed = 2.5f;              // The speed at which the enemy sinks through the floor when dead.
         public int scoreValue = 10;                 // The amount added to the player's score when the enemy dies.
         public AudioClip deathClip;                 // The sound to play when the enemy dies.
@@ -15,67 +16,93 @@ namespace CompleteProject
         AudioSource enemyAudio;                     // Reference to the audio source.
         ParticleSystem hitParticles;                // Reference to the particle system that plays when the enemy is damaged.
         CapsuleCollider capsuleCollider;            // Reference to the capsule collider.
-        bool isDead;                                // Whether the enemy is dead.
+        public bool isDead { get; private set; }                        // Whether the enemy is dead.
         bool isSinking;                             // Whether the enemy has started sinking through the floor.
 
         public float pickUpGenChance = 0.4f;
         public GameObject droppedPickUp;
+        private float sinkingTimer = 0;
 
-
-        void Awake ()
+        void Awake()
         {
             // Setting up the references.
-            anim = GetComponent <Animator> ();
-            enemyAudio = GetComponent <AudioSource> ();
-            hitParticles = GetComponentInChildren <ParticleSystem> ();
-            capsuleCollider = GetComponent <CapsuleCollider> ();
+            anim = GetComponent<Animator>();
+            enemyAudio = GetComponent<AudioSource>();
+            hitParticles = GetComponentInChildren<ParticleSystem>();
+            capsuleCollider = GetComponent<CapsuleCollider>();
 
             // Setting the current health when the enemy first spawns.
             currentHealth = startingHealth;
         }
 
 
-        void Update ()
+        void Update()
         {
             // If the enemy should be sinking...
-            if(isSinking)
+            if (isSinking)
             {
                 // ... move the enemy down by the sinkSpeed per second.
-                transform.Translate (-Vector3.up * sinkSpeed * Time.deltaTime);
+                transform.Translate(-Vector3.up * sinkSpeed * Time.deltaTime);
+                sinkingTimer += Time.deltaTime;
+                if (sinkingTimer > 2 && PhotonNetwork.isMasterClient)
+                {
+                    // after 2 sec sinking destroy the enemy
+                    PhotonNetwork.Destroy(gameObject);
+                }
             }
         }
 
 
-        public void TakeDamage (int amount, Vector3 hitPoint)
+        public void TakeDamage(int amount, Vector3 hitPoint)
         {
-            // If the enemy is dead...
-            if(isDead)
-                // ... no need to take damage so exit the function.
+            if (isDead)
+            {
                 return;
+            }
+            
+            RPC<int>(ReduceHealth, PhotonTargets.All, amount);
+            Vector3 localDiff = hitPoint - transform.position; // calculate the local position in relation to the enemy, because the enemy's position varies from client to client
+            RPC<Vector3>(StartEffects, PhotonTargets.All, localDiff);
 
-            // Play the hurt sound effect.
-            enemyAudio.Play ();
+            // If the current health is less than or equal to zero...
+            if (currentHealth <= 0)
+            {
+                ScoreManager.score += scoreValue;
+                ScoreManager.kills += 1;
+                // ... the enemy is dead.
+                RPC(Death, PhotonTargets.All);
+            }
+        }
 
+        [RPC]
+        public void ReduceHealth(int amount)
+        {
             // Reduce the current health by the amount of damage sustained.
             currentHealth -= amount;
-            
+        }
+
+        [RPC]
+        public void StartEffects(Vector3 localPoint)
+        {
+            Vector3 hitPoint = localPoint + transform.position;
+
+            // Play the hurt sound effect.
+            enemyAudio.Play();
+
             // Set the position of the particle system to where the hit was sustained.
             hitParticles.transform.position = hitPoint;
 
             // And play the particles.
             hitParticles.Play();
-
-            // If the current health is less than or equal to zero...
-            if(currentHealth <= 0)
-            {
-                // ... the enemy is dead.
-                Death ();
-            }
         }
 
-
+        [RPC]
         void Death()
         {
+            if (isDead)
+            {
+                return; // this can happen when multiple clients kill the same bear same time
+            }
             // The enemy is dead.
             isDead = true;
 
@@ -90,7 +117,7 @@ namespace CompleteProject
             enemyAudio.Play();
 
             // randomly generate a pickup
-            if (Random.Range(0f, 1f) < pickUpGenChance)
+            if (PhotonNetwork.isMasterClient && UnityEngine.Random.Range(0f, 1f) < pickUpGenChance)
             {
                 object[] p = { };
                 PhotonNetwork.InstantiateSceneObject(droppedPickUp.name, transform.position + Vector3.up * 1f, Quaternion.identity, 0, p);
@@ -98,23 +125,17 @@ namespace CompleteProject
         }
 
 
-        public void StartSinking ()
+        public void StartSinking()
         {
-            // Find and disable the Nav Mesh Agent.
-            GetComponent <NavMeshAgent> ().enabled = false;
+            if (PhotonNetwork.isMasterClient)
+            {
+                GetComponent<NavMeshAgent>().enabled = false;
 
-            // Find the rigidbody component and make it kinematic (since we use Translate to sink the enemy).
-            GetComponent <Rigidbody> ().isKinematic = true;
+                // Find the rigidbody component and make it kinematic (since we use Translate to sink the enemy).
+                GetComponent<Rigidbody>().isKinematic = true;
+            }
 
-            // The enemy should no sink.
             isSinking = true;
-
-            // Increase the score by the enemy's score value.
-            ScoreManager.score += scoreValue;
-			ScoreManager.kills += 1;
-
-            // After 2 seconds destory the enemy.
-            Destroy (gameObject, 2f);
         }
     }
 }

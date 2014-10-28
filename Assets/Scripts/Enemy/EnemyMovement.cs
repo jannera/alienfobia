@@ -6,33 +6,52 @@ namespace CompleteProject
     public class EnemyMovement : MonoBehaviour
     {
         Transform player;               // Reference to the player's position.
-        PlayerHealth playerHealth;      // Reference to the player's health.
         EnemyHealth enemyHealth;        // Reference to this enemy's health.
         NavMeshAgent nav;               // Reference to the nav mesh agent.
 
-
-        void Awake ()
+        void Awake()
         {
             // Set up the references.
-            player = GameObject.FindGameObjectWithTag ("Player").transform;
-            playerHealth = player.GetComponent <PlayerHealth> ();
-            enemyHealth = GetComponent <EnemyHealth> ();
-            nav = GetComponent <NavMeshAgent> ();
+            if (PhotonNetwork.isMasterClient)
+            {
+                player = FindClosestPlayer(); 
+                enemyHealth = GetComponent<EnemyHealth>();
+                nav = GetComponent<NavMeshAgent>();
+            }
+            else
+            {
+                Destroy(GetComponent<NavMeshAgent>());
+                Destroy(this);
+            }
         }
 
-
-        void Update ()
+        private Transform FindClosestPlayer()
         {
+            GameObject playerGO = PlayerManager.GetClosestPlayerAlive(transform.position);
+            if (playerGO == null) {
+                return null;
+            }
+            
+            return playerGO.transform;
+        }
+
+        void Update()
+        {
+            if (Random.Range(0f, 1f) < Time.deltaTime)
+            {
+                // randomly, once every second on average, find the closest player
+                player = FindClosestPlayer(); 
+            }
+
             if (player == null)
             {
-                Debug.Log("Enemy could not find player");
                 return;
             }
             // If the enemy and the player have health left...
-            if(enemyHealth.currentHealth > 0 && playerHealth.currentHealth > 0)
+            if (!enemyHealth.isDead && PlayerManager.AreAnyPlayersAlive())
             {
                 // ... set the destination of the nav mesh agent to the player.
-                nav.SetDestination (player.position);
+                nav.SetDestination(player.position);
             }
             // Otherwise...
             else

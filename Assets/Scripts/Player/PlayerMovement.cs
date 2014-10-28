@@ -1,29 +1,48 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+namespace CompleteProject
 {
-		public float speed = 6f;            // The speed that the player will move at.
-		public PhotonView photonView;
-		Vector3 movement;                   // The vector to store the direction of the player's movement.
-		Animator anim;                      // Reference to the animator component.
-		Rigidbody playerRigidbody;          // Reference to the player's rigidbody.
-		int floorMask;                      // A layer mask so that a ray can be cast just at gameobjects on the floor layer.
-		float camRayLength = 100f;          // The length of the ray from the camera into the scene.
+    public class PlayerMovement : CompleteProject.PhotonBehaviour
+    {
+        public float speed = 6f;            // The speed that the player will move at.
+        Vector3 movement;                   // The vector to store the direction of the player's movement.
+        Animator anim;                      // Reference to the animator component.
+        int floorMask;                      // A layer mask so that a ray can be cast just at gameobjects on the floor layer.
+        float camRayLength = 100f;          // The length of the ray from the camera into the scene.
+        public float smoothTurning = 10f;
+        public float force = 3000;
 
-        public GameObject explosionPreFab;
+        public GameObject rotationSyncPreFab;
 
-		void Awake ()
-		{
-				// Create a layer mask for the floor layer.
-				floorMask = LayerMask.GetMask ("Floor");
+        public PositionSync positionController;
 
-				// Set up references.
-				anim = GetComponent <Animator> ();
-				playerRigidbody = GetComponent <Rigidbody> ();
-		}
+        void Awake()
+        {
+            // Create a layer mask for the floor layer.
+            floorMask = LayerMask.GetMask("Floor");
 
-		void FixedUpdate ()
-		{
+            // Set up references.
+            anim = GetComponent<Animator>();
+
+            int ownerId = (int)photonView.instantiationData[0];
+            if (ownerId == PhotonNetwork.player.ID)
+            {
+                // create rotation synchronizer
+                PhotonNetwork.Instantiate(rotationSyncPreFab.name, Vector3.zero,
+                    Quaternion.identity, 0);
+            }
+        }
+
+        void FixedUpdate()
+        {
+            Animating(positionController.IsMoving());
+
+            if (!positionController.isMine)
+            {
+                return;
+            }
+
             float h = 0, v = 0;
             if (Input.GetKey(KeyCode.W))
             {
@@ -39,73 +58,79 @@ public class PlayerMovement : MonoBehaviour
             {
                 v -= 1;
                 h -= 1;
-                
+
             }
             if (Input.GetKey(KeyCode.D))
             {
                 v += 1;
                 h -= 1;
             }
-            
-			// Move the player around the scene.
-			Move (v, h);
 
-			// Turn the player to face the mouse cursor.
-			Turning ();
+            // Move the player around the scene.
+            Move(v, h);
 
-			// Animate the player.
-			Animating (v, h);
+            // Turn the player to face the mouse cursor.
+            Turning();
 
-            if (Input.GetKey(KeyCode.F))
+            if (h != 0f || v != 0f)
             {
-                object[] p = { };
-                PhotonNetwork.InstantiateSceneObject(explosionPreFab.name, transform.position, Quaternion.identity, 0, p);
+                // start animating right at the key press (but don't stop straight after player stops pressing keys)
+                Animating(true);
             }
-		}
 
-		void Move (float h, float v)
-		{
-				// Set the movement vector based on the axis input.
-				movement.Set (h, 0f, v);
-            
-				// Normalise the movement vector and make it proportional to the speed per second.
-				movement = movement.normalized * speed * Time.deltaTime;
+        }
 
-				object [] p = {movement};
-				// Move the player to it's current position plus the movement.
-				photonView.RPC ("Move", PhotonTargets.MasterClient, movement);
-		}
+        void Move(float h, float v)
+        {
+            if (h == 0 && v == 0)
+            {
+                return;
+            }
+            // Set the movement vector based on the axis input.
+            movement.Set(h, 0f, v);
 
-		void Turning ()
-		{
-				// Create a ray from the mouse cursor on screen in the direction of the camera.
-				Ray camRay = Camera.main.ScreenPointToRay (Input.mousePosition);
+            // Normalise the movement vector and make it proportional to the speed per second.
+            movement = movement.normalized * speed * Time.deltaTime;
 
-				// Create a RaycastHit variable to store information about what was hit by the ray.
-				RaycastHit floorHit;
+            // Move the player to it's current position plus the movement.
+            RPC<Vector3>(ApplyForce, PhotonTargets.MasterClient, movement);
+            ApplyForce(movement); // also do it locally to predict
+        }
 
-				// Perform the raycast and if it hits something on the floor layer...
-				if (Physics.Raycast (camRay, out floorHit, camRayLength, floorMask)) {
-						// Create a vector from the player to the point on the floor the raycast from the mouse hit.
-						Vector3 playerToMouse = floorHit.point - transform.position;
+        [RPC]
+        public void ApplyForce(Vector3 movement)
+        {
+            rigidbody.AddForce(movement * force * Time.deltaTime);
+        }
 
-						// Ensure the vector is entirely along the floor plane.
-						playerToMouse.y = 0f;
+        void Turning()
+        {
+            // Create a ray from the mouse cursor on screen in the direction of the camera.
+            Ray camRay = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-						// Create a quaternion (rotation) based on looking down the vector from the player to the mouse.
-						Quaternion newRotation = Quaternion.LookRotation (playerToMouse);
+            // Create a RaycastHit variable to store information about what was hit by the ray.
+            RaycastHit floorHit;
 
-						// Set the player's rotation to this new rotation.
-						playerRigidbody.MoveRotation (newRotation);
-				}
-		}
+            // Perform the raycast and if it hits something on the floor layer...
+            if (Physics.Raycast(camRay, out floorHit, camRayLength, floorMask))
+            {
+                // Create a vector from the player to the point on the floor the raycast from the mouse hit.
+                Vector3 playerToMouse = floorHit.point - transform.position;
 
-		void Animating (float h, float v)
-		{
-				// Create a boolean that is true if either of the input axes is non-zero.
-				bool walking = h != 0f || v != 0f;
+                // Ensure the vector is entirely along the floor plane.
+                playerToMouse.y = 0f;
 
-				// Tell the animator whether or not the player is walking.
-				anim.SetBool ("IsWalking", walking);
-		}
+                // Create a quaternion (rotation) based on looking down the vector from the player to the mouse.
+                Quaternion newRotation = Quaternion.LookRotation(playerToMouse);
+
+                // Set the player's rotation to this new rotation.
+                transform.rotation = Quaternion.Slerp(transform.rotation, newRotation, Time.deltaTime * smoothTurning);
+            }
+        }
+
+        void Animating(bool walking)
+        {
+            anim.SetBool("IsWalking", walking);
+        }
+    }
 }

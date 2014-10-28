@@ -3,8 +3,8 @@ using System.Collections;
 
 namespace CompleteProject
 {
-    public class RocketController : MonoBehaviour {
-        public PhotonView photonView;
+    public class GrenadeController : CompleteProject.PhotonBehaviour
+    {
         public float startSpeed = 10;
         public float explosionRadius = 5;
         public float explosionForce = 100;
@@ -18,31 +18,44 @@ namespace CompleteProject
         public float explosionTime = 2f;
         public float startTime;
 
+        private bool playingExplosionSound = false;
+
 
         // todo: needs still some kind of position syncing
 
-	    // Use this for initialization
-	    void Start () {
-            float angle = (float) photonView.instantiationData[0];
+        // Use this for initialization
+        void Start()
+        {
+            float angle = (float)photonView.instantiationData[0];
             Debug.Log("angle " + angle);
             angle *= Mathf.Deg2Rad;
             startTime = Time.time;
-        
+
             // TODO all rigidbody stuff should only be done in the server side
             rigidbody.velocity = new Vector3(Mathf.Sin(angle), 0, Mathf.Cos(angle)) * startSpeed;
-	    }
-	
-	    // Update is called once per frame
-	    void FixedUpdate () {
-            if (Time.time - startTime > explosionTime)
+        }
+
+        // Update is called once per frame
+        void FixedUpdate()
+        {
+            if (playingExplosionSound)
+            {
+                if (!explosionSound.isPlaying)
+                {
+                    if (PhotonNetwork.isMasterClient)
+                    {
+                        PhotonNetwork.Destroy(gameObject);
+                    }
+                }
+            }
+            else if (Time.time - startTime > explosionTime)
             {
                 // pretty much any collision should explode it right?
-                object[] p = { };
-                photonView.RPC("CreateExplosion", PhotonTargets.MasterClient, p);
+                RPC(CreateExplosion, PhotonTargets.MasterClient);
                 explosionSound.Play();
-                Destroy(gameObject);
+                playingExplosionSound = true;
             }
-	    }
+        }
 
         [RPC]
         void CreateExplosion()
@@ -50,8 +63,8 @@ namespace CompleteProject
             if (PhotonNetwork.isMasterClient)
             {
                 Collider[] hitColliders = Physics.OverlapSphere(transform.position, explosionRadius);
-            
-                for (int i=0; i < hitColliders.Length; i++)
+
+                for (int i = 0; i < hitColliders.Length; i++)
                 {
                     // todo push only enemies?
                     GameObject go = hitColliders[i].gameObject;
@@ -74,13 +87,18 @@ namespace CompleteProject
                     {
                         continue; // don't throw players around
                     }
-                
+
+                    if (go == gameObject)
+                    {
+                        continue; // don't throw yourself around
+                    }
+
                     Vector3 fromExplosion = go.transform.position - transform.position;
                     float forceMultiplier = explosionRadius / fromExplosion.magnitude;
                     // bigger force at the center, lesser on the sides
 
                     fromExplosion.Normalize();
-                    fromExplosion  *= explosionForce;
+                    fromExplosion *= explosionForce * forceMultiplier;
 
                     // Debug.Log("causing force " + fromExplosion);
                     go.rigidbody.AddForce(fromExplosion);

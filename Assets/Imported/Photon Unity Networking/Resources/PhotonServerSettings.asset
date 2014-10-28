@@ -36,4 +36,10 @@ MonoBehaviour:
   - CreateRocket
   - CreateExplosion
   - CreateGrenade
+  - Death
+  - EnableFiringEffects
+  - ShowDamageEffects
+  - StartEffects
+  - ReduceHealth
+  - RemovePickUp
   DisableAutoOpenWizard: 0

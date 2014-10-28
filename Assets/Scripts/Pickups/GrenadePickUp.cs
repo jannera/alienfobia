@@ -2,21 +2,9 @@
 using System.Collections;
 
 namespace CompleteProject
-{ 
-    public class GrenadePickUp : MonoBehaviour {
-
-        public float rotationSpeed = 1;
-
-	    // Use this for initialization
-	    void Start () {
-	
-	    }
-	
-	    // Update is called once per frame
-	    void Update () {
-	
-	    }
-
+{
+    public class GrenadePickUp : CompleteProject.PhotonBehaviour
+    {
         void OnTriggerEnter(Collider other)
         {
             GameObject go = other.gameObject;
@@ -25,8 +13,15 @@ namespace CompleteProject
             {
                 PlayerShooting shooting = go.GetComponentInChildren<PlayerShooting>();
                 shooting.grenades++;
-                Destroy(gameObject);
+                GetComponent<BoxCollider>().enabled = false; // disables further triggers while the master client is removing us
+                RPC(RemovePickUp, PhotonTargets.MasterClient);
             }
+        }
+
+        [RPC]
+        public void RemovePickUp()
+        {
+            PhotonNetwork.Destroy(gameObject);
         }
 
         void FixedUpdate()

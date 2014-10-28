@@ -7,24 +7,24 @@ namespace CompleteProject
     public class ScoreManager : MonoBehaviour
     {
         public static int score;        // The player's score.
-		public static int kills;        // The player's total kills
-		public Text killsText;
-		public Text scoreText;
+        public static int kills;        // The player's total kills
+        public Text killsText;
+        public Text scoreText;
 
 
-        void Awake ()
+        void Awake()
         {
             // Reset the score.
             score = 0;
-			kills = 0;
+            kills = 0;
         }
 
 
-        void Update ()
+        void Update()
         {
             // Set the displayed text to be the word "Score" followed by the score value.
             killsText.text = "Kills: " + kills;
-			scoreText.text = "Score: " + score;
+            scoreText.text = "Score: " + score;
         }
     }
 }
