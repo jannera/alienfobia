@@ -28,7 +28,7 @@ namespace CompleteProject
             
             slider.maxValue = PlayerShooting.clipSize;
             int bullets = playerShooting.bullets;
-            if (bullets == 0)
+            if (playerShooting.isReloading)
             {
                 // todo slide based on 
                 slider.value = slider.maxValue * playerShooting.ReloadStatus();

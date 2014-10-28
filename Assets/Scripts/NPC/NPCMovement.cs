@@ -4,26 +4,26 @@ using UnityEditor;
 
 namespace CompleteProject
 {
-    public class NPCController : CompleteProject.PhotonBehaviour
+    public class NPCMovement : CompleteProject.PhotonBehaviour
     {
         private NavMeshAgent nav;
         private GameObject humanPlayer;
 
         private float navMeshUpdateTimer = 0f;
-        private static float NAVMESH_UPDATE_PERIOD = 1f; // in seconds
+        private static float NAVMESH_UPDATE_PERIOD = 0.3f; // in seconds
         private Vector3 nextWayPoint;
         private static float followingDistance = 6f;
         public float avoidanceRadius = 10;
-        public float visualRadius = 3f;
         public GameObject indicatorPreFab;
         private MeshRenderer[] meshRenderers;
 
-        private const int sectors = 8;
+        private const int sectors = 8; 
         private float[] valueArr;
         private Vector2 fromMeToEnemy;
         private const int ENEMY_COST = -3;
         private Ray hitRay;
         private RaycastHit shootHit;
+        public float forceMultiplier = 3f;
 
         void Awake()
         {
@@ -48,7 +48,7 @@ namespace CompleteProject
             nextWayPoint = transform.position;
         }
 
-        void Update()
+        void FixedUpdate()
         {
             ResetValues();
             bool needMovingE = ObserveEnemies();
@@ -127,7 +127,8 @@ namespace CompleteProject
             {
                 angle = 360 - angle;
             }
-            return Mathf.FloorToInt(angle / 360f * sectors);
+            int sector = Mathf.FloorToInt(angle / 360f * sectors);
+            return GetRotatingIndex(sector);
         }
 
         private bool ObserveHumanPlayer()
@@ -157,15 +158,22 @@ namespace CompleteProject
                 }
             }
 
-            Vector3 diff = nextWayPoint - transform.position;
-
-            int sector = GetSector(diff);
+            int sector = GetSector(nextWayPoint);
+            // Debug.Log(diff + " -> " + sector);
             float value = ENEMY_COST / -2f;
             valueArr[sector] += value;
             valueArr[GetRotatingIndex(sector + 1)] += value / 3f * 2f;
             valueArr[GetRotatingIndex(sector - 1)] += value / 3f * 2f;
             valueArr[GetRotatingIndex(sector + 2)] += value / 3f;
             valueArr[GetRotatingIndex(sector - 2)] += value / 3f;
+
+            string s = "";
+            foreach (int i in valueArr)
+            {
+                s += i.ToString() + " ";
+            }
+            // Debug.Log(s);
+            
 
             return true;
         }
@@ -190,6 +198,7 @@ namespace CompleteProject
                 {
                     result = i;
                     freeSpace = GetFreeSpace(i);
+                    highestScore = valueArr[i];
                 }
                 else if (valueArr[i] == highestScore)
                 {
@@ -197,7 +206,7 @@ namespace CompleteProject
                     float newFreeSpace = GetFreeSpace(i);
                     if (newFreeSpace > freeSpace)
                     {
-                        Debug.Log("switched because of freespace " + result + " -> " + i);
+                        // Debug.Log("switched because of freespace " + result + " -> " + i);
                         result = i;
                         freeSpace = newFreeSpace;
                     }
@@ -211,16 +220,15 @@ namespace CompleteProject
             Vector3 p = transform.position;
             float height = transform.lossyScale.y / 2f;
             p.y += height;
-            Debug.Log(height);
             hitRay.origin = p;
 
             Vector3 x = GetVector(sector);
             x.y = hitRay.origin.y;
             hitRay.direction = x;
-            Debug.Log(hitRay.origin + " -> " + hitRay.direction);
+            // Debug.Log(hitRay.origin + " -> " + hitRay.direction);
             if (Physics.Raycast(hitRay, out shootHit))
             {
-                Debug.Log("hit " + shootHit.collider.gameObject);
+                // Debug.Log("hit " + shootHit.collider.gameObject);
                 return (shootHit.point - hitRay.origin).magnitude;
             }
             return 0;
@@ -241,8 +249,9 @@ namespace CompleteProject
         {
             int sector = GetBestSector();
             Vector3 target = GetVector(sector);
+            target.Normalize();
 
-            float multiplier = 3;
+            float multiplier = forceMultiplier;
             if (PhotonNetwork.isMasterClient)
             {
                 multiplier *= 100;

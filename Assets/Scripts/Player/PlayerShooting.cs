@@ -14,9 +14,7 @@ namespace CompleteProject
         float timer;                                    // A timer to determine when to fire.
         float rocketTimer = 0;
         float reloadTimer = 0;
-        Ray shootRay;                                   // A ray from the gun end forwards.
-        RaycastHit shootHit;                            // A raycast hit to get information about what was hit.
-        int shootableMask;                              // A layer mask so the raycast only hits things on the shootable layer.
+        public int shootableMask { get; private set; }  // A layer mask so the raycast only hits things on the shootable layer.
         ParticleSystem gunParticles;                    // Reference to the particle system.
         LineRenderer gunLine;                           // Reference to the line renderer.
         AudioSource gunAudio;                           // Reference to the audio source.
@@ -25,6 +23,7 @@ namespace CompleteProject
         float effectsDisplayTime = 0.2f;                // The proportion of the timeBetweenBullets that the effects will display for.
         public const int clipSize = 60;
         public int bullets = clipSize;
+        public bool isReloading { get; private set; }
 
         public GameObject grenadePreFab;
 
@@ -46,7 +45,7 @@ namespace CompleteProject
             gunReload = GetComponents<AudioSource>()[1];
             gunLight = GetComponent<Light>();
 
-            isMine = gameObject.GetComponentInParent<PositionSync>().isMine;
+            isMine = PlayerManager.IsMyPlayer(gameObject);
         }
 
 
@@ -76,31 +75,15 @@ namespace CompleteProject
             }
 
             // EXECUTED FOR ONLY THE OWNING PLAYER
-            
+
             rocketTimer += Time.deltaTime;
             reloadTimer += Time.deltaTime;
 
-            if (reloadTimer >= timeToReload && bullets == 0)
+            if (reloadTimer >= timeToReload && isReloading)
             {
+                Debug.Log("reloading ready!");
                 bullets = clipSize;
-            }
-
-            // If the Fire1 button is being press and it's time to fire...
-            if (Input.GetButton("Fire1") && timer >= timeBetweenBullets)
-            {
-                // ... shoot the gun.
-                Shoot();
-            }
-
-            if (Input.GetButton("Fire2") && rocketTimer >= timeBetweenRockets && grenades > 0)
-            {
-                Debug.Log("throwing gren");
-                ThrowGrenade();
-            }
-
-            if (Input.GetKey(KeyCode.R))
-            {
-                StartReloading();
+                isReloading = false;
             }
         }
 
@@ -112,15 +95,36 @@ namespace CompleteProject
             gunLight.enabled = false;
         }
 
-        void StartReloading()
+        public void StartReloading()
         {
             bullets = 0;
             reloadTimer = 0f;
+            isReloading = true;
             gunReload.Play();
         }
 
-        void Shoot()
+        public void Shoot(GameObject enemy, Vector3 hit)
         {
+            --bullets;
+            timer = 0f;
+
+            if (enemy != null)
+            {
+                EnemyHealth enemyHealth = enemy.GetComponent<EnemyHealth>();
+
+                if (enemyHealth != null)
+                {
+                    enemyHealth.TakeDamage(damagePerShot, hit);
+                }
+            }
+
+            RPC<Vector3>(EnableFiringEffects, PhotonTargets.All, hit);
+        }
+
+        /*
+        public void Shoot2()
+        {
+            // TODO move this bullet/reload checking thing out of here
             if (bullets == 0)
             {
                 return;
@@ -162,10 +166,9 @@ namespace CompleteProject
                 firingEndPos = shootRay.origin + shootRay.direction * range;
             }
 
-            // TODO: actually, because ray positions must be calculated locally on each client, we just need to
-            // pass the enemy and the local hit point on the enemy to each client
             RPC<Vector3>(EnableFiringEffects, PhotonTargets.All, firingEndPos);
         }
+         * */
 
         [RPC]
         private void EnableFiringEffects(Vector3 firingEndPos)
@@ -189,7 +192,7 @@ namespace CompleteProject
             effectsDisplayedOnce = false;
         }
 
-        void ThrowGrenade()
+        public void ThrowGrenade()
         {
             rocketTimer = 0f;
             grenades--;
@@ -213,6 +216,21 @@ namespace CompleteProject
         public float ReloadStatus()
         {
             return Mathf.Clamp(reloadTimer / timeToReload, 0, 1);
+        }
+
+        public bool CanFire()
+        {
+            return timer >= timeBetweenBullets && !isReloading;
+        }
+
+        public bool CanThrowGrenade()
+        {
+            return rocketTimer >= timeBetweenRockets && grenades > 0;
+        }
+
+        public bool IsFullClip()
+        {
+            return bullets == clipSize;
         }
     }
 }
