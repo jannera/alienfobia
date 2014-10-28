@@ -67,6 +67,8 @@ namespace CompleteProject
             // If the current health is less than or equal to zero...
             if (currentHealth <= 0)
             {
+                ScoreManager.score += scoreValue;
+                ScoreManager.kills += 1;
                 // ... the enemy is dead.
                 RPC(Death, PhotonTargets.All);
             }
@@ -134,9 +136,6 @@ namespace CompleteProject
             }
 
             isSinking = true;
-
-            ScoreManager.score += scoreValue;
-            ScoreManager.kills += 1;
         }
     }
 }
