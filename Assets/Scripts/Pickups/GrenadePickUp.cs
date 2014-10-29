@@ -3,31 +3,12 @@ using System.Collections;
 
 namespace CompleteProject
 {
-    public class GrenadePickUp : CompleteProject.PhotonBehaviour
+    public class GrenadePickUp : PickUp
     {
-        void OnTriggerEnter(Collider other)
+        override protected void PickedUp(GameObject player)
         {
-            GameObject go = other.gameObject;
-            // If the entering collider is the player...
-            if (go.CompareTag("Player") && PlayerManager.GetMyPlayer() == go)
-            {
-                PlayerShooting shooting = go.GetComponentInChildren<PlayerShooting>();
-                shooting.grenades++;
-                GetComponent<BoxCollider>().enabled = false; // disables further triggers while the master client is removing us
-                RPC(RemovePickUp, PhotonTargets.MasterClient);
-            }
-        }
-
-        [RPC]
-        public void RemovePickUp()
-        {
-            PhotonNetwork.Destroy(gameObject);
-        }
-
-        void FixedUpdate()
-        {
-            transform.Rotate(Vector3.up * Time.deltaTime * 30);
+            PlayerShooting shooting = player.GetComponentInChildren<PlayerShooting>();
+            shooting.grenades++;
         }
     }
-
 }
