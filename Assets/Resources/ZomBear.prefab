@@ -21,6 +21,7 @@ GameObject:
   - 114: {fileID: 11400008}
   - 114: {fileID: 11400010}
   - 114: {fileID: 11400012}
+  - 114: {fileID: 11400016}
   m_Layer: 9
   m_Name: ZomBear
   m_TagString: Enemy
@@ -302,7 +303,6 @@ MonoBehaviour:
   scoreValue: 15
   deathClip: {fileID: 8300000, guid: 62366b8d2c37a49dca550841c741317f, type: 3}
   pickUpGenChance: .0399999991
-  droppedPickUp: {fileID: 100000, guid: bba06026d75ef5f45957a3b1577b9067, type: 2}
   pickups: {fileID: 11400000, guid: 8cb9837be773a1942947be5c61581418, type: 2}
 --- !u!114 &11400004
 MonoBehaviour:
@@ -394,6 +394,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d5b0a5a71210ee42925871265daa3c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11400016
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22cd84dc238de2546816050f8f9d5a51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  group: {fileID: 100000, guid: 5bc2e97332330c7439da2c52b0d9fe46, type: 2}
 --- !u!135 &13500000
 SphereCollider:
   m_ObjectHideFlags: 1

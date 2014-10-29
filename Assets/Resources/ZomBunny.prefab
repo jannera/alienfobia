@@ -36,6 +36,7 @@ GameObject:
   - 114: {fileID: 11400006}
   - 114: {fileID: 11400010}
   - 114: {fileID: 11400012}
+  - 114: {fileID: 11400014}
   m_Layer: 9
   m_Name: ZomBunny
   m_TagString: Enemy
@@ -301,7 +302,6 @@ MonoBehaviour:
   scoreValue: 10
   deathClip: {fileID: 8300000, guid: 1d3bfb9269f136947bf8ac164cace1ff, type: 3}
   pickUpGenChance: .0399999991
-  droppedPickUp: {fileID: 100000, guid: c67c54f4243bb4d4bb92376f3d7b4b65, type: 2}
   pickups: {fileID: 11400000, guid: 8cb9837be773a1942947be5c61581418, type: 2}
 --- !u!114 &11400004
 MonoBehaviour:
@@ -373,6 +373,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   smoothTurning: 30
+--- !u!114 &11400014
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22cd84dc238de2546816050f8f9d5a51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  group: {fileID: 100000, guid: 5bc2e97332330c7439da2c52b0d9fe46, type: 2}
 --- !u!135 &13500000
 SphereCollider:
   m_ObjectHideFlags: 1

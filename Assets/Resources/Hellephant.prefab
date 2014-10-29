@@ -21,6 +21,7 @@ GameObject:
   - 114: {fileID: 11400010}
   - 114: {fileID: 11400012}
   - 114: {fileID: 11400014}
+  - 114: {fileID: 11400016}
   m_Layer: 9
   m_Name: Hellephant
   m_TagString: Enemy
@@ -302,7 +303,6 @@ MonoBehaviour:
   scoreValue: 50
   deathClip: {fileID: 8300000, guid: 8c615fd0429f34edf85539d70279360d, type: 3}
   pickUpGenChance: .400000006
-  droppedPickUp: {fileID: 100000, guid: bba06026d75ef5f45957a3b1577b9067, type: 2}
   pickups: {fileID: 11400000, guid: 8cb9837be773a1942947be5c61581418, type: 2}
 --- !u!114 &11400004
 MonoBehaviour:
@@ -394,6 +394,18 @@ MonoBehaviour:
   onSerializeTransformOption: 3
   onSerializeRigidBodyOption: 2
   instantiationId: -1
+--- !u!114 &11400016
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22cd84dc238de2546816050f8f9d5a51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  group: {fileID: 100000, guid: 5bc2e97332330c7439da2c52b0d9fe46, type: 2}
 --- !u!135 &13500000
 SphereCollider:
   m_ObjectHideFlags: 1

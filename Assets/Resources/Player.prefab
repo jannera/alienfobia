@@ -245,6 +245,7 @@ GameObject:
   - 136: {fileID: 13600000}
   - 82: {fileID: 8200004}
   - 195: {fileID: 19500000}
+  - 114: {fileID: 11400018}
   - 114: {fileID: 11400012}
   - 114: {fileID: 11400010}
   - 114: {fileID: 11400006}
@@ -770,7 +771,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damagePerShot: 20
   timeBetweenBullets: .0799999982
-  timeBetweenRockets: 2
+  timeBetweenGrenades: 2
   timeToReload: 1
   range: 100
   bullets: 60
@@ -807,7 +808,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c998bede0a53dbc439621ce143f225e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isMine: 0
   movementEpsilon: 1
   maximumVelocity: 4
   maxVelocityStepInSecond: 5
@@ -901,6 +901,18 @@ MonoBehaviour:
   playerShooting: {fileID: 11400000}
   shootingRadius: 10
   smoothTurning: 10
+--- !u!114 &11400018
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22cd84dc238de2546816050f8f9d5a51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  group: {fileID: 100000, guid: 2b9bbd206d704134c8a7430b8464f1f2, type: 2}
 --- !u!114 &11400020
 MonoBehaviour:
   m_ObjectHideFlags: 1
