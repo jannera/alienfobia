@@ -12,13 +12,11 @@ namespace CompleteProject
      **/
     public class PositionSync : CompleteProject.PhotonBehaviour
     {
-        public bool isMine;
         public float movementEpsilon = 1; // velocity magnitudes above this are considering "moving" (for animations etc)
 
         void Awake()
         {
             int ownerId = (int)photonView.instantiationData[0];
-            isMine = ownerId == PhotonNetwork.player.ID;
             syncTimestamp = double.NaN;
             maxVelSqr = maximumVelocity * maximumVelocity;
         }
@@ -57,7 +55,7 @@ namespace CompleteProject
 
         void FixedUpdate()
         {
-            if (PhotonNetwork.isMasterClient)
+            if (photonView.isMine)
             {
                 // limit the maximum velocities
                 if (rigidbody.velocity.sqrMagnitude > maxVelSqr)
@@ -75,7 +73,7 @@ namespace CompleteProject
 
         void Update()
         {
-            if (!PhotonNetwork.isMasterClient)
+            if (!photonView.isMine)
             {
                 // only clients estimate positions
                 SyncedMovement();
@@ -98,12 +96,12 @@ namespace CompleteProject
             Vector3 newPosition = Vector3.MoveTowards(transform.position, extrapolatedTargetPosition,
                 maxVelocityStepInSecond * Time.deltaTime);
 
-            // Debug.Log(transform.position + " -> " + newPosition);
+            
             if ((newPosition - extrapolatedTargetPosition).magnitude > 2f)
             {
                 // if position has fallen too far out of sync, just teleport
                 transform.position = extrapolatedTargetPosition;
-                Debug.Log("teleported " + gameObject);
+                Debug.Log("teleported " + gameObject + " " + photonView.instantiationId + " owned by " + photonView.ownerId);
             }
             else
             {
@@ -115,7 +113,7 @@ namespace CompleteProject
         public bool IsMoving()
         {
             Vector3 vel;
-            if (PhotonNetwork.isMasterClient)
+            if (photonView.isMine)
             {
                 vel = rigidbody.velocity;
             }

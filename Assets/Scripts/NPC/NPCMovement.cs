@@ -27,7 +27,7 @@ namespace CompleteProject
 
         void Awake()
         {
-            if (Application.dataPath.Contains("alienfobia_npc") && PlayerManager.GetMyPlayer() == gameObject)
+            if (Application.dataPath.Contains("alienfobia_npc") && photonView.isMine)
             {
                 Destroy(GetComponent<PlayerMovement>());
                 nav = GetComponent<NavMeshAgent>();
@@ -257,7 +257,7 @@ namespace CompleteProject
             target.Normalize();
 
             float multiplier = forceMultiplier;
-            if (PhotonNetwork.isMasterClient)
+            if (photonView.isMine)
             {
                 multiplier *= 100;
                 // ugly hack. jury's still out on the ownership of the player characters.. so fix this unless we change the ownership
@@ -266,11 +266,8 @@ namespace CompleteProject
             target *= Time.deltaTime * multiplier;
             // Debug.Log(target);
 
-            RPC<Vector3>(ApplyForce, PhotonTargets.MasterClient, target);
-            if (!PhotonNetwork.isMasterClient)
-            {
-                ApplyForce(target);
-            }
+            //RPC<Vector3>(ApplyForce, PhotonTargets.MasterClient, target);
+            ApplyForce(target);
         }
 
         private void UpdateSectorIndicators()

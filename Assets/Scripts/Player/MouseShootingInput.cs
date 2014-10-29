@@ -3,7 +3,7 @@ using System.Collections;
 
 namespace CompleteProject
 {
-    public class MouseShootingInput : MonoBehaviour
+    public class MouseShootingInput : CompleteProject.PhotonBehaviour
     {
         Ray shootRay;                                   // A ray from the gun end forwards.
         RaycastHit shootHit;                            // A raycast hit to get information about what was hit.
@@ -12,8 +12,8 @@ namespace CompleteProject
         // Use this for initialization
         void Start()
         {
-            if (!PlayerManager.IsMyPlayer(gameObject) ||
-                PlayerManager.IsNPCPlayer(gameObject))
+            if (!photonView.isMine ||
+                PlayerManager.IsNPCClient())
             {
                 Destroy(this);
             }

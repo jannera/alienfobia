@@ -38,7 +38,7 @@ namespace CompleteProject
         {
             Animating(positionController.IsMoving());
 
-            if (!positionController.isMine)
+            if (!photonView.isMine)
             {
                 return;
             }
@@ -93,8 +93,7 @@ namespace CompleteProject
             movement = movement.normalized * speed * Time.deltaTime;
 
             // Move the player to it's current position plus the movement.
-            RPC<Vector3>(ApplyForce, PhotonTargets.MasterClient, movement);
-            ApplyForce(movement); // also do it locally to predict
+            ApplyForce(movement);
         }
 
         [RPC]

@@ -19,10 +19,10 @@ namespace CompleteProject
         {
             if (Input.GetKeyUp(KeyCode.F12))
             {
-                float newValue = 0;
-                if (AudioListener.volume == 0)
+                float newValue = AudioListener.volume + 0.25f;
+                if (newValue >= 1)
                 {
-                    newValue = 1;
+                    newValue = 0;
                 }
                 AudioListener.volume = newValue;
                 PlayerPrefs.SetFloat(VOLUME_KEY, newValue);

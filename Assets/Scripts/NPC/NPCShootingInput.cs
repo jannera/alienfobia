@@ -3,7 +3,7 @@ using System.Collections;
 
 namespace CompleteProject
 {
-    public class NPCShootingInput : MonoBehaviour
+    public class NPCShootingInput : CompleteProject.PhotonBehaviour
     {
         public PlayerShooting playerShooting;
         public float shootingRadius = 10f;
@@ -19,7 +19,7 @@ namespace CompleteProject
         // Use this for initialization
         void Start()
         {
-            if (!PlayerManager.IsNPCPlayer(gameObject))
+            if (!PlayerManager.IsNPCClient() || !photonView.isMine)
             {
                 Destroy(this);
             }

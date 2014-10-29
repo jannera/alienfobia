@@ -12,7 +12,7 @@ namespace CompleteProject
         {
             foreach (GameObject go in GameObject.FindGameObjectsWithTag("Player"))
             {
-                if (go.GetComponent<PositionSync>().isMine)
+                if (go.GetComponent<PhotonView>().isMine)
                 {
                     return go;
                 }
@@ -122,25 +122,9 @@ namespace CompleteProject
             return null;
         }
 
-        public static bool IsMyPlayer(GameObject go)
+        public static bool IsNPCClient()
         {
-            PositionSync s = go.GetComponent<PositionSync>();
-            if (s != null)
-            {
-                return s.isMine;
-            }
-            s = go.GetComponentInParent<PositionSync>();
-            if (s == null)
-            {
-                return false;
-            }
-            return s.isMine;
-        }
-
-        public static bool IsNPCPlayer(GameObject go)
-        {
-            return Application.dataPath.Contains("alienfobia_npc") 
-                && PlayerManager.IsMyPlayer(go);
+            return Application.dataPath.Contains("alienfobia_npc");
         }
     }
 }

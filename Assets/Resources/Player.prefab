@@ -247,10 +247,10 @@ GameObject:
   - 195: {fileID: 19500000}
   - 114: {fileID: 11400012}
   - 114: {fileID: 11400010}
+  - 114: {fileID: 11400006}
   - 114: {fileID: 11400004}
   - 114: {fileID: 11400002}
   - 114: {fileID: 11400020}
-  - 114: {fileID: 11400006}
   m_Layer: 2
   m_Name: Player
   m_TagString: Player
@@ -792,7 +792,7 @@ MonoBehaviour:
   group: 0
   prefixBackup: -1
   observed: {fileID: 11400004}
-  synchronization: 3
+  synchronization: 2
   onSerializeTransformOption: 3
   onSerializeRigidBodyOption: 2
   instantiationId: -1

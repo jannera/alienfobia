@@ -83,22 +83,10 @@ namespace CompleteProject
             Debug.Log("Connected to Room");
             menuMusic.Stop();
             gameMusic.Play();
-            if (PhotonNetwork.isMasterClient)
-            {
-                CreatePlayer(PhotonNetwork.player.ID);
-            }
-            else
-            {
-                // ask the server to create the prefab
-                RPC<int>(CreatePlayer, PhotonTargets.MasterClient, PhotonNetwork.player.ID);
-            }
-        }
-
-        [RPC]
-        void CreatePlayer(int ownerId)
-        {
-            object[] p = { ownerId };
-            PhotonNetwork.InstantiateSceneObject(playerPrefab.name, Vector3.up * 0.5f, Quaternion.identity, 0, p);
+            
+            PhotonNetwork.Instantiate(playerPrefab.name, Vector3.zero,
+                Quaternion.identity, 0, new object[] { PhotonNetwork.player.ID });
+            
         }
     }
 }

@@ -29,7 +29,6 @@ namespace CompleteProject
 
         public int grenades = 3;
 
-        private bool isMine;
         private bool effectsDisplayedOnce = false;
 
 
@@ -44,8 +43,6 @@ namespace CompleteProject
             gunAudio = GetComponents<AudioSource>()[0];
             gunReload = GetComponents<AudioSource>()[1];
             gunLight = GetComponent<Light>();
-
-            isMine = PlayerManager.IsMyPlayer(gameObject);
         }
 
 
@@ -69,7 +66,7 @@ namespace CompleteProject
                 }
             }
 
-            if (!isMine)
+            if (!photonView.isMine)
             {
                 return;
             }
@@ -119,55 +116,6 @@ namespace CompleteProject
 
             RPC<Vector3>(EnableFiringEffects, PhotonTargets.All, hit);
         }
-
-        /*
-        public void Shoot2()
-        {
-            // TODO move this bullet/reload checking thing out of here
-            if (bullets == 0)
-            {
-                return;
-            }
-            --bullets;
-            if (bullets == 0)
-            {
-                StartReloading();
-                return;
-            }
-            // Reset the timer.
-            timer = 0f;
-
-            // Set the shootRay so that it starts at the end of the gun and points forward from the barrel.
-            shootRay.origin = transform.position;
-            shootRay.direction = transform.forward;
-
-            Vector3 firingEndPos;
-            // Perform the raycast against gameobjects on the shootable layer and if it hits something...
-            if (Physics.Raycast(shootRay, out shootHit, range, shootableMask))
-            {
-                // Try and find an EnemyHealth script on the gameobject hit.
-                EnemyHealth enemyHealth = shootHit.collider.GetComponent<EnemyHealth>();
-
-                // If the EnemyHealth component exist...
-                if (enemyHealth != null)
-                {
-                    // ... the enemy should take damage.
-                    enemyHealth.TakeDamage(damagePerShot, shootHit.point);
-                }
-
-                // Set the second position of the line renderer to the point the raycast hit.
-                firingEndPos = shootHit.point;
-            }
-            // If the raycast didn't hit anything on the shootable layer...
-            else
-            {
-                // ... set the second position of the line renderer to the fullest extent of the gun's range
-                firingEndPos = shootRay.origin + shootRay.direction * range;
-            }
-
-            RPC<Vector3>(EnableFiringEffects, PhotonTargets.All, firingEndPos);
-        }
-         * */
 
         [RPC]
         private void EnableFiringEffects(Vector3 firingEndPos)
