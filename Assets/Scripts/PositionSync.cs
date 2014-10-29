@@ -16,7 +16,6 @@ namespace CompleteProject
 
         void Awake()
         {
-            int ownerId = (int)photonView.instantiationData[0];
             syncTimestamp = double.NaN;
             maxVelSqr = maximumVelocity * maximumVelocity;
         }

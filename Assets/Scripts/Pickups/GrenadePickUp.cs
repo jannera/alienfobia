@@ -9,7 +9,7 @@ namespace CompleteProject
         {
             GameObject go = other.gameObject;
             // If the entering collider is the player...
-            if (go.CompareTag("Player"))
+            if (go.CompareTag("Player") && PlayerManager.GetMyPlayer() == go)
             {
                 PlayerShooting shooting = go.GetComponentInChildren<PlayerShooting>();
                 shooting.grenades++;

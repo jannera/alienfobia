@@ -9,7 +9,7 @@ namespace CompleteProject
         {
             GameObject go = other.gameObject;
             // If the entering collider is the player...
-            if (go.CompareTag("Player"))
+            if (go.CompareTag("Player") && PlayerManager.GetMyPlayer() == go)
             {
                 PlayerHealth health = go.GetComponentInChildren<PlayerHealth>();
                 health.AddHealth(30);

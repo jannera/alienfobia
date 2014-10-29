@@ -20,18 +20,13 @@ namespace CompleteProject
 
         private bool playingExplosionSound = false;
 
-
-        // todo: needs still some kind of position syncing
-
         // Use this for initialization
         void Start()
         {
             float angle = (float)photonView.instantiationData[0];
-            Debug.Log("angle " + angle);
             angle *= Mathf.Deg2Rad;
             startTime = Time.time;
 
-            // TODO all rigidbody stuff should only be done in the server side
             rigidbody.velocity = new Vector3(Mathf.Sin(angle), 0, Mathf.Cos(angle)) * startSpeed;
         }
 
@@ -42,7 +37,7 @@ namespace CompleteProject
             {
                 if (!explosionSound.isPlaying)
                 {
-                    if (PhotonNetwork.isMasterClient)
+                    if (photonView.isMine)
                     {
                         PhotonNetwork.Destroy(gameObject);
                     }
@@ -50,62 +45,52 @@ namespace CompleteProject
             }
             else if (Time.time - startTime > explosionTime)
             {
-                // pretty much any collision should explode it right?
-                RPC(CreateExplosion, PhotonTargets.MasterClient);
+                GetComponent<MeshRenderer>().enabled = false; // stop rendering the grenade, it's gone!
+                CreateExplosion();
                 explosionSound.Play();
                 playingExplosionSound = true;
             }
         }
 
-        [RPC]
         void CreateExplosion()
         {
-            if (PhotonNetwork.isMasterClient)
+            Collider[] hitColliders = Physics.OverlapSphere(transform.position, explosionRadius);
+
+            for (int i = 0; i < hitColliders.Length; i++)
             {
-                Collider[] hitColliders = Physics.OverlapSphere(transform.position, explosionRadius);
+                // todo push only enemies?
+                GameObject go = hitColliders[i].gameObject;
 
-                for (int i = 0; i < hitColliders.Length; i++)
+                EnemyHealth enemyHealth = go.GetComponent<EnemyHealth>();
+
+                // If the EnemyHealth component exist...
+                if (enemyHealth != null)
                 {
-                    // todo push only enemies?
-                    GameObject go = hitColliders[i].gameObject;
-
-                    EnemyHealth enemyHealth = go.GetComponent<EnemyHealth>();
-
-                    // If the EnemyHealth component exist...
-                    if (enemyHealth != null)
-                    {
-                        // ... the enemy should take damage.
-                        enemyHealth.TakeDamage(damagePerShot, go.transform.position);
-                    }
-
-                    if (go.GetComponent<Rigidbody>() == null)
-                    {
-                        continue;
-                    }
-
-                    if (go.CompareTag("Player"))
-                    {
-                        continue; // don't throw players around
-                    }
-
-                    if (go == gameObject)
-                    {
-                        continue; // don't throw yourself around
-                    }
-
-                    Vector3 fromExplosion = go.transform.position - transform.position;
-                    float forceMultiplier = explosionRadius / fromExplosion.magnitude;
-                    // bigger force at the center, lesser on the sides
-
-                    fromExplosion.Normalize();
-                    fromExplosion *= explosionForce * forceMultiplier;
-
-                    // Debug.Log("causing force " + fromExplosion);
-                    go.rigidbody.AddForce(fromExplosion);
+                    // ... the enemy should take damage.
+                    enemyHealth.TakeDamage(damagePerShot, go.transform.position);
                 }
-                object[] p = { };
-                PhotonNetwork.InstantiateSceneObject(explosionPreFab.name, transform.position, Quaternion.identity, 0, p);
+
+                if (go.GetComponent<Rigidbody>() == null)
+                {
+                    continue;
+                }
+
+                if (go.CompareTag("Grenade"))
+                {
+                    continue; // don't throw yourself or other grenades around
+                }
+
+                Vector3 fromExplosion = go.transform.position - transform.position;
+                float forceMultiplier = explosionRadius / fromExplosion.magnitude;
+                // bigger force at the center, lesser on the sides
+
+                fromExplosion.Normalize();
+                fromExplosion *= explosionForce * forceMultiplier;
+
+                // Debug.Log("causing force " + fromExplosion);
+                go.rigidbody.AddForce(fromExplosion);
             }
+            Instantiate(explosionPreFab, transform.position, Quaternion.identity);
         }
     }
 }

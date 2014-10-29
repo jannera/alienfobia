@@ -15,7 +15,7 @@ GameObject:
   - 114: {fileID: 11400002}
   m_Layer: 0
   m_Name: GrenadePickUp
-  m_TagString: Untagged
+  m_TagString: Grenade
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -82,7 +82,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52c2b49dde36b5a47afdaf1195bb5f8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 0
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -99,10 +98,10 @@ MonoBehaviour:
   group: 0
   prefixBackup: -1
   observed: {fileID: 0}
-  synchronization: 0
+  synchronization: 2
   onSerializeTransformOption: 3
   onSerializeRigidBodyOption: 2
-  instantiationId: 0
+  instantiationId: -1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
