@@ -303,6 +303,7 @@ MonoBehaviour:
   deathClip: {fileID: 8300000, guid: 62366b8d2c37a49dca550841c741317f, type: 3}
   pickUpGenChance: .0399999991
   droppedPickUp: {fileID: 100000, guid: bba06026d75ef5f45957a3b1577b9067, type: 2}
+  pickups: {fileID: 11400000, guid: 8cb9837be773a1942947be5c61581418, type: 2}
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -347,7 +348,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c998bede0a53dbc439621ce143f225e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isMine: 0
   movementEpsilon: .00100000005
   maximumVelocity: 4
   maxVelocityStepInSecond: 5

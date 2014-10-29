@@ -20,8 +20,9 @@ namespace CompleteProject
         bool isSinking;                             // Whether the enemy has started sinking through the floor.
 
         public float pickUpGenChance = 0.4f;
-        public GameObject droppedPickUp;
         private float sinkingTimer = 0;
+
+        public PickUpRandomizer pickups;
 
         void Awake()
         {
@@ -117,11 +118,7 @@ namespace CompleteProject
             enemyAudio.Play();
 
             // randomly generate a pickup
-            if (PhotonNetwork.isMasterClient && UnityEngine.Random.Range(0f, 1f) < pickUpGenChance)
-            {
-                object[] p = { };
-                PhotonNetwork.InstantiateSceneObject(droppedPickUp.name, transform.position + Vector3.up * 1f, Quaternion.identity, 0, p);
-            }
+            pickups.DropRandomly(pickUpGenChance, transform.position + Vector3.up * 1f);
         }
 
 
