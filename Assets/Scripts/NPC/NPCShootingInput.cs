@@ -13,8 +13,8 @@ namespace CompleteProject
         RaycastHit shootHit;
         GameObject myPlayer;
 
-        private Quaternion targetRotation;
         private PlayerHealth ownHealth;
+        private PlayerMovement playerMovement;
 
         // Use this for initialization
         void Start()
@@ -26,7 +26,7 @@ namespace CompleteProject
             else
             {
                 myPlayer = PlayerManager.GetMyPlayer();
-                targetRotation = myPlayer.transform.rotation;
+                playerMovement = GetComponentInParent<PlayerMovement>();
                 ownHealth = GetComponentInParent<PlayerHealth>();
             }
         }
@@ -38,9 +38,6 @@ namespace CompleteProject
             {
                 return; // stop moving when dead
             }
-
-            // rotate towards the target
-            myPlayer.transform.rotation = Quaternion.Slerp(myPlayer.transform.rotation, targetRotation, Time.deltaTime * smoothTurning);
 
             if (!playerShooting.CanFire())
             {
@@ -63,7 +60,7 @@ namespace CompleteProject
             }
 
             // start turning the player towards the enemy
-            targetRotation = Quaternion.LookRotation(enemy.transform.position - myPlayer.transform.position);
+            playerMovement.StartTurningTowards(Quaternion.LookRotation(enemy.transform.position - myPlayer.transform.position));
 
             playerShooting.Shoot(enemy, enemy.transform.position);
         }

@@ -1298,10 +1298,10 @@ MonoBehaviour:
   toBeGenerated: {fileID: 100002, guid: e5171f72421770240bd7c3989fe351e3, type: 2}
   spawnRange: 20
   secBetweenWaves: 10
-  spawnedPerWave: 5
+  spawnedPerWave: 8
   wavesPerLevel: 4
-  increase: 5
-  maxSpawns: 20
+  increase: 1
+  maxSpawns: 12
   playerSafetyDistance: 10
 --- !u!1 &45787890
 GameObject:
@@ -11973,10 +11973,10 @@ MonoBehaviour:
   toBeGenerated: {fileID: 100000, guid: ea3c2728ef33e3a4d99527a86cda6465, type: 2}
   spawnRange: 20
   secBetweenWaves: 10
-  spawnedPerWave: 5
+  spawnedPerWave: 8
   wavesPerLevel: 4
-  increase: 5
-  maxSpawns: 20
+  increase: 1
+  maxSpawns: 12
   playerSafetyDistance: 10
 --- !u!4 &1255646100
 Transform:

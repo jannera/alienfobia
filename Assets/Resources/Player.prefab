@@ -252,6 +252,7 @@ GameObject:
   - 114: {fileID: 11400004}
   - 114: {fileID: 11400002}
   - 114: {fileID: 11400020}
+  - 114: {fileID: 11400022}
   m_Layer: 2
   m_Name: Player
   m_TagString: Player
@@ -824,7 +825,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   avoidanceRadius: 10
   indicatorPreFab: {fileID: 100000, guid: 9d4df303ff3400d4f8393a36d2f23b97, type: 2}
-  forceMultiplier: 15
 --- !u!114 &11400008
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -848,11 +848,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b2268f9c7df8764aa2e92dbf55b5ae1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 14
-  smoothTurning: 10
-  force: 3000
-  rotationSyncPreFab: {fileID: 100000, guid: d41d16335f364e24c9991b87a104fcc3, type: 2}
-  positionController: {fileID: 11400004}
 --- !u!114 &11400012
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -926,6 +921,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   photonView: {fileID: 11400002}
   ownerID: 0
+--- !u!114 &11400022
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 018b8d107fd4131408fc619803733cfe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
+  smoothTurning: 10
+  rotationSyncPreFab: {fileID: 100000, guid: d41d16335f364e24c9991b87a104fcc3, type: 2}
 --- !u!120 &12000000
 LineRenderer:
   m_ObjectHideFlags: 1

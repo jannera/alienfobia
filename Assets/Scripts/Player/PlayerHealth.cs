@@ -12,7 +12,7 @@ namespace CompleteProject
         public AudioClip deathClip;                                 // The audio clip to play when the player dies
         Animator anim;                                              // Reference to the Animator component.
         AudioSource playerAudio;                                    // Reference to the AudioSource component.
-        PlayerMovement playerMovement;                              // Reference to the player's movement.
+        PlayerMovementInput playerMovement;                              // Reference to the player's movement.
         PlayerShooting playerShooting;                              // Reference to the PlayerShooting script.
         public bool isDead { get; private set; }                           // Whether the player is dead.
 
@@ -24,7 +24,7 @@ namespace CompleteProject
             // Setting up the references.
             anim = GetComponent<Animator>();
             playerAudio = GetComponent<AudioSource>();
-            playerMovement = GetComponent<PlayerMovement>();
+            playerMovement = GetComponent<PlayerMovementInput>();
             playerShooting = GetComponentInChildren<PlayerShooting>();
 
             // Set the initial health of the player.

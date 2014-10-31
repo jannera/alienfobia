@@ -22,14 +22,14 @@ namespace CompleteProject
         private const int ENEMY_COST = -3;
         private Ray hitRay;
         private RaycastHit shootHit;
-        public float forceMultiplier = 3f;
         private PlayerHealth ownHealth;
+
+        PlayerMovement playerMovement;
 
         void Awake()
         {
-            if (Application.dataPath.Contains("alienfobia_npc") && photonView.isMine)
+            if (PlayerManager.IsNPCClient() && photonView.isMine)
             {
-                Destroy(GetComponent<PlayerMovement>());
                 nav = GetComponent<NavMeshAgent>();
                 nav.Stop();
                 valueArr = new float[sectors];
@@ -39,12 +39,14 @@ namespace CompleteProject
                 meshRenderers = go.GetComponentsInChildren<MeshRenderer>();
                 hitRay = new Ray();
                 ownHealth = GetComponent<PlayerHealth>();
+                playerMovement = GetComponent<PlayerMovement>();
                 Debug.Log("NPC awakening!");
             }
             else
             {
                 Destroy(GetComponent<NavMeshAgent>());
                 Destroy(this);
+                return;
             }
             nextWayPoint = transform.position;
         }
@@ -254,20 +256,8 @@ namespace CompleteProject
         {
             int sector = GetBestSector();
             Vector3 target = GetVector(sector);
-            target.Normalize();
 
-            float multiplier = forceMultiplier;
-            if (photonView.isMine)
-            {
-                multiplier *= 100;
-                // ugly hack. jury's still out on the ownership of the player characters.. so fix this unless we change the ownership
-            }
-
-            target *= Time.deltaTime * multiplier;
-            // Debug.Log(target);
-
-            //RPC<Vector3>(ApplyForce, PhotonTargets.MasterClient, target);
-            ApplyForce(target);
+            playerMovement.Move(target);
         }
 
         private void UpdateSectorIndicators()
@@ -294,12 +284,6 @@ namespace CompleteProject
                 }
                 meshRenderers[i].material.color = c;
             }
-        }
-
-        [RPC]
-        public void ApplyForce(Vector3 movement)
-        {
-            rigidbody.AddForce(movement);
         }
     }
 
