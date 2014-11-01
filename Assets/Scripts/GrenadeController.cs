@@ -45,7 +45,8 @@ namespace CompleteProject
             }
             else if (Time.time - startTime > explosionTime)
             {
-                GetComponent<MeshRenderer>().enabled = false; // stop rendering the grenade, it's gone!
+                GetComponentInChildren<MeshRenderer>().enabled = false; // stop rendering the grenade, it's gone!
+                GetComponent<Light>().enabled = false;
                 CreateExplosion();
                 explosionSound.Play();
                 playingExplosionSound = true;
