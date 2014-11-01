@@ -20,6 +20,7 @@ namespace CompleteProject
         {
             PhotonNetwork.ConnectUsingSettings("0.1");
             roomName = System.Environment.UserName + "@" + System.Environment.MachineName;
+            SetPlayerName();
         }
 
         private string roomName;
@@ -86,7 +87,22 @@ namespace CompleteProject
             
             PhotonNetwork.Instantiate(playerPrefab.name, Vector3.zero,
                 Quaternion.identity, 0, new object[] { PhotonNetwork.player.ID });
-            
+        }
+
+        void SetPlayerName()
+        {
+            string name;
+            if (automaticGameStarting)
+            {
+                string path = Application.dataPath;
+                string[] parts = path.Split('/');
+                name = parts[parts.Length - 2];
+            }
+            else
+            {
+                name = System.Environment.UserName;
+            }
+            PhotonNetwork.player.name = name;
         }
     }
 }
