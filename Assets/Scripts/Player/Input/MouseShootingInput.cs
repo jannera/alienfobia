@@ -26,9 +26,9 @@ namespace CompleteProject
             if (Input.GetButton("Fire1") && playerShooting.CanFire())
             {
                 // todo check the bullet things here
-                if (playerShooting.bullets == 0)
+                if (playerShooting.currentAmmo == 0)
                 {
-                    if (!playerShooting.isReloading)
+                    if (!playerShooting.IsReloading())
                     {
                         playerShooting.StartReloading();
                     }
@@ -39,7 +39,7 @@ namespace CompleteProject
                 }
             }
 
-            if (Input.GetKey(KeyCode.R) && !playerShooting.isReloading)
+            if (Input.GetKey(KeyCode.R) && !playerShooting.IsReloading())
             {
                 playerShooting.StartReloading();
             }

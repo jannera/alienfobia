@@ -7,7 +7,7 @@ namespace CompleteProject
     public class UIBulletCounter : MonoBehaviour
     {
         private Slider slider;
-        private PlayerShooting playerShooting;
+        private WeaponSelector weaponSelector;
         
         void Start()
         {
@@ -17,21 +17,22 @@ namespace CompleteProject
         // Update is called once per frame
         void Update()
         {
-            if (playerShooting == null)
+            if (weaponSelector == null)
             {
-                playerShooting = PlayerManager.GetComponentFromMyPlayer<PlayerShooting>();
-                if (playerShooting == null)
+                weaponSelector = PlayerManager.GetComponentFromMyPlayer<WeaponSelector>();
+                if (weaponSelector == null)
                 {
                     return;
                 }
             }
-            
-            slider.maxValue = PlayerShooting.clipSize;
-            int bullets = playerShooting.bullets;
-            if (playerShooting.isReloading)
+
+            Weapon weapon = weaponSelector.GetCurrentWeapon(); // TODO: instead of this constant polling, WeaponSelected should for example send an event when the weapon is changed
+            slider.maxValue = weapon.clipSize;
+            int bullets = weapon.currentAmmo;
+            if (weapon.IsReloading())
             {
                 // todo slide based on 
-                slider.value = slider.maxValue * playerShooting.ReloadStatus();
+                slider.value = slider.maxValue * weapon.ReloadReadiness();
             }
             else
             {

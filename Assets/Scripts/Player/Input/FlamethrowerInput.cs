@@ -1,46 +1,38 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class FlamethrowerInput : MonoBehaviour {
+namespace CompleteProject
+{
+    public class FlamethrowerInput : MonoBehaviour {
+        private FlamethrowerWeapon weapon;
+        private WeaponSelector selector;
 
-    private ParticleSystem particles;
-    private AudioSource audio;
-    private const float fadeOutTime = 0.5f;
-    private float fader;
-
-	// Use this for initialization
-	void Awake() {
-        particles = GetComponent<ParticleSystem>();
-        audio = GetComponent<AudioSource>();
-
-        particles.Stop();
-        audio.Stop();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-        if (Input.GetButton("Fire1"))
+        void Awake()
         {
-            particles.Play();
-            audio.volume = 1f;
-            fader = fadeOutTime;
+            weapon = GetComponent<FlamethrowerWeapon>();
+            selector = PlayerManager.GetComponentFromMyPlayer<WeaponSelector>();
+        }
 
-            if (!audio.isPlaying)
+	    // Update is called once per frame
+	    void Update () {
+            if (Input.GetButton("Fire1"))
             {
-                audio.Play();    
-                audio.time = 0.5f;
+                if (weapon.CanFire())
+                {
+                    weapon.isFiring = true;
+                }
+                else
+                {
+                    // ran out of ammo, switch to basic weapon
+                    weapon.isFiring = false;
+                    selector.ActivateBasicWeapon();
+                }
+                
             }
-        }
-        else
-        {
-            fader -= Time.deltaTime;
-            if (fader < 0)
+            else
             {
-                fader = 0;
-                audio.Stop();
+                weapon.isFiring = false;
             }
-            particles.Stop();
-            audio.volume = fader / fadeOutTime;
-        }
-	}
+	    }
+    }
 }

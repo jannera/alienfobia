@@ -2,7 +2,7 @@
 
 namespace CompleteProject
 {
-    public class PlayerShooting : CompleteProject.PhotonBehaviour
+    public class PlayerShooting : Weapon
     {
         public int damagePerShot = 20;                  // The damage inflicted by each bullet.
         public float timeBetweenBullets = 0.15f;        // The time between each shot.
@@ -18,14 +18,13 @@ namespace CompleteProject
         AudioSource gunReload;
         Light gunLight;                                 // Reference to the light component.
         float effectsDisplayTime = 0.2f;                // The proportion of the timeBetweenBullets that the effects will display for.
-        public const int clipSize = 60;
-        public int bullets = clipSize;
-        public bool isReloading { get; private set; }
+        private bool isReloading;
 
         private bool effectsDisplayedOnce = false;
 
         void Awake()
         {
+            currentAmmo = clipSize;
             // Create a layer mask for the Shootable layer.
             shootableMask = LayerMask.GetMask("Shootable");
 
@@ -69,7 +68,7 @@ namespace CompleteProject
 
             if (reloadTimer >= timeToReload && isReloading)
             {
-                bullets = clipSize;
+                currentAmmo = clipSize;
                 isReloading = false;
             }
         }
@@ -83,7 +82,7 @@ namespace CompleteProject
 
         public void StartReloading()
         {
-            bullets = 0;
+            currentAmmo = 0;
             reloadTimer = 0f;
             isReloading = true;
             gunReload.Play();
@@ -91,7 +90,7 @@ namespace CompleteProject
 
         public void Shoot(GameObject enemy, Vector3 hit)
         {
-            --bullets;
+            --currentAmmo;
             timer = 0f;
 
             if (enemy != null)
@@ -130,19 +129,24 @@ namespace CompleteProject
         }        
 
         // returns a number between 0 and 1 that tells how ready reloading is
-        public float ReloadStatus()
+        public override float ReloadReadiness()
         {
             return Mathf.Clamp(reloadTimer / timeToReload, 0, 1);
         }
 
-        public bool CanFire()
+        public override bool CanFire()
         {
             return timer >= timeBetweenBullets && !isReloading;
         }
 
         public bool IsFullClip()
         {
-            return bullets == clipSize;
+            return currentAmmo == clipSize;
+        }
+
+        public override bool IsReloading()
+        {
+            return isReloading;
         }
     }
 }

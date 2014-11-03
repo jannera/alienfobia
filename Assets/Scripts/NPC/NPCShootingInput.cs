@@ -44,9 +44,9 @@ namespace CompleteProject
                 return;
             }
 
-            if (playerShooting.bullets == 0)
+            if (playerShooting.currentAmmo == 0)
             {
-                if (!playerShooting.isReloading)
+                if (!playerShooting.IsReloading())
                 {
                     playerShooting.StartReloading();
                 }

@@ -5,6 +5,7 @@ namespace CompleteProject
 {
     public class WeaponSelector : MonoBehaviour
     {
+        private int currentWeapon;
 
         void Awake()
         {
@@ -30,17 +31,6 @@ namespace CompleteProject
             }
         }
 
-        public void Activate(string name)
-        {
-            foreach (Transform child in transform)
-            {
-                if (child.CompareTag("InventoryWeapon"))
-                {
-                    child.gameObject.SetActive(child.gameObject.name == name);
-                }
-            }
-        }
-
         public void Activate(int index)
         {
             int i = 0;
@@ -52,6 +42,29 @@ namespace CompleteProject
                     i++;
                 }
             }
+            currentWeapon = index;
+        }
+
+        public void ActivateBasicWeapon()
+        {
+            Activate(0);
+        }
+
+        public Weapon GetCurrentWeapon()
+        {
+            int i = 0;
+            foreach (Transform child in transform)
+            {
+                if (child.CompareTag("InventoryWeapon"))
+                {
+                    if (i == currentWeapon)
+                    {
+                        return child.GetComponentInChildren<Weapon>();
+                    }
+                    i++;
+                }
+            }
+            return null;
         }
     }
 }
