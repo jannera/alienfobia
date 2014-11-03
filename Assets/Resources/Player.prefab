@@ -307,26 +307,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!1 &100036
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 400036}
-  - 33: {fileID: 3300000}
-  - 65: {fileID: 6500000}
-  - 23: {fileID: 2300000}
-  - 114: {fileID: 11400026}
-  - 114: {fileID: 11400028}
-  m_Layer: 0
-  m_Name: Damage area
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &100038
 GameObject:
   m_ObjectHideFlags: 1
@@ -337,6 +317,9 @@ GameObject:
   - 4: {fileID: 400038}
   - 198: {fileID: 19800008}
   - 199: {fileID: 19900008}
+  - 114: {fileID: 11400030}
+  - 114: {fileID: 11400026}
+  - 82: {fileID: 8200002}
   m_Layer: 0
   m_Name: Particle System (fire)
   m_TagString: Untagged
@@ -548,7 +531,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 400036}
+  - {fileID: 400038}
   - {fileID: 400024}
   m_Father: {fileID: 400028}
   m_RootOrder: 1
@@ -578,19 +561,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 400028}
   m_RootOrder: 3
---- !u!4 &400036
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100036}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .356269985, y: .729189992, z: 4.6868}
-  m_LocalScale: {x: 2, y: 1.39999998, z: 8.19999981}
-  m_Children:
-  - {fileID: 400038}
-  m_Father: {fileID: 400030}
-  m_RootOrder: 0
 --- !u!4 &400038
 Transform:
   m_ObjectHideFlags: 1
@@ -598,38 +568,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100038}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -.134990007, z: -.41832}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: .356269985, y: .540199995, z: .807600021}
+  m_LocalScale: {x: 2, y: 1.39999998, z: 8.19999981}
   m_Children: []
-  m_Father: {fileID: 400036}
+  m_Father: {fileID: 400030}
   m_RootOrder: 0
---- !u!23 &2300000
-Renderer:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100036}
-  m_Enabled: 0
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
-  m_Materials:
-  - {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 0
-  m_LightProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
---- !u!33 &3300000
-MeshFilter:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100036}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!54 &5400000
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -645,18 +588,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
---- !u!65 &6500000
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100036}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!82 &8200000
 AudioSource:
   m_ObjectHideFlags: 1
@@ -692,6 +623,64 @@ AudioSource:
       value: 0
       inSlope: 0
       outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+--- !u!82 &8200002
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100038}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_audioClip: {fileID: 8300000, guid: 7451ba41040e1204badc62033b338295, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 2
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: .00200000009
+      value: 1
+      inSlope: -.111123383
+      outSlope: -.111123383
+      tangentMode: 0
+    - time: 1
+      value: .842105269
+      inSlope: -.022368338
+      outSlope: -.022368338
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -1139,24 +1128,24 @@ MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100036}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9cf1eca505409684e977adc58f43b69d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damagePerUpdate: 2
---- !u!114 &11400028
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100036}
+  m_GameObject: {fileID: 100038}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 31d80b641f7fd4848957a80e955b32c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11400030
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 523fa413479b52748a9a96496edc7c81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damagePerUpdate: 10
 --- !u!120 &12000000
 LineRenderer:
   m_ObjectHideFlags: 1
@@ -6604,10 +6593,10 @@ ParticleSystem:
     particleRadius: .00999999978
     collidesWith:
       serializedVersion: 2
-      m_Bits: 4294966783
+      m_Bits: 4294967295
     quality: 0
     voxelSize: .5
-    collisionMessages: 0
+    collisionMessages: 1
   SubModule:
     enabled: 0
     subEmitterBirth: {fileID: 0}
