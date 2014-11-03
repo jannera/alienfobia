@@ -6,13 +6,10 @@ namespace CompleteProject
     {
         public int damagePerShot = 20;                  // The damage inflicted by each bullet.
         public float timeBetweenBullets = 0.15f;        // The time between each shot.
-        public float timeBetweenGrenades = 2f;
         public float timeToReload = 1f;
         public float range = 100f;                      // The distance the gun can fire.
 
-
         float timer;                                    // A timer to determine when to fire.
-        float grenadeTimer = 0;
         float reloadTimer = 0;
         public int shootableMask { get; private set; }  // A layer mask so the raycast only hits things on the shootable layer.
         ParticleSystem gunParticles;                    // Reference to the particle system.
@@ -25,12 +22,7 @@ namespace CompleteProject
         public int bullets = clipSize;
         public bool isReloading { get; private set; }
 
-        public GameObject grenadePreFab;
-
-        public int grenades = 3;
-
         private bool effectsDisplayedOnce = false;
-
 
         void Awake()
         {
@@ -73,7 +65,6 @@ namespace CompleteProject
 
             // EXECUTED FOR ONLY THE OWNING PLAYER
 
-            grenadeTimer += Time.deltaTime;
             reloadTimer += Time.deltaTime;
 
             if (reloadTimer >= timeToReload && isReloading)
@@ -82,7 +73,6 @@ namespace CompleteProject
                 isReloading = false;
             }
         }
-
 
         public void DisableEffects()
         {
@@ -137,16 +127,7 @@ namespace CompleteProject
             gunLine.SetPosition(0, transform.position);
             gunLine.SetPosition(1, firingEndPos);
             effectsDisplayedOnce = false;
-        }
-
-        public void ThrowGrenade()
-        {
-            grenadeTimer = 0f;
-            grenades--;
-
-            object[] p = { transform.rotation.eulerAngles.y };
-            PhotonNetwork.Instantiate(grenadePreFab.name, transform.position, Quaternion.identity, 0, p);
-        }
+        }        
 
         // returns a number between 0 and 1 that tells how ready reloading is
         public float ReloadStatus()
@@ -157,11 +138,6 @@ namespace CompleteProject
         public bool CanFire()
         {
             return timer >= timeBetweenBullets && !isReloading;
-        }
-
-        public bool CanThrowGrenade()
-        {
-            return grenadeTimer >= timeBetweenGrenades && grenades > 0;
         }
 
         public bool IsFullClip()

@@ -7,7 +7,7 @@ namespace CompleteProject
     public class GrenadeCounter : MonoBehaviour
     {
         private Text text;
-        private PlayerShooting playerShooting;
+        private GrenadeThrowing grenadeThrowing;
         // Use this for initialization
         void Start()
         {
@@ -17,17 +17,17 @@ namespace CompleteProject
         // Update is called once per frame
         void Update()
         {
-            if (playerShooting == null)
+            if (grenadeThrowing == null)
             {
-                playerShooting = PlayerManager.GetComponentFromMyPlayer<PlayerShooting>();
-                if (playerShooting == null)
+                grenadeThrowing = PlayerManager.GetComponentFromMyPlayer<GrenadeThrowing>();
+                if (grenadeThrowing == null)
                 {
                     text.text = "";
                     return;
                 }
             }
 
-            text.text = "X " + playerShooting.grenades;
+            text.text = "X " + grenadeThrowing.grenades;
         }
     }
 

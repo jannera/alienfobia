@@ -7,8 +7,8 @@ namespace CompleteProject
     {
         override protected void PickedUp(GameObject player)
         {
-            PlayerShooting shooting = player.GetComponentInChildren<PlayerShooting>();
-            shooting.grenades++;
+            GrenadeThrowing throwing = player.GetComponent<GrenadeThrowing>();
+            throwing.grenades++;
         }
     }
 }

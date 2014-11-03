@@ -254,6 +254,8 @@ GameObject:
   - 114: {fileID: 11400020}
   - 114: {fileID: 11400022}
   - 114: {fileID: 11400024}
+  - 114: {fileID: 11400028}
+  - 114: {fileID: 11400032}
   m_Layer: 2
   m_Name: Player
   m_TagString: Player
@@ -949,12 +951,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damagePerShot: 20
   timeBetweenBullets: .0799999982
-  timeBetweenGrenades: 2
   timeToReload: 1
   range: 100
   bullets: 60
-  grenadePreFab: {fileID: 100000, guid: b743cdf137c1571409b16c5c9f7cf9d2, type: 2}
-  grenades: 3
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1134,6 +1133,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31d80b641f7fd4848957a80e955b32c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11400028
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba4be1a7812166c4f85ef32f2316f219, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11400030
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1146,6 +1156,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damagePerUpdate: 10
+--- !u!114 &11400032
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 883df245e79d3de43a4eec15f1dee930, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeBetweenGrenades: .800000012
+  grenadePreFab: {fileID: 100000, guid: b743cdf137c1571409b16c5c9f7cf9d2, type: 2}
+  grenades: 3
 --- !u!120 &12000000
 LineRenderer:
   m_ObjectHideFlags: 1

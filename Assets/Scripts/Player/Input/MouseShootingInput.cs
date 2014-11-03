@@ -39,11 +39,6 @@ namespace CompleteProject
                 }
             }
 
-            if (Input.GetButton("Fire2") && playerShooting.CanThrowGrenade())
-            {
-                playerShooting.ThrowGrenade();
-            }
-
             if (Input.GetKey(KeyCode.R) && !playerShooting.isReloading)
             {
                 playerShooting.StartReloading();
