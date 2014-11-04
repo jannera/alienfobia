@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using UnityEngine;
 
 namespace CompleteProject
 {
@@ -9,6 +10,7 @@ namespace CompleteProject
     {
         public int clipSize;
         public int currentAmmo;
+        public Sprite ammoSprite;
 
         public abstract bool IsReloading();
 

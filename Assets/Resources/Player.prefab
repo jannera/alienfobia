@@ -952,6 +952,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clipSize: 60
   currentAmmo: 0
+  ammoSprite: {fileID: 21300000, guid: da1ae7800df9bda4a876d97a2bbe1ee0, type: 3}
   damagePerShot: 20
   timeBetweenBullets: .0799999982
   timeToReload: 1
@@ -1185,6 +1186,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clipSize: 40
   currentAmmo: 10
+  ammoSprite: {fileID: 21300000, guid: d2b13cd4700b1a14c8ece6e8e4cf987a, type: 3}
   isFiring: 0
 --- !u!120 &12000000
 LineRenderer:

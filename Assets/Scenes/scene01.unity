@@ -1301,7 +1301,7 @@ MonoBehaviour:
   spawnedPerWave: 8
   wavesPerLevel: 4
   increase: 1
-  maxSpawns: 12
+  maxSpawns: 20
   playerSafetyDistance: 10
 --- !u!1 &45787890
 GameObject:
@@ -11976,7 +11976,7 @@ MonoBehaviour:
   spawnedPerWave: 8
   wavesPerLevel: 4
   increase: 1
-  maxSpawns: 12
+  maxSpawns: 20
   playerSafetyDistance: 10
 --- !u!4 &1255646100
 Transform:
@@ -15985,6 +15985,7 @@ GameObject:
   - 224: {fileID: 1584522353}
   - 222: {fileID: 1584522355}
   - 114: {fileID: 1584522354}
+  - 114: {fileID: 1584522356}
   m_Layer: 5
   m_Name: Ammo Icon
   m_TagString: Untagged
@@ -16037,6 +16038,17 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1584522352}
   m_HideIfInvisible: 0
+--- !u!114 &1584522356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1584522352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e98179535ed6e64e8fc9a10963d5026, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1587855689
 GameObject:
   m_ObjectHideFlags: 0
@@ -18270,7 +18282,7 @@ MonoBehaviour:
   spawnedPerWave: 2
   wavesPerLevel: 4
   increase: 2
-  maxSpawns: 4
+  maxSpawns: 6
   playerSafetyDistance: 10
 --- !u!4 &1778951742
 Transform:

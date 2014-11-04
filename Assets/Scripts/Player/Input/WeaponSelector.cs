@@ -6,6 +6,9 @@ namespace CompleteProject
 {
     public class WeaponSelector : MonoBehaviour
     {
+        public delegate void WeaponChangedAction(Weapon newWeapon);
+        public event WeaponChangedAction OnWeaponChanged;
+
         private int currentWeapon;
         public List<Weapon> weapons { get; private set; }
 
@@ -37,15 +40,24 @@ namespace CompleteProject
         public void Activate(int index)
         {
             int i = 0;
+            Weapon w = null;
             foreach (Transform child in transform)
             {
                 if (child.CompareTag("InventoryWeapon"))
                 {
                     child.gameObject.SetActive(i == index);
+                    if (i == index)
+                    {
+                        w = child.GetComponentInChildren<Weapon>();
+                    }
                     i++;
                 }
             }
             currentWeapon = index;
+            if (w != null && OnWeaponChanged != null)
+            {
+                OnWeaponChanged(w);
+            }
         }
 
         public void ActivateBasicWeapon()

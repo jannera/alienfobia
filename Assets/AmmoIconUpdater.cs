@@ -4,15 +4,16 @@ using UnityEngine.UI;
 
 namespace CompleteProject
 {
-    public class UIBulletCounter : MonoBehaviour
+    public class AmmoIconUpdater : MonoBehaviour
     {
-        private Slider slider;
         private WeaponSelector weaponSelector;
         private Weapon activeWeapon = null;
-        
+        private Image ammoIcon;
+
+        // Use this for initialization
         void Start()
         {
-            slider = GetComponent<Slider>();
+            ammoIcon = GetComponent<Image>();
         }
 
         // Update is called once per frame
@@ -27,34 +28,15 @@ namespace CompleteProject
                 {
                     return;
                 }
-                activeWeapon = weaponSelector.GetCurrentWeapon();
+                OnWeaponChanged(weaponSelector.GetCurrentWeapon());
 
                 weaponSelector.OnWeaponChanged += OnWeaponChanged;
             }
-
-            if (activeWeapon == null)
-            {
-                return;
-            }
-
-
-            slider.maxValue = activeWeapon.clipSize;
-            int bullets = activeWeapon.currentAmmo;
-            if (activeWeapon.IsReloading())
-            {
-                slider.value = slider.maxValue * activeWeapon.ReloadReadiness();
-            }
-            else
-            {
-                slider.value = bullets;
-            }
-
         }
 
         void OnWeaponChanged(Weapon w)
         {
-            activeWeapon = w;
+            ammoIcon.sprite = w.ammoSprite;
         }
     }
-
 }
