@@ -42,6 +42,7 @@ MonoBehaviour:
   possibleDrops:
   - {fileID: 100000, guid: bba06026d75ef5f45957a3b1577b9067, type: 2}
   - {fileID: 100000, guid: c67c54f4243bb4d4bb92376f3d7b4b65, type: 2}
+  - {fileID: 100000, guid: 5e75d48dc7bdcb246bc43a166a3b1b92, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

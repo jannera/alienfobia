@@ -15,5 +15,16 @@ namespace CompleteProject
         public abstract float ReloadReadiness();
 
         public abstract bool CanFire();
+
+        public abstract bool HasInfiniteClips();
+
+        public void ReceiveAmmo(int increase)
+        {
+            currentAmmo += increase;
+            if (currentAmmo > clipSize)
+            {
+                currentAmmo = clipSize;
+            }
+        }
     }
 }

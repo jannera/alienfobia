@@ -77,5 +77,10 @@ namespace CompleteProject
         {
             return currentAmmo > 0;
         }
+
+        public override bool HasInfiniteClips()
+        {
+            return false;
+        }
     }
 }

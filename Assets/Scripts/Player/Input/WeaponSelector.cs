@@ -1,14 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace CompleteProject
 {
     public class WeaponSelector : MonoBehaviour
     {
         private int currentWeapon;
+        public List<Weapon> weapons { get; private set; }
 
         void Awake()
         {
+            weapons = GetWeaponsList();
             Activate(0);
         }
 
@@ -65,6 +68,24 @@ namespace CompleteProject
                 }
             }
             return null;
+        }
+
+        private List<Weapon> GetWeaponsList()
+        {
+            List<Weapon> results = new List<Weapon>();
+
+            foreach (Transform child in transform)
+            {
+                if (child.CompareTag("InventoryWeapon"))
+                {
+                    Weapon w = child.GetComponentInChildren<Weapon>();
+                    if (w != null)
+                    {
+                        results.Add(w);
+                    }
+                }
+            }
+            return results;
         }
     }
 }

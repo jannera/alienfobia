@@ -148,5 +148,10 @@ namespace CompleteProject
         {
             return isReloading;
         }
+
+        public override bool HasInfiniteClips()
+        {
+            return true;
+        }
     }
 }
