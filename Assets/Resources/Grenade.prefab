@@ -246,12 +246,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startSpeed: 15
-  explosionRadius: 5
+  explosionRadius: 7
   explosionForce: 1000
   damagePerShot: 100
   explosionPreFab: {fileID: 100000, guid: 5199f6d2be20e184f879573d3f65c0ac, type: 2}
   explosionSound: {fileID: 8200000}
-  explosionTime: 1
+  explosionTime: .800000012
   startTime: 0
 --- !u!135 &13500000
 SphereCollider:

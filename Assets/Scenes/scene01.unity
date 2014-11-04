@@ -1300,8 +1300,8 @@ MonoBehaviour:
   secBetweenWaves: 10
   spawnedPerWave: 8
   wavesPerLevel: 4
-  increase: 1
-  maxSpawns: 20
+  increase: 2
+  maxSpawns: 40
   playerSafetyDistance: 10
 --- !u!1 &45787890
 GameObject:
@@ -11975,8 +11975,8 @@ MonoBehaviour:
   secBetweenWaves: 10
   spawnedPerWave: 8
   wavesPerLevel: 4
-  increase: 1
-  maxSpawns: 20
+  increase: 2
+  maxSpawns: 40
   playerSafetyDistance: 10
 --- !u!4 &1255646100
 Transform:
@@ -18282,7 +18282,7 @@ MonoBehaviour:
   spawnedPerWave: 2
   wavesPerLevel: 4
   increase: 2
-  maxSpawns: 6
+  maxSpawns: 8
   playerSafetyDistance: 10
 --- !u!4 &1778951742
 Transform:

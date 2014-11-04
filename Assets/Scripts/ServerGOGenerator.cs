@@ -66,7 +66,7 @@ namespace CompleteProject
         {
             if (currentWave % wavesPerLevel == 0)
             {
-                if (currentWave < maxSpawns)
+                if (currentSpawns < maxSpawns)
                 {
                     currentSpawns += increase;
                     Debug.Log("Increasing monster count per wave to " + currentSpawns);
