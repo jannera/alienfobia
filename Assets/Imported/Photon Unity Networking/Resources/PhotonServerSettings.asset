@@ -42,4 +42,5 @@ MonoBehaviour:
   - StartEffects
   - ReduceHealth
   - RemovePickUp
+  - ActivateProxy
   DisableAutoOpenWizard: 0

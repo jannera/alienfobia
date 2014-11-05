@@ -308,6 +308,7 @@ GameObject:
   - 114: {fileID: 11400026}
   - 82: {fileID: 8200002}
   - 114: {fileID: 11400034}
+  - 114: {fileID: 11400038}
   m_Layer: 0
   m_Name: Particle System (fire)
   m_TagString: Untagged
@@ -1171,6 +1172,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb7908e4b7f6bb24e9bb3e61987ded4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11400038
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 795cb0460d5c7c64499938f2b4df2033, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  subId: 0
+  ownerId: 0
+  group: 0
+  prefixBackup: -1
+  observed: {fileID: 11400034}
+  synchronization: 3
+  onSerializeTransformOption: 3
+  onSerializeRigidBodyOption: 2
+  instantiationId: -1
 --- !u!120 &12000000
 LineRenderer:
   m_ObjectHideFlags: 1

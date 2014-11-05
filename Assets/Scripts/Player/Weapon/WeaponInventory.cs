@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace CompleteProject
 {
-    public class WeaponInventory : MonoBehaviour
+    public class WeaponInventory : PhotonBehaviour
     {
         public delegate void WeaponChangedAction(Weapon newWeapon);
         public event WeaponChangedAction OnWeaponChanged;
@@ -24,6 +24,12 @@ namespace CompleteProject
         }
 
         public void Activate(int index)
+        {
+            RPC<int>(ActivateProxy, PhotonTargets.All, index);
+        }
+
+        [RPC]
+        private void ActivateProxy(int index)
         {
             int i = 0;
             Weapon w = null;

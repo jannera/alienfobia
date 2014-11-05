@@ -82,5 +82,18 @@ namespace CompleteProject
         {
             return false;
         }
+
+        void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+        {
+            if (stream.isWriting)
+            {
+                stream.SendNext(isFiring);
+            }
+            else
+            {
+                isFiring = (bool)stream.ReceiveNext();
+            }
+
+        }
     }
 }

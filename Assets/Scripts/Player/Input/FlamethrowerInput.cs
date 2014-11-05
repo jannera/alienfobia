@@ -3,12 +3,18 @@ using System.Collections;
 
 namespace CompleteProject
 {
-    public class FlamethrowerInput : MonoBehaviour {
+    public class FlamethrowerInput : PhotonBehaviour {
         private FlamethrowerWeapon weapon;
         private WeaponInventory selector;
 
         void Awake()
         {
+            if (!photonView.isMine)
+            {
+                Destroy(this);
+                return;
+            }
+
             weapon = GetComponent<FlamethrowerWeapon>();
             selector = PlayerManager.GetComponentFromMyPlayer<WeaponInventory>();
         }

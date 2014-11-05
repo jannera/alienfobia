@@ -4,12 +4,21 @@ using System.Collections.Generic;
 
 namespace CompleteProject
 {
-    public class FlamethrowerParticleDamager : MonoBehaviour
+    public class FlamethrowerParticleDamager : PhotonBehaviour
     {
 
         public int damagePerUpdate = 10;
 
         private List<GameObject> itemsInFlame = new List<GameObject>(10);
+
+        void Awake()
+        {
+            if (!photonView.isMine)
+            {
+                Destroy(this);
+                return;
+            }
+        }
 
         void OnParticleCollision(GameObject go)
         {
