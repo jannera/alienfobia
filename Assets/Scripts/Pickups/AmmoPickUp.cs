@@ -12,7 +12,7 @@ namespace CompleteProject
 
         override protected void PickedUp(GameObject player)
         {
-            WeaponSelector selector = player.GetComponent<WeaponSelector>();
+            WeaponInventory selector = player.GetComponent<WeaponInventory>();
             if (selector == null)
             {
                 Debug.LogError("Couldn't find weapon selector from " + player);

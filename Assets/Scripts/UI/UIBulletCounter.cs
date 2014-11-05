@@ -7,7 +7,7 @@ namespace CompleteProject
     public class UIBulletCounter : MonoBehaviour
     {
         private Slider slider;
-        private WeaponSelector weaponSelector;
+        private WeaponInventory weaponSelector;
         private Weapon activeWeapon = null;
         
         void Start()
@@ -22,7 +22,7 @@ namespace CompleteProject
             {
                 // todo: instead of this polling, create an event for creating player? or your own player?
                 // register once your player is created
-                weaponSelector = PlayerManager.GetComponentFromMyPlayer<WeaponSelector>();
+                weaponSelector = PlayerManager.GetComponentFromMyPlayer<WeaponInventory>();
                 if (weaponSelector == null)
                 {
                     return;

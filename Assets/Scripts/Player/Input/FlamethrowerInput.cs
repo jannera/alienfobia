@@ -5,12 +5,12 @@ namespace CompleteProject
 {
     public class FlamethrowerInput : MonoBehaviour {
         private FlamethrowerWeapon weapon;
-        private WeaponSelector selector;
+        private WeaponInventory selector;
 
         void Awake()
         {
             weapon = GetComponent<FlamethrowerWeapon>();
-            selector = PlayerManager.GetComponentFromMyPlayer<WeaponSelector>();
+            selector = PlayerManager.GetComponentFromMyPlayer<WeaponInventory>();
         }
 
 	    // Update is called once per frame

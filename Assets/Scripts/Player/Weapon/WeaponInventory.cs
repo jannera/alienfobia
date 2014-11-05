@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace CompleteProject
 {
-    public class WeaponSelector : MonoBehaviour
+    public class WeaponInventory : MonoBehaviour
     {
         public delegate void WeaponChangedAction(Weapon newWeapon);
         public event WeaponChangedAction OnWeaponChanged;
@@ -21,20 +21,6 @@ namespace CompleteProject
         // Update is called once per frame
         void Update()
         {
-            if (Input.GetKey(KeyCode.Alpha1))
-            {
-                Activate(0);
-            }
-
-            if (Input.GetKey(KeyCode.Alpha2))
-            {
-                Activate(1);
-            }
-
-            if (Input.GetKey(KeyCode.Alpha3))
-            {
-                Activate(2);
-            }
         }
 
         public void Activate(int index)
@@ -58,6 +44,16 @@ namespace CompleteProject
             {
                 OnWeaponChanged(w);
             }
+        }
+
+        public void ActivateNextWeapon()
+        {
+            int nextWeapon = currentWeapon + 1;
+            if (nextWeapon >= weapons.Count)
+            {
+                nextWeapon = 0;
+            }
+            Activate(nextWeapon);
         }
 
         public void ActivateBasicWeapon()
