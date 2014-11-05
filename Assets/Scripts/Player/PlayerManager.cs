@@ -30,19 +30,6 @@ namespace CompleteProject
             return go.GetComponentInChildren<T>();
         }
 
-        public static GameObject GetPlayerWithOwnerId(int ownerID)
-        {
-
-            foreach (GameObject go in GameObject.FindGameObjectsWithTag("Player"))
-            {
-                if (go.GetComponent<OwnerID>().ownerID == ownerID)
-                {
-                    return go;
-                }
-            }
-            return null;
-        }
-
         public static GameObject GetClosestPlayer(Vector3 pos)
         {
             GameObject closest = null;

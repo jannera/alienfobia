@@ -66,6 +66,10 @@ namespace CompleteProject
             {
                 Move();
             }
+            else
+            {
+                playerMovement.Move(Vector3.zero);
+            }
         }
 
         private void Visualize(GameObject enemy)

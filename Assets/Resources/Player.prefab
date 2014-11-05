@@ -257,6 +257,9 @@ GameObject:
   - 114: {fileID: 11400028}
   - 114: {fileID: 11400032}
   - 114: {fileID: 11400036}
+  - 114: {fileID: 11400042}
+  - 114: {fileID: 11400040}
+  - 114: {fileID: 11400044}
   m_Layer: 2
   m_Name: Player
   m_TagString: Player
@@ -958,11 +961,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 100028}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c998bede0a53dbc439621ce143f225e6, type: 3}
+  m_Script: {fileID: 11500000, guid: fbf12507670d0304dbb4e9b49b7848c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   movementEpsilon: 1
-  maximumVelocity: 4
   maxVelocityStepInSecond: 5
 --- !u!114 &11400006
 MonoBehaviour:
@@ -1086,7 +1088,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   smoothTurning: 10
-  rotationSyncPreFab: {fileID: 100000, guid: d41d16335f364e24c9991b87a104fcc3, type: 2}
 --- !u!114 &11400024
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1192,6 +1193,49 @@ MonoBehaviour:
   onSerializeTransformOption: 3
   onSerializeRigidBodyOption: 2
   instantiationId: -1
+--- !u!114 &11400040
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 795cb0460d5c7c64499938f2b4df2033, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  subId: 0
+  ownerId: 0
+  group: 0
+  prefixBackup: -1
+  observed: {fileID: 11400042}
+  synchronization: 2
+  onSerializeTransformOption: 3
+  onSerializeRigidBodyOption: 2
+  instantiationId: -1
+--- !u!114 &11400042
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8f3545b70a55df4091bcb508e51f338, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  smoothTurning: 10
+--- !u!114 &11400044
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2ffd0b0fb9cccb48947474fd57ee0d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!120 &12000000
 LineRenderer:
   m_ObjectHideFlags: 1

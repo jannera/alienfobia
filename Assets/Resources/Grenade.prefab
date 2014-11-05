@@ -247,7 +247,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startSpeed: 15
   explosionRadius: 7
-  explosionForce: 1000
+  explosionForce: 100
   damagePerShot: 100
   explosionPreFab: {fileID: 100000, guid: 5199f6d2be20e184f879573d3f65c0ac, type: 2}
   explosionSound: {fileID: 8200000}

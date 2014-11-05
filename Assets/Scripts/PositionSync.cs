@@ -14,19 +14,18 @@ namespace CompleteProject
     {
         public float movementEpsilon = 1; // velocity magnitudes above this are considering "moving" (for animations etc)
 
-        void Awake()
+        public void Awake()
         {
             syncTimestamp = double.NaN;
-            maxVelSqr = maximumVelocity * maximumVelocity;
         }
 
-        void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+        public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
         {
             if (stream.isWriting)
             {
                 // sending is only called for the owner, i.e. server
                 stream.SendNext(rigidbody.position);
-                stream.SendNext(rigidbody.velocity);
+                stream.SendNext(GetVelocity());
             }
             else
             {
@@ -45,23 +44,6 @@ namespace CompleteProject
                 syncTimestamp = info.timestamp;
             }
 
-        }
-
-        // SERVER specific part
-        // TODO maximum velocity limiting could be moved to it's own component
-        public float maximumVelocity = 4;
-        private float maxVelSqr;
-
-        void FixedUpdate()
-        {
-            if (photonView.isMine)
-            {
-                // limit the maximum velocities
-                if (rigidbody.velocity.sqrMagnitude > maxVelSqr)
-                {
-                    rigidbody.velocity = rigidbody.velocity.normalized * maximumVelocity;
-                }
-            }
         }
 
         // CLIENT specific part
@@ -120,7 +102,13 @@ namespace CompleteProject
             {
                 vel = syncVelocity;
             }
+            // Debug.Log(vel);
             return vel.magnitude > movementEpsilon;
+        }
+
+        protected virtual Vector3 GetVelocity()
+        {
+            return rigidbody.velocity;
         }
     }
 }

@@ -8,39 +8,29 @@ namespace CompleteProject
         Animator anim;
         public float speed = 5f;
         public float smoothTurning = 10f;
+        public Vector3 lastVelocity { get; private set; }
 
-        PositionSync positionController;
-        public GameObject rotationSyncPreFab;
         Quaternion targetRotation;
 
         void Awake()
         {
             // Set up references.
             anim = GetComponent<Animator>();
-            positionController = GetComponent<PositionSync>();
             targetRotation = transform.rotation;
-
-            if (photonView.isMine)
-            {
-                // create rotation synchronizer
-                PhotonNetwork.Instantiate(rotationSyncPreFab.name, Vector3.zero,
-                    Quaternion.identity, 0);
-            }
         }
 
         // Update is called once per frame
         void Update()
         {
-            // Set the player's rotation to this new rotation.
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * smoothTurning);
-
-            if (!photonView.isMine)
+            if (photonView.isMine)
             {
-                Animating(positionController.IsMoving());
+                // Set the player's rotation to this new rotation.
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * smoothTurning);
             }
         }
 
         public void Move(Vector3 movement) {
+            lastVelocity = movement.normalized * speed * 0.25f;
             movement = movement.normalized * speed * Time.deltaTime;
             rigidbody.MovePosition(transform.position + movement);
         }
@@ -52,6 +42,7 @@ namespace CompleteProject
 
         public void Animating(bool walking)
         {
+            // Debug.Log("animating " + photonView.instantiationId + " " + walking);
             anim.SetBool("IsWalking", walking);
         }
     }

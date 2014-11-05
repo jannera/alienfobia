@@ -7,7 +7,6 @@ namespace CompleteProject
     public class AmmoIconUpdater : MonoBehaviour
     {
         private WeaponInventory weaponSelector;
-        private Weapon activeWeapon = null;
         private Image ammoIcon;
 
         // Use this for initialization

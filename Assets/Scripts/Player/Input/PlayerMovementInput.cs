@@ -59,10 +59,6 @@ namespace CompleteProject
 
         void Move(float h, float v)
         {
-            if (h == 0 && v == 0)
-            {
-                return;
-            }
             // Set the movement vector based on the axis input.
             movement.Set(h, 0f, v);
 
