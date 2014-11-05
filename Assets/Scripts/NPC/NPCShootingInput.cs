@@ -34,9 +34,9 @@ namespace CompleteProject
         // Update is called once per frame
         void Update()
         {
-            if (ownHealth.isDead)
+            if (ownHealth.isDead || ownHealth.isDowned)
             {
-                return; // stop moving when dead
+                return; // stop moving when dead or down
             }
 
             if (!playerShooting.CanFire())

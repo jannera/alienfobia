@@ -63,7 +63,7 @@ namespace CompleteProject
                 {
                     continue;
                 }
-                if (playerHealth.isDead)
+                if (playerHealth.isDead || playerHealth.isDowned)
                 {
                     continue;
                 }
@@ -89,7 +89,8 @@ namespace CompleteProject
         {
             foreach (GameObject go in GameObject.FindGameObjectsWithTag("Player"))
             {
-                if (!go.GetComponent<PlayerHealth>().isDead)
+                PlayerHealth health = go.GetComponent<PlayerHealth>();
+                if (!health.isDead && !health.isDowned)
                 {
                     return true;
                 }

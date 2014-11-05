@@ -53,9 +53,9 @@ namespace CompleteProject
 
         void FixedUpdate()
         {
-            if (ownHealth.isDead)
+            if (ownHealth.isDead || ownHealth.isDowned)
             {
-                return; // stop moving when dead
+                return; // stop moving when dead or down
             }
             ResetValues();
             bool needMovingE = ObserveEnemies();

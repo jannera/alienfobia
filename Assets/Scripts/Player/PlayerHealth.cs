@@ -15,6 +15,10 @@ namespace CompleteProject
         PlayerMovementInput playerMovement;                              // Reference to the player's movement.
         PlayerShooting playerShooting;                              // Reference to the PlayerShooting script.
         public bool isDead { get; private set; }                           // Whether the player is dead.
+        public bool isDowned { get; private set; } 
+        public float automaticReviveTime = 10; // in seconds
+        private float downTimer;
+        private float reviveHealthPercentage = 0.25f;
 
         public GameObject bloodParticles;
 
@@ -34,6 +38,20 @@ namespace CompleteProject
 
         void Update()
         {
+            if (isDowned)
+            {
+                bool othersAlive = PlayerManager.AreAnyPlayersAlive();
+                if (!othersAlive) {
+                    RPC(Death, PhotonTargets.All);
+                }
+                downTimer += Time.deltaTime;
+                
+                if (downTimer >= automaticReviveTime && othersAlive)
+                {
+                    RPC(Up, PhotonTargets.All);
+                }
+                
+            }
         }
 
 
@@ -45,10 +63,10 @@ namespace CompleteProject
             RPC(ShowDamageEffects, PhotonTargets.All);
 
             // If the player has lost all it's health and the death flag hasn't been set yet...
-            if (currentHealth <= 0 && !isDead)
+            if (currentHealth <= 0 && !isDowned)
             {
                 // ... it should die.
-                RPC(Death, PhotonTargets.All);
+                RPC(Down, PhotonTargets.All);
             }
         }
 
@@ -65,10 +83,11 @@ namespace CompleteProject
         }
 
         [RPC]
-        void Death()
+        void Down()
         {
             // Set the death flag so this function won't be called again.
-            isDead = true;
+            isDowned = true;
+            downTimer = 0f;
 
             // Turn off any remaining shooting effects.
             playerShooting.DisableEffects();
@@ -77,12 +96,28 @@ namespace CompleteProject
             anim.SetTrigger("Die");
 
             // Set the audiosource to play the death clip and play it (this will stop the hurt sound from playing).
-            playerAudio.clip = deathClip;
-            playerAudio.Play();
 
             // Turn off the movement and shooting scripts.
             playerMovement.enabled = false;
             playerShooting.enabled = false;
+        }
+
+        [RPC]
+        void Up()
+        {
+            isDowned = false;
+            currentHealth = (int)(startingHealth * reviveHealthPercentage);
+            anim.CrossFade("Idle", 0.5f);
+            playerMovement.enabled = true;
+            playerShooting.enabled = true;
+        }
+
+        [RPC]
+        void Death()
+        {
+            isDead = true;
+            playerAudio.clip = deathClip;
+            playerAudio.Play();
         }
 
         public void AddHealth(int amount)
@@ -95,6 +130,11 @@ namespace CompleteProject
             }
 
             Debug.Log("Gained health: " + currentHealth);
+        }
+
+        public float DownSecondsLeft()
+        {
+            return automaticReviveTime - downTimer;
         }
     }
 }

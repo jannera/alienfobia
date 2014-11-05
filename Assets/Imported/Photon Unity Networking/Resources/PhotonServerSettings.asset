@@ -43,4 +43,6 @@ MonoBehaviour:
   - ReduceHealth
   - RemovePickUp
   - ActivateProxy
+  - Down
+  - Up
   DisableAutoOpenWizard: 0
