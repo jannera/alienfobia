@@ -45,7 +45,7 @@ namespace CompleteProject
                 // ... move the enemy down by the sinkSpeed per second.
                 transform.Translate(-Vector3.up * sinkSpeed * Time.deltaTime);
                 sinkingTimer += Time.deltaTime;
-                if (sinkingTimer > 2 && PhotonNetwork.isMasterClient)
+                if ((sinkingTimer > 2 || sinkSpeed == 0) && PhotonNetwork.isMasterClient)
                 {
                     // after 2 sec sinking destroy the enemy
                     PhotonNetwork.Destroy(gameObject);
@@ -105,7 +105,7 @@ namespace CompleteProject
         {
             if (isDead)
             {
-                return; // this can happen when multiple clients kill the same bear same time
+                return; // this can happen when multiple clients kill the same enemy at about the same time
             }
             // The enemy is dead.
             isDead = true;
@@ -127,15 +127,17 @@ namespace CompleteProject
 
         public void StartSinking()
         {
+            isSinking = true;
             if (PhotonNetwork.isMasterClient)
             {
-                GetComponent<NavMeshAgent>().enabled = false;
+                NavMeshAgent agent = GetComponent<NavMeshAgent>();
+                if (agent != null) {
+                    agent.enabled = false;
+                }
 
                 // Find the rigidbody component and make it kinematic (since we use Translate to sink the enemy).
                 GetComponent<Rigidbody>().isKinematic = true;
             }
-
-            isSinking = true;
         }
     }
 }

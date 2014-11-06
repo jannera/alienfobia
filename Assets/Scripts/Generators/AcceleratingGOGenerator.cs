@@ -3,7 +3,7 @@ using System.Collections;
 
 namespace CompleteProject
 {
-    public class ServerGOGenerator : MonoBehaviour
+    public class AcceleratingGOGenerator : MonoBehaviour
     {
         public GameObject toBeGenerated;
         public int spawnRange = 1;

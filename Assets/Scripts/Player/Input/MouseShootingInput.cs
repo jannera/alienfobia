@@ -51,19 +51,12 @@ namespace CompleteProject
             shootRay.origin = transform.position;
             shootRay.direction = transform.forward;
 
-            // Perform the raycast against gameobjects on the shootable layer and if it hits something...
-            if (Physics.Raycast(shootRay, out shootHit, playerShooting.range, playerShooting.shootableMask))
+            if (Physics.Raycast(shootRay, out shootHit, playerShooting.range))
             {
-                // Try and find an EnemyHealth script on the gameobject hit.
-                
-
-                // Set the second position of the line renderer to the point the raycast hit.
                 playerShooting.Shoot(shootHit.collider.gameObject, shootHit.point);
             }
-            // If the raycast didn't hit anything on the shootable layer...
             else
             {
-                // ... set the second position of the line renderer to the fullest extent of the gun's range
                 playerShooting.Shoot(null, shootRay.origin + shootRay.direction * playerShooting.range);
             }
         }

@@ -28,7 +28,7 @@ namespace CompleteProject
                 }
             }
 
-            if (health.isDowned && !health.isDead)
+            if (health.isDowned && !health.isDead && PlayerManager.AreAnyPlayersAlive())
             {
                 text.enabled = true;
                 text.text = "Revive in " + Mathf.CeilToInt(Mathf.Max(health.DownSecondsLeft(), 0f));

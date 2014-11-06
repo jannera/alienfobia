@@ -349,7 +349,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementEpsilon: .00100000005
-  maximumVelocity: 4
   maxVelocityStepInSecond: 5
 --- !u!114 &11400010
 MonoBehaviour:
