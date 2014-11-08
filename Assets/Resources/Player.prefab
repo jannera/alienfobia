@@ -1120,6 +1120,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 673d1b3457fb6bc43a1dd2d5c397a05c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerGO: {fileID: 100028}
+  mg: {fileID: 100032}
   playerShooting: {fileID: 11400000}
 --- !u!114 &11400010
 MonoBehaviour:

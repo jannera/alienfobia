@@ -7,8 +7,10 @@ namespace CompleteProject
     {
         Ray shootRay;                                   // A ray from the gun end forwards.
         RaycastHit shootHit;                            // A raycast hit to get information about what was hit.
+        public GameObject playerGO;
         
         public PlayerShooting playerShooting;
+
         // Use this for initialization
         void Start()
         {
@@ -16,6 +18,7 @@ namespace CompleteProject
                 PlayerManager.IsNPCClient())
             {
                 Destroy(this);
+                return;
             }
         }
 
@@ -49,7 +52,7 @@ namespace CompleteProject
         {
             // Set the shootRay so that it starts at the end of the gun and points forward from the barrel.
             shootRay.origin = transform.position;
-            shootRay.direction = transform.forward;
+            shootRay.direction = playerGO.transform.forward;
 
             if (Physics.Raycast(shootRay, out shootHit, playerShooting.range))
             {
