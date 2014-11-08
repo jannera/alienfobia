@@ -12,6 +12,8 @@ namespace CompleteProject
         private int currentWeapon;
         public List<Weapon> weapons { get; private set; }
 
+        public GameObject hand;
+
         void Awake()
         {
             weapons = GetWeaponsList();
@@ -33,7 +35,7 @@ namespace CompleteProject
         {
             int i = 0;
             Weapon w = null;
-            foreach (Transform child in transform)
+            foreach (Transform child in hand.transform)
             {
                 if (child.CompareTag("InventoryWeapon"))
                 {
@@ -70,7 +72,7 @@ namespace CompleteProject
         public Weapon GetCurrentWeapon()
         {
             int i = 0;
-            foreach (Transform child in transform)
+            foreach (Transform child in hand.transform)
             {
                 if (child.CompareTag("InventoryWeapon"))
                 {
@@ -88,7 +90,7 @@ namespace CompleteProject
         {
             List<Weapon> results = new List<Weapon>();
 
-            foreach (Transform child in transform)
+            foreach (Transform child in hand.transform)
             {
                 if (child.CompareTag("InventoryWeapon"))
                 {
