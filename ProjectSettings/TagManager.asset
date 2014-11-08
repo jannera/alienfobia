@@ -5,11 +5,13 @@ TagManager:
   tags:
   - HealthImage
   - HealthSlider
-  - PlayerGun
+  - BarrelEnd
   - Enemy
   - HighlightSphere
   - Grenade
   - InventoryWeapon
+  - 
+  - PlayerGun
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX
