@@ -16083,7 +16083,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e59f662998a0b04cb3f7151d05590b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  toBeGenerated: {fileID: 100000, guid: ea3c2728ef33e3a4d99527a86cda6465, type: 2}
+  toBeGenerated: {fileID: 100000, guid: 8980328e2fb8c274fb1f06600bcb3a4e, type: 2}
   spawnRange: 20
   secBetweenWaves: 10
   spawnedPerWave: 8
