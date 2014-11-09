@@ -43,7 +43,6 @@ namespace CompleteProject
             {
                 if (t.CompareTag("BarrelEnd"))
                 {
-                    Debug.Log("barrel= " + t.gameObject.name);
                     return t.gameObject;
                 }
             }

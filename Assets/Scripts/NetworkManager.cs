@@ -21,6 +21,7 @@ namespace CompleteProject
                 // if a player already exists in scene, go with the offline mode
                 PhotonNetwork.offlineMode = true;
                 playerExists = true;
+                PhotonNetwork.CreateRoom(roomName);
             }
         }
 
@@ -30,11 +31,6 @@ namespace CompleteProject
             {
                 PhotonNetwork.ConnectUsingSettings("0.1");
             }
-            else
-            {
-                PhotonNetwork.CreateRoom(roomName);
-            }
-            
             
             roomName = System.Environment.UserName + "@" + System.Environment.MachineName;
             SetPlayerName();
