@@ -26,7 +26,7 @@ namespace CompleteProject
         void Awake()
         {
             // Setting up the references.
-            anim = GetComponent<Animator>();
+            anim = GetComponentInChildren<Animator>();
             playerAudio = GetComponent<AudioSource>();
             playerMovement = GetComponent<PlayerMovementInput>();
             playerShooting = GetComponentInChildren<PlayerShooting>();
@@ -93,7 +93,7 @@ namespace CompleteProject
             playerShooting.DisableEffects();
 
             // Tell the animator that the player is dead.
-            anim.SetTrigger("Die");
+            anim.SetTrigger("FallDown");
 
             // Set the audiosource to play the death clip and play it (this will stop the hurt sound from playing).
 
@@ -107,7 +107,7 @@ namespace CompleteProject
         {
             isDowned = false;
             currentHealth = (int)(startingHealth * reviveHealthPercentage);
-            anim.CrossFade("Idle", 0.5f);
+            anim.SetTrigger("GetUp");
             playerMovement.enabled = true;
             playerShooting.enabled = true;
         }
