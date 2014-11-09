@@ -67,16 +67,21 @@ namespace CompleteProject
         void Shoot()
         {
             // Set the shootRay so that it starts at the end of the gun and points forward from the barrel.
-            shootRay.origin = barrelEnd.transform.position;
-            shootRay.direction = playerGO.transform.forward;
+            //shootRay.origin = barrelEnd.transform.position;
+            //shootRay.direction = playerGO.transform.forward;
+            Vector3 forward = playerGO.transform.forward;
 
-            if (Physics.Raycast(shootRay, out shootHit, playerShooting.range))
+            Vector3 barrelPos = barrelEnd.transform.position;
+            Vector3 upLimit = barrelPos + Vector3.up * 2f;
+            Vector3 downLimit = barrelPos + Vector3.down * 2f;
+            if (Physics.CapsuleCast(upLimit, downLimit, 0.2f, forward, 
+                out shootHit, playerShooting.range))
             {
                 playerShooting.Shoot(shootHit.collider.gameObject, shootHit.point);
             }
             else
             {
-                playerShooting.Shoot(null, shootRay.origin + shootRay.direction * playerShooting.range);
+                playerShooting.Shoot(null, barrelPos + forward * playerShooting.range);
             }
         }
     }

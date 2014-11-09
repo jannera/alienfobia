@@ -414,7 +414,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &400000
 Transform:
   m_ObjectHideFlags: 1
@@ -1142,7 +1142,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93693848f8221ad4aabf905944a5b11d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerShooting: {fileID: 11400016}
   shootingRadius: 10
   smoothTurning: 10
 --- !u!114 &11400002
@@ -1202,8 +1201,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 673d1b3457fb6bc43a1dd2d5c397a05c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerGO: {fileID: 100028}
-  playerShooting: {fileID: 11400016}
 --- !u!114 &11400010
 MonoBehaviour:
   m_ObjectHideFlags: 1
