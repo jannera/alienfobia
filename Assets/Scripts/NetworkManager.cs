@@ -10,15 +10,32 @@ namespace CompleteProject
         public AudioSource gameMusic;
         public bool automaticGameStarting = true; // used for automatically creating a game. if a game already is running on this computer, join it
 
+        private bool playerExists = false;
+
         void Awake()
         {
             menuMusic.loop = true;
             menuMusic.Play();
+            if (GameObject.FindGameObjectWithTag("Player"))
+            {
+                // if a player already exists in scene, go with the offline mode
+                PhotonNetwork.offlineMode = true;
+                playerExists = true;
+            }
         }
 
         void Start()
         {
-            PhotonNetwork.ConnectUsingSettings("0.1");
+            if (!PhotonNetwork.offlineMode)
+            {
+                PhotonNetwork.ConnectUsingSettings("0.1");
+            }
+            else
+            {
+                PhotonNetwork.CreateRoom(roomName);
+            }
+            
+            
             roomName = System.Environment.UserName + "@" + System.Environment.MachineName;
             SetPlayerName();
         }
@@ -84,9 +101,12 @@ namespace CompleteProject
             Debug.Log("Connected to Room");
             menuMusic.Stop();
             gameMusic.Play();
-            
-            PhotonNetwork.Instantiate(playerPrefab.name, Vector3.zero,
+
+            if (!playerExists)
+            {
+                PhotonNetwork.Instantiate(playerPrefab.name, Vector3.zero,
                 Quaternion.identity, 0, new object[] { PhotonNetwork.player.ID });
+            }
         }
 
         void SetPlayerName()

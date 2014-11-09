@@ -242,7 +242,6 @@ GameObject:
   - 114: {fileID: 11400006}
   - 114: {fileID: 11400004}
   - 114: {fileID: 11400002}
-  - 114: {fileID: 11400020}
   - 114: {fileID: 11400022}
   - 114: {fileID: 11400024}
   - 114: {fileID: 11400028}
@@ -1277,19 +1276,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   group: {fileID: 100000, guid: 2b9bbd206d704134c8a7430b8464f1f2, type: 2}
---- !u!114 &11400020
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c41b56bceefbcba4b87a77e4fe562169, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  photonView: {fileID: 11400002}
-  ownerID: 0
 --- !u!114 &11400022
 MonoBehaviour:
   m_ObjectHideFlags: 1
