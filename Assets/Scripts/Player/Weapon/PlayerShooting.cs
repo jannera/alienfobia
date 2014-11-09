@@ -11,7 +11,6 @@ namespace CompleteProject
 
         float timer;                                    // A timer to determine when to fire.
         float reloadTimer = 0;
-        public int shootableMask { get; private set; }  // A layer mask so the raycast only hits things on the shootable layer.
         ParticleSystem gunParticles;                    // Reference to the particle system.
         LineRenderer gunLine;                           // Reference to the line renderer.
         AudioSource gunAudio;                           // Reference to the audio source.
@@ -22,18 +21,33 @@ namespace CompleteProject
 
         private bool effectsDisplayedOnce = false;
 
+        private GameObject barrelEnd;
+
         void Awake()
         {
             currentAmmo = clipSize;
-            // Create a layer mask for the Shootable layer.
-            shootableMask = LayerMask.GetMask("Shootable");
+
+            barrelEnd = GetBarrelEnd();
 
             // Set up the references.
-            gunParticles = GetComponent<ParticleSystem>();
+            gunParticles = barrelEnd.GetComponent<ParticleSystem>();
             gunLine = GetComponent<LineRenderer>();
             gunAudio = GetComponents<AudioSource>()[0];
             gunReload = GetComponents<AudioSource>()[1];
-            gunLight = GetComponent<Light>();
+            gunLight = barrelEnd.GetComponent<Light>();
+        }
+
+        public GameObject GetBarrelEnd()
+        {
+            foreach (Transform t in transform)
+            {
+                if (t.CompareTag("BarrelEnd"))
+                {
+                    Debug.Log("barrel= " + t.gameObject.name);
+                    return t.gameObject;
+                }
+            }
+            return null;
         }
 
 
@@ -123,7 +137,7 @@ namespace CompleteProject
 
             // Enable the line renderer and set it's first position to be the end of the gun.
             gunLine.enabled = true;
-            gunLine.SetPosition(0, transform.position);
+            gunLine.SetPosition(0, barrelEnd.transform.position);
             gunLine.SetPosition(1, firingEndPos);
             effectsDisplayedOnce = false;
         }        

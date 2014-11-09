@@ -5,7 +5,6 @@ namespace CompleteProject
 {
     public class NPCShootingInput : CompleteProject.PhotonBehaviour
     {
-        public PlayerShooting playerShooting;
         public float shootingRadius = 10f;
         public float smoothTurning = 10f;
 
@@ -15,6 +14,8 @@ namespace CompleteProject
 
         private PlayerHealth ownHealth;
         private PlayerMovement playerMovement;
+        private PlayerShooting playerShooting;
+        
 
         // Use this for initialization
         void Start()
@@ -28,6 +29,7 @@ namespace CompleteProject
                 myPlayer = PlayerManager.GetMyPlayer();
                 playerMovement = GetComponentInParent<PlayerMovement>();
                 ownHealth = GetComponentInParent<PlayerHealth>();
+                playerShooting = GetComponent<PlayerShooting>();
             }
         }
 

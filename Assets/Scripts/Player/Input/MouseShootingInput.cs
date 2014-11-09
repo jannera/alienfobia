@@ -7,9 +7,12 @@ namespace CompleteProject
     {
         Ray shootRay;                                   // A ray from the gun end forwards.
         RaycastHit shootHit;                            // A raycast hit to get information about what was hit.
-        public GameObject playerGO;
+        private GameObject playerGO;
         
-        public PlayerShooting playerShooting;
+        private PlayerShooting playerShooting;
+        private GameObject barrelEnd;
+
+        private Quaternion origLocalRotation;
 
         // Use this for initialization
         void Start()
@@ -20,11 +23,16 @@ namespace CompleteProject
                 Destroy(this);
                 return;
             }
+            playerGO = PlayerManager.GetMyPlayer();
+            origLocalRotation = transform.localRotation;
+            playerShooting = GetComponent<PlayerShooting>();
+            barrelEnd = playerShooting.GetBarrelEnd();
         }
 
         // Update is called once per frame
         void Update()
         {
+            bool shooting = false;
             // If the Fire1 button is being press and it's time to fire...
             if (Input.GetButton("Fire1") && playerShooting.CanFire())
             {
@@ -38,8 +46,16 @@ namespace CompleteProject
                 }
                 else
                 {
+                    shooting = true;
+                    // Quaternion diff = Quaternion.FromToRotation(playerGO.transform.forward, transform.forward);
+                    transform.localRotation.SetLookRotation(playerGO.transform.forward, Vector3.up);
                     Shoot();
                 }
+            }
+
+            if (!shooting)
+            {
+                // transform.localRotation = origLocalRotation;
             }
 
             if (Input.GetKey(KeyCode.R) && !playerShooting.IsReloading())
@@ -51,7 +67,7 @@ namespace CompleteProject
         void Shoot()
         {
             // Set the shootRay so that it starts at the end of the gun and points forward from the barrel.
-            shootRay.origin = transform.position;
+            shootRay.origin = barrelEnd.transform.position;
             shootRay.direction = playerGO.transform.forward;
 
             if (Physics.Raycast(shootRay, out shootHit, playerShooting.range))
