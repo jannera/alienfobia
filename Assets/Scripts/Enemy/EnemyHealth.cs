@@ -122,6 +122,7 @@ namespace CompleteProject
 
             // randomly generate a pickup
             pickups.DropRandomly(pickUpGenChance, transform.position + Vector3.up * 1f);
+            Invoke(StartSinking, 0.1f);
         }
 
 

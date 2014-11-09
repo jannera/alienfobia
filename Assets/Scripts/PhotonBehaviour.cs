@@ -36,5 +36,10 @@ namespace CompleteProject
         {
             photonView.RPC(name, target, parameters);
         }
+
+        public void Invoke(Action method, float time)
+        {
+            Invoke(method.Method.Name, time);
+        }
     }
 }
