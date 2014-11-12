@@ -1266,7 +1266,7 @@ GameObject:
   - 4: {fileID: 36620362}
   - 114: {fileID: 36620363}
   m_Layer: 0
-  m_Name: BunnyGenerator
+  m_Name: ZardGenerator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1295,7 +1295,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e59f662998a0b04cb3f7151d05590b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  toBeGenerated: {fileID: 100002, guid: e5171f72421770240bd7c3989fe351e3, type: 2}
+  toBeGenerated: {fileID: 100006, guid: ae40eb198d1235040b29aabda1bcad6e, type: 2}
   spawnRange: 20
   secBetweenWaves: 10
   spawnedPerWave: 8
@@ -16066,7 +16066,7 @@ GameObject:
   - 4: {fileID: 1255646100}
   - 114: {fileID: 1255646099}
   m_Layer: 0
-  m_Name: BearGenerator
+  m_Name: SeademonGenerator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

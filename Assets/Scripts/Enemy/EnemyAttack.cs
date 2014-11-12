@@ -74,6 +74,7 @@ namespace CompleteProject
 
         void Attack()
         {
+            anim.SetTrigger("Attack");
             // Reset the timer.
             timer = 0f;
 
