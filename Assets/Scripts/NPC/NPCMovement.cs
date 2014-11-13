@@ -72,12 +72,6 @@ namespace CompleteProject
             }
         }
 
-        private void Visualize(GameObject enemy)
-        {
-            HighlightSphereController c = enemy.GetComponentInChildren<HighlightSphereController>();
-            c.Show();
-        }
-
         private int GetRotatingIndex(int index)
         {
             while (index < 0)
@@ -114,8 +108,6 @@ namespace CompleteProject
                             continue;
                         }
                     }
-
-                    Visualize(go);
 
                     int sector = GetSector(go.transform.position);
                     float cost = ENEMY_COST / fromMeToEnemy.magnitude;

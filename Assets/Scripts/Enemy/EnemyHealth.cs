@@ -113,8 +113,17 @@ namespace CompleteProject
             // Turn the collider into a trigger so shots can pass through it.
             capsuleCollider.isTrigger = true;
 
-            // Tell the animator that the enemy is dead.
-            anim.SetTrigger("Dead");
+            if (UnityEngine.Random.RandomRange(0, 1f) > 0.5f)
+            {
+                anim.SetTrigger("Dead");
+                Debug.Log("normal");
+            }
+            else
+            {
+                anim.SetTrigger("DeadMirrored");
+                Debug.Log("mirrored");
+            }
+            
 
             // Change the audio clip of the audio source to the death clip and play it (this will stop the hurt clip playing).
             enemyAudio.clip = deathClip;
@@ -122,7 +131,7 @@ namespace CompleteProject
 
             // randomly generate a pickup
             pickups.DropRandomly(pickUpGenChance, transform.position + Vector3.up * 1f);
-            Invoke(StartSinking, 0.1f);
+            Invoke(StartSinking, 1f);
         }
 
 
