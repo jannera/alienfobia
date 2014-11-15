@@ -1,0 +1,599 @@
+fileFormatVersion: 2
+guid: 972a7cae890543746a634d9b575781ff
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: SeaDemon
+    100004: SeaDemon Footsteps
+    100006: SeaDemon Head
+    100008: SeaDemon HeadNub
+    100010: SeaDemon L Calf
+    100012: SeaDemon L Clavicle
+    100014: SeaDemon L Finger0
+    100016: SeaDemon L Finger01
+    100018: SeaDemon L Finger0Nub
+    100020: SeaDemon L Finger1
+    100022: SeaDemon L Finger11
+    100024: SeaDemon L Finger1Nub
+    100026: SeaDemon L Foot
+    100028: SeaDemon L Forearm
+    100030: SeaDemon L Hand
+    100032: SeaDemon L Thigh
+    100034: SeaDemon L Toe0
+    100036: SeaDemon L Toe0Nub
+    100038: SeaDemon L UpperArm
+    100040: SeaDemon MESH
+    100042: SeaDemon Neck
+    100044: SeaDemon Neck1
+    100046: SeaDemon Pelvis
+    100048: SeaDemon R Calf
+    100050: SeaDemon R Clavicle
+    100052: SeaDemon R Finger0
+    100054: SeaDemon R Finger01
+    100056: SeaDemon R Finger0Nub
+    100058: SeaDemon R Finger1
+    100060: SeaDemon R Finger11
+    100062: SeaDemon R Finger1Nub
+    100064: SeaDemon R Foot
+    100066: SeaDemon R Forearm
+    100068: SeaDemon R Hand
+    100070: SeaDemon R Thigh
+    100072: SeaDemon R Toe0
+    100074: SeaDemon R Toe0Nub
+    100076: SeaDemon R UpperArm
+    100078: SeaDemon Spine
+    100080: SeaDemon Spine1
+    100082: SeaDemon Spine2
+    100084: SeaDemon Spine3
+    100086: SeaDemon Tail
+    100088: SeaDemon Tail1
+    100090: SeaDemon Tail2
+    100092: SeaDemon Tail3
+    100094: SeaDemon TailNub
+    400000: //RootNode
+    400002: SeaDemon
+    400004: SeaDemon Footsteps
+    400006: SeaDemon Head
+    400008: SeaDemon HeadNub
+    400010: SeaDemon L Calf
+    400012: SeaDemon L Clavicle
+    400014: SeaDemon L Finger0
+    400016: SeaDemon L Finger01
+    400018: SeaDemon L Finger0Nub
+    400020: SeaDemon L Finger1
+    400022: SeaDemon L Finger11
+    400024: SeaDemon L Finger1Nub
+    400026: SeaDemon L Foot
+    400028: SeaDemon L Forearm
+    400030: SeaDemon L Hand
+    400032: SeaDemon L Thigh
+    400034: SeaDemon L Toe0
+    400036: SeaDemon L Toe0Nub
+    400038: SeaDemon L UpperArm
+    400040: SeaDemon MESH
+    400042: SeaDemon Neck
+    400044: SeaDemon Neck1
+    400046: SeaDemon Pelvis
+    400048: SeaDemon R Calf
+    400050: SeaDemon R Clavicle
+    400052: SeaDemon R Finger0
+    400054: SeaDemon R Finger01
+    400056: SeaDemon R Finger0Nub
+    400058: SeaDemon R Finger1
+    400060: SeaDemon R Finger11
+    400062: SeaDemon R Finger1Nub
+    400064: SeaDemon R Foot
+    400066: SeaDemon R Forearm
+    400068: SeaDemon R Hand
+    400070: SeaDemon R Thigh
+    400072: SeaDemon R Toe0
+    400074: SeaDemon R Toe0Nub
+    400076: SeaDemon R UpperArm
+    400078: SeaDemon Spine
+    400080: SeaDemon Spine1
+    400082: SeaDemon Spine2
+    400084: SeaDemon Spine3
+    400086: SeaDemon Tail
+    400088: SeaDemon Tail1
+    400090: SeaDemon Tail2
+    400092: SeaDemon Tail3
+    400094: SeaDemon TailNub
+    4300000: SeaDemon MESH
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: SeaDemon MESH
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 3
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .00999999978
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human:
+    - boneName: SeaDemon Pelvis
+      humanName: Hips
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: SeaDemon L Thigh
+      humanName: LeftUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: SeaDemon R Thigh
+      humanName: RightUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: SeaDemon L Calf
+      humanName: LeftLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: SeaDemon R Calf
+      humanName: RightLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: SeaDemon L Foot
+      humanName: LeftFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: SeaDemon R Foot
+      humanName: RightFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: SeaDemon Spine1
+      humanName: Spine
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: SeaDemon Spine2
+      humanName: Chest
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: SeaDemon Neck1
+      humanName: Head
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: SeaDemon L Clavicle
+      humanName: LeftShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: SeaDemon R Clavicle
+      humanName: RightShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: SeaDemon L UpperArm
+      humanName: LeftUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: SeaDemon R UpperArm
+      humanName: RightUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: SeaDemon L Forearm
+      humanName: LeftLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: SeaDemon R Forearm
+      humanName: RightLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: SeaDemon L Hand
+      humanName: LeftHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: SeaDemon R Hand
+      humanName: RightHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: SeaDemon Head
+      humanName: Jaw
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: SeaDemon L Finger0
+      humanName: Left Index Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: SeaDemon L Finger1
+      humanName: Left Middle Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: SeaDemon L Finger11
+      humanName: Left Middle Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: SeaDemon R Finger0
+      humanName: Right Index Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: SeaDemon R Finger1
+      humanName: Right Middle Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: SeaDemon R Finger11
+      humanName: Right Middle Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    skeleton:
+    - name: sea_demon_biped_oma(Clone)
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: SeaDemon
+      position: {x: .000706498453, y: -.134865731, z: -.000177752969}
+      rotation: {x: -.5, y: .5, z: .5, w: .5}
+      scale: {x: .99999994, y: .99999994, z: 1}
+      transformModified: 1
+    - name: SeaDemon Footsteps
+      position: {x: -0, y: 0, z: -.235934407}
+      rotation: {x: 0, y: 0, z: -.707106352, w: .707107306}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: SeaDemon Pelvis
+      position: {x: .0346816815, y: 5.82076609e-11, z: .416422009}
+      rotation: {x: .499999702, y: -.500001073, z: -.499998927, w: -.500000298}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: SeaDemon Spine
+      position: {x: -.03902933, y: -3.44634063e-05, z: 5.41657208e-08}
+      rotation: {x: 1.91548247e-06, y: 6.58901286e-07, z: .174040303, w: -.984738588}
+      scale: {x: 1.00000012, y: 1, z: 1.00000012}
+      transformModified: 1
+    - name: SeaDemon L Thigh
+      position: {x: .0366531275, y: .0134102292, z: .0589836538}
+      rotation: {x: .265752912, y: -.961236954, z: -.0555434115, w: -.0481037423}
+      scale: {x: .999999702, y: .999999821, z: .999999762}
+      transformModified: 1
+    - name: SeaDemon L Calf
+      position: {x: -.11865034, y: -9.53674295e-09, z: -4.76837148e-09}
+      rotation: {x: -.016711643, y: .0136637297, z: .30304116, w: .95273298}
+      scale: {x: 1.00000012, y: 1.00000024, z: 1.00000024}
+      transformModified: 1
+    - name: SeaDemon L Foot
+      position: {x: -.14641951, y: 1.90734859e-08, z: 0}
+      rotation: {x: .034138687, y: .0342662446, z: -.208041146, w: .976923406}
+      scale: {x: .999999881, y: .99999994, z: .99999994}
+      transformModified: 1
+    - name: SeaDemon L Toe0
+      position: {x: -.0814222321, y: .174842894, z: 9.53674295e-09}
+      rotation: {x: 1.54543134e-08, y: -1.54543116e-08, z: -.707106829, w: .707106829}
+      scale: {x: 1, y: .99999994, z: 1}
+      transformModified: 1
+    - name: SeaDemon L Toe0Nub
+      position: {x: -.00892602932, y: 0, z: -9.53674295e-09}
+      rotation: {x: 1.84794489e-15, y: -1.77635684e-15, z: 1, w: 6.12323426e-17}
+      scale: {x: -1, y: -1, z: -1}
+      transformModified: 1
+    - name: SeaDemon R Thigh
+      position: {x: .0366531275, y: .0134105561, z: -.0589835756}
+      rotation: {x: .265752912, y: -.961237073, z: .0555407964, w: .0481029414}
+      scale: {x: .999999881, y: .99999994, z: .999999642}
+      transformModified: 1
+    - name: SeaDemon R Calf
+      position: {x: -.118650332, y: 9.53674295e-09, z: -4.76837148e-09}
+      rotation: {x: .0167112797, y: -.0136637613, z: .303040981, w: .952733099}
+      scale: {x: 1, y: 1.00000024, z: .999999821}
+      transformModified: 1
+    - name: SeaDemon R Foot
+      position: {x: -.14641948, y: 0, z: 0}
+      rotation: {x: -.0341382697, y: -.0342662148, z: -.208041057, w: .976923466}
+      scale: {x: 1, y: 1.00000012, z: 1.00000024}
+      transformModified: 1
+    - name: SeaDemon R Toe0
+      position: {x: -.0814222321, y: .174842909, z: 0}
+      rotation: {x: -1.54543116e-08, y: 1.54543116e-08, z: -.707106829, w: .707106829}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: SeaDemon R Toe0Nub
+      position: {x: -.00892602932, y: 0, z: 0}
+      rotation: {x: 1.77635684e-15, y: -1.03465318e-15, z: -1.77635684e-15, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: SeaDemon Spine1
+      position: {x: -.0460646488, y: -3.79240519e-05, z: 0}
+      rotation: {x: -1.18561722e-07, y: 7.16022583e-08, z: -.0436193235, w: .999048293}
+      scale: {x: 1.00000012, y: .99999994, z: .999999821}
+      transformModified: 1
+    - name: SeaDemon Spine2
+      position: {x: -.048163861, y: -2.89869295e-05, z: -3.98159017e-07}
+      rotation: {x: 8.18196781e-08, y: -8.23462585e-07, z: .292122364, w: .956381023}
+      scale: {x: .999999821, y: 1, z: 1.00000012}
+      transformModified: 1
+    - name: SeaDemon Spine3
+      position: {x: -.0370506383, y: -3.17555641e-05, z: 8.19563861e-10}
+      rotation: {x: -1.51976678e-07, y: -4.49013783e-07, z: .130526096, w: -.991444945}
+      scale: {x: 1.00000012, y: .999999464, z: .999999821}
+      transformModified: 1
+    - name: SeaDemon Neck
+      position: {x: -.0448635332, y: .00782734063, z: 1.08778471e-08}
+      rotation: {x: 3.93570048e-08, y: 1.62752701e-06, z: -.608761489, w: .793353379}
+      scale: {x: 1.00000048, y: .99999994, z: 1.00000024}
+      transformModified: 1
+    - name: SeaDemon L Clavicle
+      position: {x: .020328274, y: .00974461529, z: .0673985481}
+      rotation: {x: -.427774161, y: -.41919601, z: .626665354, w: -.498572409}
+      scale: {x: .999999642, y: .999999583, z: .999999881}
+      transformModified: 1
+    - name: SeaDemon L UpperArm
+      position: {x: -.0639831349, y: -1.19209287e-09, z: 0}
+      rotation: {x: -.272243887, y: .131344274, z: .119947091, w: .945645154}
+      scale: {x: 1.00000048, y: 1.00000024, z: 1}
+      transformModified: 1
+    - name: SeaDemon L Forearm
+      position: {x: -.105109014, y: -1.63912772e-09, z: -4.76837148e-09}
+      rotation: {x: -8.1074133e-05, y: .000809210702, z: .00352420122, w: .999993443}
+      scale: {x: 1.00000024, y: 1.00000024, z: 1.00000024}
+      transformModified: 1
+    - name: SeaDemon L Hand
+      position: {x: -.10636726, y: 9.53674295e-09, z: -4.76837148e-09}
+      rotation: {x: .706712008, y: -.0126643563, z: -.0126542905, w: -.707274914}
+      scale: {x: 1.00000012, y: 1.00000012, z: .999999821}
+      transformModified: 1
+    - name: SeaDemon L Finger0
+      position: {x: -.029625969, y: .0113284057, z: -.0395824164}
+      rotation: {x: -.771326661, y: .0318430699, z: -.0425468944, w: -.634216785}
+      scale: {x: .999999881, y: .99999994, z: 1}
+      transformModified: 1
+    - name: SeaDemon L Finger01
+      position: {x: -.0429132357, y: 3.81469718e-08, z: 4.76837148e-09}
+      rotation: {x: -3.69250319e-09, y: 4.93161401e-10, z: -.132382005, w: .991198778}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: SeaDemon L Finger0Nub
+      position: {x: -9.59396311e-06, y: -1.90734859e-08, z: -4.76837148e-09}
+      rotation: {x: -3.72529074e-09, y: 3.7252903e-09, z: 1.83936226e-08, w: 1}
+      scale: {x: .99999994, y: .99999994, z: .99999994}
+      transformModified: 1
+    - name: SeaDemon L Finger1
+      position: {x: -.0858964548, y: 9.53674295e-09, z: 4.76837148e-09}
+      rotation: {x: -.000398223929, y: 4.54910287e-09, z: -2.72855374e-08, w: .99999994}
+      scale: {x: .99999994, y: 1, z: .99999994}
+      transformModified: 1
+    - name: SeaDemon L Finger11
+      position: {x: -.0423563011, y: 0, z: -4.76837148e-09}
+      rotation: {x: 1.94485095e-09, y: -2.8090732e-09, z: -9.9732187e-09, w: 1}
+      scale: {x: 1.00000012, y: 1.00000012, z: 1.00000024}
+      transformModified: 1
+    - name: SeaDemon L Finger1Nub
+      position: {x: -.0423563011, y: 0, z: 4.76837148e-09}
+      rotation: {x: 1.86264493e-09, y: 1.86264493e-09, z: -3.46944612e-18, w: 1}
+      scale: {x: 1.00000012, y: 1.00000012, z: 1.00000012}
+      transformModified: 1
+    - name: SeaDemon Neck1
+      position: {x: -.0365973487, y: -6.48593923e-05, z: -7.45058015e-10}
+      rotation: {x: -1.66943934e-08, y: 3.44835968e-07, z: -.130526155, w: .991444945}
+      scale: {x: .99999994, y: .999999821, z: .99999994}
+      transformModified: 1
+    - name: SeaDemon Head
+      position: {x: -.0843255967, y: 0, z: -5.21540644e-10}
+      rotation: {x: -6.50154561e-07, y: -2.40498866e-06, z: .939828694, w: .341646045}
+      scale: {x: 1.00000024, y: 1.00000024, z: 1}
+      transformModified: 1
+    - name: SeaDemon HeadNub
+      position: {x: -.117017984, y: 0, z: 0}
+      rotation: {x: 0, y: 2.32830616e-10, z: -0, w: 1}
+      scale: {x: 1.00000012, y: 1.00000012, z: 1.00000012}
+      transformModified: 1
+    - name: SeaDemon R Clavicle
+      position: {x: .020328274, y: .00974498689, z: -.0673984736}
+      rotation: {x: -.427772969, y: -.41919443, z: -.626666427, w: .498573571}
+      scale: {x: .999999344, y: .999999762, z: 1}
+      transformModified: 1
+    - name: SeaDemon R UpperArm
+      position: {x: -.0639831126, y: 4.76837148e-09, z: 1.90734859e-08}
+      rotation: {x: .272243887, y: -.131344035, z: .119946837, w: .945645154}
+      scale: {x: 1.00000024, y: .99999994, z: 1}
+      transformModified: 1
+    - name: SeaDemon R Forearm
+      position: {x: -.105109006, y: 1.19209287e-09, z: 0}
+      rotation: {x: 8.11771461e-05, y: -.000809216173, z: .00352431904, w: .999993503}
+      scale: {x: .999999881, y: 1.00000012, z: 1.00000012}
+      transformModified: 1
+    - name: SeaDemon R Hand
+      position: {x: -.106367223, y: 0, z: 0}
+      rotation: {x: -.706712008, y: .0126643237, z: -.0126542635, w: -.707274914}
+      scale: {x: 1.00000036, y: 1.00000036, z: 1.00000024}
+      transformModified: 1
+    - name: SeaDemon R Finger0
+      position: {x: -.0296259485, y: .011328401, z: .0395824127}
+      rotation: {x: -.771326602, y: .0318427347, z: .0425469354, w: .634216905}
+      scale: {x: .999999821, y: 1.00000012, z: 1.00000012}
+      transformModified: 1
+    - name: SeaDemon R Finger01
+      position: {x: -.0429132357, y: 1.90734859e-08, z: 4.76837148e-09}
+      rotation: {x: 4.93161401e-10, y: 3.69250341e-09, z: -.132382005, w: .991198778}
+      scale: {x: .99999994, y: 1, z: 1}
+      transformModified: 1
+    - name: SeaDemon R Finger0Nub
+      position: {x: -9.63211005e-06, y: -1.90734859e-08, z: 0}
+      rotation: {x: 0, y: 0, z: 1, w: -3.49245965e-09}
+      scale: {x: -1, y: -.99999994, z: -.99999994}
+      transformModified: 1
+    - name: SeaDemon R Finger1
+      position: {x: -.0858965069, y: -9.53674295e-09, z: -4.76837148e-09}
+      rotation: {x: .000398130185, y: 5.15796827e-09, z: -8.146126e-10, w: 1}
+      scale: {x: 1, y: .999999881, z: .999999702}
+      transformModified: 1
+    - name: SeaDemon R Finger11
+      position: {x: -.0423562601, y: 0, z: 4.76837148e-09}
+      rotation: {x: -1.05205578e-08, y: 4.85786789e-09, z: -3.49638114e-08, w: 1}
+      scale: {x: 1.00000012, y: 1.00000012, z: 1.00000024}
+      transformModified: 1
+    - name: SeaDemon R Finger1Nub
+      position: {x: -.0423563384, y: 9.53674295e-09, z: -7.15255721e-09}
+      rotation: {x: 9.31322464e-10, y: -1.38777845e-17, z: 1, w: 1.49011594e-08}
+      scale: {x: -1.00000012, y: -1.00000012, z: -1.00000012}
+      transformModified: 1
+    - name: SeaDemon Tail
+      position: {x: .0664863363, y: -.00727610104, z: -1.63912777e-08}
+      rotation: {x: -1.98858459e-08, y: 2.55278223e-06, z: -.932213187, w: -.361909807}
+      scale: {x: .999999762, y: .999999702, z: .999999702}
+      transformModified: 1
+    - name: SeaDemon Tail1
+      position: {x: -.0756446421, y: -5.86700444e-05, z: -9.2442333e-06}
+      rotation: {x: -.000304016226, y: .0131140454, z: .0223794524, w: .999663472}
+      scale: {x: 1, y: 1.00000012, z: 1}
+      transformModified: 1
+    - name: SeaDemon Tail2
+      position: {x: -.0756822601, y: -5.27334196e-05, z: 9.49382775e-06}
+      rotation: {x: -.0016225389, y: -.0150035834, z: -.108291306, w: .994004667}
+      scale: {x: 1.00000012, y: 1, z: 1.00000012}
+      transformModified: 1
+    - name: SeaDemon Tail3
+      position: {x: -.0756739825, y: -5.56945779e-05, z: -1.22642514e-05}
+      rotation: {x: -6.38845199e-09, y: 1.63836148e-07, z: -.0212484188, w: .999774277}
+      scale: {x: 1.00000024, y: 1.00000012, z: 1}
+      transformModified: 1
+    - name: SeaDemon TailNub
+      position: {x: -.075654678, y: -1.90734859e-08, z: 0}
+      rotation: {x: .707388282, y: -.706825197, z: -9.78987828e-07, w: -9.80841719e-07}
+      scale: {x: .999999881, y: .999999881, z: 1}
+      transformModified: 1
+    - name: SeaDemon MESH
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 1, y: 0, z: 0, w: 2.18556941e-08}
+      scale: {x: 18.6966, y: 18.6966, z: 18.6966}
+      transformModified: 1
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 3
+  additionalBone: 0
+  userData: 
