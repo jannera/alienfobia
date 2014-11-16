@@ -6,15 +6,13 @@ namespace CompleteProject
 {
     public class PlayerHealth : CompleteProject.PhotonBehaviour
     {
-        public int startingHealth = 100;                            // The amount of health the player starts the game with.
-        public int currentHealth { get; private set; }                                   // The current health the player has.
+        public int startingHealth = 100;
+        public int currentHealth { get; private set; }
 
-        public AudioClip deathClip;                                 // The audio clip to play when the player dies
-        Animator anim;                                              // Reference to the Animator component.
-        AudioSource playerAudio;                                    // Reference to the AudioSource component.
-        PlayerMovementInput playerMovement;                              // Reference to the player's movement.
-        PlayerShooting playerShooting;                              // Reference to the PlayerShooting script.
-        public bool isDead { get; private set; }                           // Whether the player is dead.
+        Animator anim;
+        PlayerMovementInput playerMovement;
+        PlayerShooting playerShooting;
+        public bool isDead { get; private set; }
         public bool isDowned { get; private set; } 
         public float automaticReviveTime = 10; // in seconds
         private float downTimer;
@@ -22,17 +20,22 @@ namespace CompleteProject
 
         public GameObject bloodParticles;
 
+        private AudioSource[] hurtSounds;
+        private AudioSource[] deathSounds;
+
+        private AudioLibraryController allAudio;
 
         void Awake()
         {
-            // Setting up the references.
             anim = GetComponentInChildren<Animator>();
-            playerAudio = GetComponent<AudioSource>();
             playerMovement = GetComponent<PlayerMovementInput>();
             playerShooting = GetComponentInChildren<PlayerShooting>();
 
-            // Set the initial health of the player.
             currentHealth = startingHealth;
+
+            allAudio = GetComponent<AudioLibraryController>();
+            hurtSounds = allAudio.GetByTag("AudioHurt");
+            deathSounds = allAudio.GetByTag("AudioDeath");
         }
 
 
@@ -57,12 +60,10 @@ namespace CompleteProject
 
         public void TakeDamage(int amount, Vector3 attackerPosition)
         {
-            // Reduce the current health by the damage amount.
             currentHealth -= amount;
 
             RPC(ShowDamageEffects, PhotonTargets.All);
 
-            // If the player has lost all it's health and the death flag hasn't been set yet...
             if (currentHealth <= 0 && !isDowned)
             {
                 // ... it should die.
@@ -73,8 +74,11 @@ namespace CompleteProject
         [RPC]
         public void ShowDamageEffects()
         {
-            // Play the hurt sound effect.
-            playerAudio.Play();
+            AudioSource src = Utility.PickRandomly(hurtSounds);
+            if (!src.isPlaying)
+            {
+                src.Play();
+            }
 
             // bloodParticles.transform.rotation.SetFromToRotation(transform.position, attackerPosition);
             
@@ -85,17 +89,12 @@ namespace CompleteProject
         [RPC]
         void Down()
         {
-            // Set the death flag so this function won't be called again.
             isDowned = true;
             downTimer = 0f;
 
-            // Turn off any remaining shooting effects.
             playerShooting.DisableEffects();
 
-            // Tell the animator that the player is dead.
             anim.SetTrigger("FallDown");
-
-            // Set the audiosource to play the death clip and play it (this will stop the hurt sound from playing).
 
             // Turn off the movement and shooting scripts.
             playerMovement.enabled = false;
@@ -116,8 +115,8 @@ namespace CompleteProject
         void Death()
         {
             isDead = true;
-            playerAudio.clip = deathClip;
-            playerAudio.Play();
+            AudioSource src = Utility.PickRandomly(deathSounds);
+            src.Play();
         }
 
         public void AddHealth(int amount)

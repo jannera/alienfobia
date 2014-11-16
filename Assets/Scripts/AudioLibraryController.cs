@@ -87,9 +87,7 @@ namespace CompleteProject
             else
             {
                 StopAll();
-                AudioSource s = Utility.PickRandomly(items);
-                Debug.Log("playing " + s.clip.name);
-                s.Play();
+                Utility.PickRandomly(items).Play();
             }
         }
     }
