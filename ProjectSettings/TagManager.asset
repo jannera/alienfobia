@@ -10,8 +10,10 @@ TagManager:
   - HighlightSphere
   - Grenade
   - InventoryWeapon
-  - 
+  - AudioDeath
   - PlayerGun
+  - AudioAttack
+  - AudioHurt
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX

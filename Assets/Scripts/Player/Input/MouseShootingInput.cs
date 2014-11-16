@@ -12,8 +12,6 @@ namespace CompleteProject
         private PlayerShooting playerShooting;
         private GameObject barrelEnd;
 
-        private Quaternion origLocalRotation;
-
         // Use this for initialization
         void Start()
         {
@@ -24,7 +22,6 @@ namespace CompleteProject
                 return;
             }
             playerGO = PlayerManager.GetMyPlayer();
-            origLocalRotation = transform.localRotation;
             playerShooting = GetComponent<PlayerShooting>();
             barrelEnd = playerShooting.GetBarrelEnd();
         }
@@ -32,11 +29,8 @@ namespace CompleteProject
         // Update is called once per frame
         void Update()
         {
-            bool shooting = false;
-            // If the Fire1 button is being press and it's time to fire...
             if (Input.GetButton("Fire1") && playerShooting.CanFire())
             {
-                // todo check the bullet things here
                 if (playerShooting.currentAmmo == 0)
                 {
                     if (!playerShooting.IsReloading())
@@ -46,16 +40,9 @@ namespace CompleteProject
                 }
                 else
                 {
-                    shooting = true;
-                    // Quaternion diff = Quaternion.FromToRotation(playerGO.transform.forward, transform.forward);
                     transform.localRotation.SetLookRotation(playerGO.transform.forward, Vector3.up);
                     Shoot();
                 }
-            }
-
-            if (!shooting)
-            {
-                // transform.localRotation = origLocalRotation;
             }
 
             if (Input.GetKey(KeyCode.R) && !playerShooting.IsReloading())
