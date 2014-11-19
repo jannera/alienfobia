@@ -7490,8 +7490,8 @@ GameObject:
   - 20: {fileID: 711851439}
   - 92: {fileID: 711851438}
   - 124: {fileID: 711851437}
-  - 81: {fileID: 711851436}
   - 114: {fileID: 711851441}
+  - 81: {fileID: 711851436}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -7502,9 +7502,8 @@ GameObject:
 --- !u!81 &711851436
 AudioListener:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 8100000, guid: a8735871a368a47e9a811ed8965d42c4,
-    type: 2}
-  m_PrefabInternal: {fileID: 1702086313}
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 711851435}
   m_Enabled: 1
 --- !u!124 &711851437
@@ -13273,7 +13272,7 @@ AudioSource:
   serializedVersion: 3
   m_audioClip: {fileID: 8300000, guid: 0268947d511b6d94cabf0563fe8b96cd, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: .400000006
+  m_Volume: .200000003
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -13331,7 +13330,7 @@ AudioSource:
   serializedVersion: 3
   m_audioClip: {fileID: 8300000, guid: 1110b3a79f212f1488961cd003f68989, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: .330000013
+  m_Volume: .159999996
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -17885,7 +17884,8 @@ Prefab:
       propertyPath: offset.z
       value: -5
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8100000, guid: a8735871a368a47e9a811ed8965d42c4, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: a8735871a368a47e9a811ed8965d42c4, type: 2}
   m_RootGameObject: {fileID: 711851435}
   m_IsPrefabParent: 0

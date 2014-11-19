@@ -72,7 +72,10 @@ namespace CompleteProject
             anim.SetTrigger("Attack");
             timer = 0f;
 
-            allAudio.PlayOnlyOne(attackSounds);
+            if (!allAudio.AreAnyPlaying(attackSounds))
+            {
+                allAudio.PlayOnlyOne(attackSounds);
+            }
             if (playerHealth.currentHealth > 0)
             {
                 playerHealth.TakeDamage(attackDamage, transform.position);

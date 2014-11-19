@@ -85,9 +85,8 @@ namespace CompleteProject
         {
             Vector3 hitPoint = localPoint + transform.position;
 
-            if (!allAudio.AreAnyPlaying(hurtSounds)) {
-                allAudio.PlayOnlyOne(hurtSounds);
-            }
+            
+            allAudio.PlayOnlyOne(hurtSounds);
             
             // Set the position of the particle system to where the hit was sustained.
             hitParticles.transform.position = hitPoint;
