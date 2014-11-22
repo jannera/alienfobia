@@ -1,0 +1,310 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!74 &7400000
+AnimationClip:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: spawnrates
+  serializedVersion: 4
+  m_AnimationType: 2
+  m_Compressed: 0
+  m_UseHighQualityCurve: 1
+  m_RotationCurves: []
+  m_CompressedRotationCurves: []
+  m_PositionCurves: []
+  m_ScaleCurves: []
+  m_FloatCurves:
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 6
+        inSlope: .162711084
+        outSlope: .162711084
+        tangentMode: 10
+      - time: 180
+        value: 35.2879944
+        inSlope: .162711084
+        outSlope: .162711084
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: maxAmount
+    path: Seademon Generator
+    classID: 114
+    script: {fileID: 11500000, guid: dfc384ee71fdae64784c618a4eb0e085, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 4
+        inSlope: .118266635
+        outSlope: .118266635
+        tangentMode: 10
+      - time: 180
+        value: 25.2879944
+        inSlope: .118266635
+        outSlope: .118266635
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: minAmount
+    path: Seademon Generator
+    classID: 114
+    script: {fileID: 11500000, guid: dfc384ee71fdae64784c618a4eb0e085, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 4
+        inSlope: .0182666406
+        outSlope: .0182666406
+        tangentMode: 10
+      - time: 180
+        value: 7.28799534
+        inSlope: .0182666406
+        outSlope: .0182666406
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: maxAmount
+    path: Hellephant Generator
+    classID: 114
+    script: {fileID: 11500000, guid: dfc384ee71fdae64784c618a4eb0e085, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 3
+        inSlope: .0127110854
+        outSlope: .0127110854
+        tangentMode: 10
+      - time: 180
+        value: 5.28799534
+        inSlope: .0127110854
+        outSlope: .0127110854
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: minAmount
+    path: Hellephant Generator
+    classID: 114
+    script: {fileID: 11500000, guid: dfc384ee71fdae64784c618a4eb0e085, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 8
+        inSlope: .151599973
+        outSlope: .151599973
+        tangentMode: 10
+      - time: 180
+        value: 35.2879944
+        inSlope: .151599973
+        outSlope: .151599973
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: minAmount
+    path: Zard Generator
+    classID: 114
+    script: {fileID: 11500000, guid: dfc384ee71fdae64784c618a4eb0e085, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 10
+        inSlope: .196044415
+        outSlope: .196044415
+        tangentMode: 10
+      - time: 180
+        value: 45.2879944
+        inSlope: .196044415
+        outSlope: .196044415
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: maxAmount
+    path: Zard Generator
+    classID: 114
+    script: {fileID: 11500000, guid: dfc384ee71fdae64784c618a4eb0e085, type: 3}
+  m_PPtrCurves: []
+  m_SampleRate: 1
+  m_WrapMode: 0
+  m_Bounds:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
+  m_ClipBindingConstant:
+    genericBindings:
+    - path: 962413261
+      attribute: 2955712739
+      script: {fileID: 11500000, guid: dfc384ee71fdae64784c618a4eb0e085, type: 3}
+      classID: 114
+      customType: 0
+      isPPtrCurve: 0
+    - path: 962413261
+      attribute: 1741105826
+      script: {fileID: 11500000, guid: dfc384ee71fdae64784c618a4eb0e085, type: 3}
+      classID: 114
+      customType: 0
+      isPPtrCurve: 0
+    - path: 2819169433
+      attribute: 2955712739
+      script: {fileID: 11500000, guid: dfc384ee71fdae64784c618a4eb0e085, type: 3}
+      classID: 114
+      customType: 0
+      isPPtrCurve: 0
+    - path: 2819169433
+      attribute: 1741105826
+      script: {fileID: 11500000, guid: dfc384ee71fdae64784c618a4eb0e085, type: 3}
+      classID: 114
+      customType: 0
+      isPPtrCurve: 0
+    - path: 1049984870
+      attribute: 1741105826
+      script: {fileID: 11500000, guid: dfc384ee71fdae64784c618a4eb0e085, type: 3}
+      classID: 114
+      customType: 0
+      isPPtrCurve: 0
+    - path: 1049984870
+      attribute: 2955712739
+      script: {fileID: 11500000, guid: dfc384ee71fdae64784c618a4eb0e085, type: 3}
+      classID: 114
+      customType: 0
+      isPPtrCurve: 0
+    pptrCurveMapping: []
+  m_AnimationClipSettings:
+    serializedVersion: 2
+    m_StartTime: 0
+    m_StopTime: 180
+    m_OrientationOffsetY: 0
+    m_Level: 0
+    m_CycleOffset: 0
+    m_LoopTime: 0
+    m_LoopBlend: 0
+    m_LoopBlendOrientation: 0
+    m_LoopBlendPositionY: 0
+    m_LoopBlendPositionXZ: 0
+    m_KeepOriginalOrientation: 0
+    m_KeepOriginalPositionY: 1
+    m_KeepOriginalPositionXZ: 0
+    m_HeightFromFeet: 0
+    m_Mirror: 0
+  m_EditorCurves:
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 6
+        inSlope: .162711084
+        outSlope: .162711084
+        tangentMode: 10
+      - time: 180
+        value: 35.2879944
+        inSlope: .162711084
+        outSlope: .162711084
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: maxAmount
+    path: Seademon Generator
+    classID: 114
+    script: {fileID: 11500000, guid: dfc384ee71fdae64784c618a4eb0e085, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 4
+        inSlope: .118266635
+        outSlope: .118266635
+        tangentMode: 10
+      - time: 180
+        value: 25.2879944
+        inSlope: .118266635
+        outSlope: .118266635
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: minAmount
+    path: Seademon Generator
+    classID: 114
+    script: {fileID: 11500000, guid: dfc384ee71fdae64784c618a4eb0e085, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 4
+        inSlope: .0182666406
+        outSlope: .0182666406
+        tangentMode: 10
+      - time: 180
+        value: 7.28799534
+        inSlope: .0182666406
+        outSlope: .0182666406
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: maxAmount
+    path: Hellephant Generator
+    classID: 114
+    script: {fileID: 11500000, guid: dfc384ee71fdae64784c618a4eb0e085, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 3
+        inSlope: .0127110854
+        outSlope: .0127110854
+        tangentMode: 10
+      - time: 180
+        value: 5.28799534
+        inSlope: .0127110854
+        outSlope: .0127110854
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: minAmount
+    path: Hellephant Generator
+    classID: 114
+    script: {fileID: 11500000, guid: dfc384ee71fdae64784c618a4eb0e085, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 8
+        inSlope: .151599973
+        outSlope: .151599973
+        tangentMode: 10
+      - time: 180
+        value: 35.2879944
+        inSlope: .151599973
+        outSlope: .151599973
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: minAmount
+    path: Zard Generator
+    classID: 114
+    script: {fileID: 11500000, guid: dfc384ee71fdae64784c618a4eb0e085, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 10
+        inSlope: .196044415
+        outSlope: .196044415
+        tangentMode: 10
+      - time: 180
+        value: 45.2879944
+        inSlope: .196044415
+        outSlope: .196044415
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: maxAmount
+    path: Zard Generator
+    classID: 114
+    script: {fileID: 11500000, guid: dfc384ee71fdae64784c618a4eb0e085, type: 3}
+  m_EulerEditorCurves: []
+  m_Events: []

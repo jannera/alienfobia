@@ -88,7 +88,6 @@ namespace CompleteProject
             {
                 StopAll();
                 Utility.PickRandomly(items).Play();
-                Debug.Log("starting");
             }
         }
     }
