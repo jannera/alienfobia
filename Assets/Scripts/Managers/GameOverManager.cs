@@ -30,7 +30,10 @@ namespace CompleteProject
             
             if (playerHealth.isDead)
             {
+                this.enabled = false;
                 anim.SetTrigger("GameOver");
+                string playername = PhotonNetwork.player.name;
+                ScoreStorage.Store(new RowData(playername, ScoreManager.score, true));
             }
         }
     }
