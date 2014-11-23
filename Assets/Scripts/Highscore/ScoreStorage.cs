@@ -21,40 +21,57 @@ namespace CompleteProject
         private static string gameName;
         private static string levelRevision = "001";
         private static string currentGameScoreId;
+        private static string localPlayerName;
 
-        public static void Fetch(string playerName, System.Action<RowData[]> handler)
+        public static RowData[] localScores { get; private set; }
+        public static RowData[] globalScores { get; private set; }
+
+        private static void FetchLocalScores()
         {
-            BuildAPI();
-
-            scoreBoardService.GetScoresByUser(gameName, playerName, new ScoreSearchCallBack(handler));
+            scoreBoardService.GetScoresByUser(gameName, localPlayerName, new LocalScoreSearchCallBack());
         }
 
-        public class ScoreSearchCallBack : App42CallBack
+        private static void FetchGlobalScores()
         {
-            private System.Action<RowData[]> handler;
+            scoreBoardService.GetTopNRankers(gameName, 100, new GlobalScoreSearchCallBack());
+        }
 
-            public ScoreSearchCallBack(System.Action<RowData[]> handler)
-            {
-                this.handler = handler;
-            }
+        private class LocalScoreSearchCallBack : App42CallBack
+        {
             public void OnSuccess(object response)
             {
-                Game game = (Game)response;
-                IList<Game.Score> scores = game.GetScoreList();
-                RowData[] rows = new RowData[scores.Count];
-                for (int i = 0; i < scores.Count; i++)
-                {
-                    Game.Score s = scores[i];
-                    rows[i] = new RowData(s.userName, (float) s.GetValue(), s.GetScoreId() == currentGameScoreId);
-                }
-                Sort(rows);
-                handler(rows);
+                localScores = TransformScoresToRows((Game)response);
             }
 
             public void OnException(System.Exception e)
             {
-                Debug.LogError("While trying to fetch score: " + e);
+                Debug.LogError("While trying to fetch local score: " + e);
             }
+        }
+
+        private class GlobalScoreSearchCallBack : App42CallBack
+        {
+            public void OnSuccess(object response)
+            {
+                globalScores = TransformScoresToRows((Game)response);
+            }
+
+            public void OnException(System.Exception e)
+            {
+                Debug.LogError("While trying to fetch global score: " + e);
+            }
+        }
+
+        private static RowData[] TransformScoresToRows(Game game) {
+            IList<Game.Score> scores = game.GetScoreList();
+            RowData[] rows = new RowData[scores.Count];
+            for (int i = 0; i < scores.Count; i++)
+            {
+                Game.Score s = scores[i];
+                rows[i] = new RowData(s.userName, (float) s.GetValue(), s.GetScoreId() == currentGameScoreId); // TODO handle the comparison differently in global list
+            }
+            Sort(rows);
+            return rows;
         }
 
         private static void BuildAPI()
@@ -73,6 +90,8 @@ namespace CompleteProject
         public static bool Store(RowData data)
         {
             BuildAPI();
+
+            localPlayerName = data.name;
 
             gameService.GetGameByName(gameName, new GameSearchCallback(data));
 
@@ -124,6 +143,8 @@ namespace CompleteProject
             {
                 Game game = (Game)response;
                 currentGameScoreId = game.GetScoreList()[0].GetScoreId();
+                FetchLocalScores();
+                FetchGlobalScores();
                 // Debug.Log("Saving succeeded");
                 // LogGameData(game);
             }
