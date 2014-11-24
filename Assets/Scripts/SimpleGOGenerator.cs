@@ -95,5 +95,10 @@ namespace CompleteProject
             }
             return false;
         }
+
+        public void Test()
+        {
+
+        }
     }
 }
