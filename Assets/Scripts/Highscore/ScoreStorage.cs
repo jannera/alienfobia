@@ -19,56 +19,74 @@ namespace CompleteProject
         private static GameService gameService;
 
         private static string gameName;
-        private static string levelRevision = "001";
-        private static string currentGameScoreId;
-        private static string localPlayerName;
+        private static string levelRevision = "003";
+        private static string currentGameScoreId; 
 
         public static RowData[] localScores { get; private set; }
         public static RowData[] globalScores { get; private set; }
 
-        private static void FetchLocalScores()
+        private delegate void SuccessHandler(object response);
+        private delegate void ExceptionHandler(System.Exception e);
+
+        private static App42CallBack Wrap(SuccessHandler onSuccess)
         {
-            scoreBoardService.GetScoresByUser(gameName, localPlayerName, new LocalScoreSearchCallBack());
+            return Wrap(onSuccess, delegate(System.Exception e)
+            {
+                Debug.LogError("While communicating with App42: " + e);
+            });
         }
 
-        private static void FetchGlobalScores()
+        // wraps delegates into DefaultCallBacks, so the code is easier to read
+        private static App42CallBack Wrap(SuccessHandler onSuccess, ExceptionHandler onException)
         {
-            scoreBoardService.GetTopNRankers(gameName, 100, new GlobalScoreSearchCallBack());
+            return new DefaultCallBack(onSuccess, onException);
         }
 
-        private class LocalScoreSearchCallBack : App42CallBack
+        private class DefaultCallBack : App42CallBack
         {
+            SuccessHandler onSuccess;
+            ExceptionHandler onException;
+
+            public DefaultCallBack(SuccessHandler onSuccess, ExceptionHandler onException)
+            {
+                this.onSuccess = onSuccess;
+                this.onException = onException;
+            }
             public void OnSuccess(object response)
+            {
+                onSuccess(response);
+            }
+
+            public void OnException(System.Exception e)
+            {
+                onException(e);
+            }
+        }
+
+        private static void FetchLocalScores(string localPlayerName)
+        {
+            scoreBoardService.GetScoresByUser(gameName, localPlayerName, Wrap(delegate(object response)
             {
                 localScores = TransformScoresToRows((Game)response);
-            }
-
-            public void OnException(System.Exception e)
-            {
-                Debug.LogError("While trying to fetch local score: " + e);
-            }
+            }));
         }
 
-        private class GlobalScoreSearchCallBack : App42CallBack
+        private static void FetchGlobalScores(string localPlayerName)
         {
-            public void OnSuccess(object response)
+            scoreBoardService.GetTopNRankers(gameName, 100, Wrap(delegate(object response)
             {
                 globalScores = TransformScoresToRows((Game)response);
-            }
-
-            public void OnException(System.Exception e)
-            {
-                Debug.LogError("While trying to fetch global score: " + e);
-            }
+            }));
         }
 
-        private static RowData[] TransformScoresToRows(Game game) {
+        private static RowData[] TransformScoresToRows(Game game)
+        {
             IList<Game.Score> scores = game.GetScoreList();
             RowData[] rows = new RowData[scores.Count];
             for (int i = 0; i < scores.Count; i++)
             {
                 Game.Score s = scores[i];
-                rows[i] = new RowData(s.userName, (float) s.GetValue(), s.GetScoreId() == currentGameScoreId); // TODO handle the comparison differently in global list
+                rows[i] = new RowData(s.userName, (float)s.GetValue(), s.GetScoreId() == currentGameScoreId); // TODO handle the comparison differently in global list
             }
             Sort(rows);
             return rows;
@@ -91,68 +109,33 @@ namespace CompleteProject
         {
             BuildAPI();
 
-            localPlayerName = data.name;
+            // this is stored as variable (and not created inside the gameService.GetGameByName -call), because 
+            // it can be called directly after confirming the game exists, or after checking that 
+            // the game does not exist and creating a new game.
+            SuccessHandler saveScore = delegate(object response)
+            {
+                scoreBoardService.SaveUserScore(gameName, data.name, data.score, Wrap(delegate(object r)
+                {
+                    // after saving the score..
+                    Game game = (Game)r;
+                    currentGameScoreId = game.GetScoreList()[0].GetScoreId(); // store the current game's id
+                    // start fetching and storing the local and global scores
+                    FetchLocalScores(data.name);
+                    FetchGlobalScores(data.name);
+                }));
+            };
 
-            gameService.GetGameByName(gameName, new GameSearchCallback(data));
+            gameService.GetGameByName(gameName, Wrap(
+                saveScore, // if a game exists, just save the score
+                delegate(System.Exception e)
+                {
+                    // if a game did not exist..
+                    Debug.LogWarning("While trying to find game : " + e);
+                    gameService.CreateGame(gameName, "dummy desc", Wrap(saveScore)); // create it, and as response to saving game, save the score
+                }
+            ));
 
             return true;
-        }
-
-        private class GameSearchCallback : App42CallBack
-        {
-            RowData d;
-            public GameSearchCallback(RowData d)
-            {
-                this.d = d;
-            }
-
-            public void OnSuccess(object response)
-            {
-                scoreBoardService.SaveUserScore(gameName, d.name, d.score, new ScoreSaveCallback());
-            }
-
-            public void OnException(System.Exception e)
-            {
-                Debug.LogWarning("While trying to find game : " + e);
-                gameService.CreateGame(gameName, "dummy desc", new GameCreationCallBack(d));
-            }
-        }
-
-        private class GameCreationCallBack : App42CallBack
-        {
-            RowData d;
-            public GameCreationCallBack(RowData d)
-            {
-                this.d = d;
-            }
-
-            public void OnSuccess(object response)
-            {
-                scoreBoardService.SaveUserScore(gameName, d.name, d.score, new ScoreSaveCallback());
-            }
-
-            public void OnException(System.Exception e)
-            {
-                Debug.LogError("While trying to create game : " + e);
-            }
-        }
-
-        private class ScoreSaveCallback : App42CallBack
-        {
-            public void OnSuccess(object response)
-            {
-                Game game = (Game)response;
-                currentGameScoreId = game.GetScoreList()[0].GetScoreId();
-                FetchLocalScores();
-                FetchGlobalScores();
-                // Debug.Log("Saving succeeded");
-                // LogGameData(game);
-            }
-
-            public void OnException(System.Exception e)
-            {
-                Debug.LogError("While trying to save score: " + e);
-            }
         }
 
         private static void LogGameData(Game game)
