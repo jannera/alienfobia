@@ -25,6 +25,11 @@ namespace CompleteProject
             OnTimeIsUp();
         }
 
+        public static void MyPlayerDied()
+        {
+            OnMyPlayerDied();
+        }
+
         static GameState()
         {
             // these local listeners ensure that at least one listener exists for every event (so there's no need to check for nulls)
@@ -35,5 +40,7 @@ namespace CompleteProject
             OnMyPlayerDied += delegate() { OnLevelOver(); };
             OnTimeIsUp += delegate() { OnLevelOver(); };
         }
+
+        
     }
 }

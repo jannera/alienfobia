@@ -3,7 +3,7 @@ using System.Collections;
 
 namespace CompleteProject
 {
-    public class PlayerHp : MonoBehaviour
+    public class HealthSliderUpdater : MonoBehaviour
     {
         public UnityEngine.UI.Slider slider;
         public UnityEngine.UI.Image hitImage;

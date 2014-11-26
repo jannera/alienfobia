@@ -147,8 +147,8 @@ GameObject:
   - 223: {fileID: 22300000}
   - 114: {fileID: 11400020}
   - 95: {fileID: 9500000}
-  - 114: {fileID: 11400000}
   - 114: {fileID: 11400022}
+  - 114: {fileID: 11400000}
   m_Layer: 5
   m_Name: HUDCanvas
   m_TagString: Untagged
@@ -437,7 +437,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 100016}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a210693e63307044a858d1787aacd62c, type: 3}
+  m_Script: {fileID: 11500000, guid: 8b141827023427846aac589d604a4ae1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &11400002
@@ -477,9 +477,9 @@ MonoBehaviour:
     m_Alignment: 4
     m_RichText: 1
     m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Level Finished!
+  m_Text: "Level Finished! \nx1.25 score!"
 --- !u!114 &11400006
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1312,7 +1312,7 @@ RectTransform:
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 674, y: 114.660004}
+  m_SizeDelta: {x: 674, y: 181.600006}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22400004
 RectTransform:

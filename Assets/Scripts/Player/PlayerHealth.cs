@@ -45,7 +45,10 @@ namespace CompleteProject
             {
                 bool othersAlive = PlayerManager.AreAnyPlayersAlive();
                 if (!othersAlive) {
-                    RPC(Death, PhotonTargets.All);
+                    if (!isDead)
+                    {
+                        RPC(Death, PhotonTargets.All);
+                    }
                 }
                 downTimer += Time.deltaTime;
                 
@@ -117,6 +120,7 @@ namespace CompleteProject
             isDead = true;
             AudioSource src = Utility.PickRandomly(deathSounds);
             src.Play();
+            GameState.MyPlayerDied();
         }
 
         public void AddHealth(int amount)
