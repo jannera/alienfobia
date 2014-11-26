@@ -10,7 +10,7 @@ namespace CompleteProject
     {
         public float timeBetweenGrenades = 0.8f;
         float grenadeTimer;
-        public GameObject grenadePreFab;
+        public GameObject grenadePreFab = null;
 
         public int grenades = 3;
 

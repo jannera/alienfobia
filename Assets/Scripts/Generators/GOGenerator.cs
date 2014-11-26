@@ -9,13 +9,13 @@ namespace CompleteProject
     class GOGenerator : PhotonBehaviour
     {
         public float spawnRange = 5;
-        
-        public float secsBetweenSpawns;
-        public float secsBeforeFirstSpawn;
+
+        public float secsBetweenSpawns = 20;
+        public float secsBeforeFirstSpawn = 3;
         
         public float playerSafetyDistance = 2f;
 
-        public Spawn[] spawns;
+        public Spawn[] spawns = new Spawn[0];
 
         private float timer;
         private int[] amounts;

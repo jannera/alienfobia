@@ -108,7 +108,7 @@ namespace CompleteProject
             Vector3 diff = other.transform.position - transform.position;
             shootRay.origin = transform.position;
             shootRay.direction = diff;
-            if (Physics.Raycast(shootRay, out shootHit, diff.magnitude))
+            if (Physics.Raycast(shootRay, diff.magnitude))
             {
                 // Debug.Log(shootHit.collider.gameObject + " is blocking line of fire! " + shootRay.origin + " -> " + shootRay.direction + " to " + other.GetComponent<PhotonView> ().instantiationId);
                 return false;

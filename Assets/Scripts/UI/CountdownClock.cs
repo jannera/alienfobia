@@ -22,7 +22,7 @@ namespace CompleteProject
             };
 
             GameState.OnTimeIsUp += delegate()
-            {
+            { 
                 ShowSecondsLeft(0); // force 00:00 on the clock when time is up
             };
         }

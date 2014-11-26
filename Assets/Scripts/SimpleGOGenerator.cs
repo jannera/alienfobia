@@ -13,8 +13,6 @@ namespace CompleteProject
         public float minAmount = 1f;
         public float maxAmount = 1f;
 
-        private int currentSpawn = 0;
-
         private float spawnTimer = 0.0f;
 
         private const int maxSpawnTries = 1000;
