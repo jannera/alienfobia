@@ -31,6 +31,7 @@ namespace CompleteProject
             {
                 if (this != null)
                 {
+                    anim.SetTrigger("PlayerDead");
                     this.enabled = false;
                 }
             };
@@ -66,11 +67,6 @@ namespace CompleteProject
             if (timer >= timeBetweenAttacks && playerInRange && !enemyHealth.isDead)
             {
                 Attack();
-            }
-
-            if (!PlayerManager.AreAnyPlayersAlive())
-            {
-                anim.SetTrigger("PlayerDead");
             }
         }
 

@@ -15,17 +15,20 @@ namespace CompleteProject
 
         void Awake()
         {
-            // Set up references.
             anim = GetComponentInChildren<Animator>();
             targetRotation = transform.rotation;
+
+            GameState.OnTimeIsUp += delegate()
+            {
+                Animating(false);
+                this.enabled = false;
+            };
         }
 
-        // Update is called once per frame
         void Update()
         {
             if (photonView.isMine)
             {
-                // Set the player's rotation to this new rotation.
                 transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * smoothTurning);
             }
         }
@@ -49,7 +52,6 @@ namespace CompleteProject
 
         public void Animating(bool walking)
         {
-            // Debug.Log("animating " + photonView.instantiationId + " " + walking);
             anim.SetBool("IsWalking", walking);
         }
     }
