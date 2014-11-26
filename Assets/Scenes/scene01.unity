@@ -6308,6 +6308,10 @@ Prefab:
       propertyPath: levelCountdownAnimator
       value: 
       objectReference: {fileID: 743733048}
+    - target: {fileID: 11400050, guid: 4f93161168608475d9b68750b2b88baf, type: 2}
+      propertyPath: m_Text
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4f93161168608475d9b68750b2b88baf, type: 2}
   m_RootGameObject: {fileID: 1920845372}
@@ -7674,7 +7678,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &732203923
 Transform:
   m_ObjectHideFlags: 0
@@ -7850,7 +7854,7 @@ Animator:
     type: 2}
   m_PrefabInternal: {fileID: 1970371090}
   m_GameObject: {fileID: 743733047}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: e185e9f5da510e345832153c5dbc065d, type: 2}
   m_CullingMode: 0
@@ -18320,7 +18324,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1770889935
 Transform:
   m_ObjectHideFlags: 0
@@ -18692,7 +18696,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1843956871
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19332,6 +19336,38 @@ Prefab:
       propertyPath: gameState
       value: 
       objectReference: {fileID: 1920845376}
+    - target: {fileID: 100002, guid: e14ba4ad11de19540b1d9020e7361646, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: e14ba4ad11de19540b1d9020e7361646, type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: e14ba4ad11de19540b1d9020e7361646, type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: e14ba4ad11de19540b1d9020e7361646, type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400004, guid: e14ba4ad11de19540b1d9020e7361646, type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: e14ba4ad11de19540b1d9020e7361646, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: e14ba4ad11de19540b1d9020e7361646, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: e14ba4ad11de19540b1d9020e7361646, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e14ba4ad11de19540b1d9020e7361646, type: 2}
   m_RootGameObject: {fileID: 743733047}
@@ -19908,7 +19944,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 01:42
+  m_Text: 
 --- !u!222 &2130974814
 CanvasRenderer:
   m_ObjectHideFlags: 0

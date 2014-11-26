@@ -23,21 +23,15 @@ namespace CompleteProject
         void Start()
         {
             spawnTimer = secsBeforeInitialSpawn;
-        }
-
-        void Update()
-        {
-            if (!PhotonNetwork.inRoom)
-            {
-                return;
-            }
-
             if (!PhotonNetwork.isMasterClient)
             {
                 Destroy(this); // removes this component
                 return;
             }
+        }
 
+        void Update()
+        {
             spawnTimer -= Time.deltaTime;
 
             if (spawnTimer <= 0)

@@ -30,6 +30,16 @@ namespace CompleteProject
             OnMyPlayerDied();
         }
 
+        public static void MyPlayerJoined()
+        {
+            OnMyPlayerJoined();
+        }
+
+        public static void OtherPlayerJoined(PhotonPlayer player)
+        {
+            OnOtherPlayerJoined(player);
+        }
+
         static GameState()
         {
             // these local listeners ensure that at least one listener exists for every event (so there's no need to check for nulls)

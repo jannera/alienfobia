@@ -20,6 +20,11 @@ namespace CompleteProject
             {
                 this.enabled = false; // on level over signal, stop updating the clock
             };
+
+            GameState.OnTimeIsUp += delegate()
+            {
+                ShowSecondsLeft(0); // force 00:00 on the clock when time is up
+            };
         }
 
         void Update()
@@ -39,6 +44,11 @@ namespace CompleteProject
             {
                 secondsLeft = 0;
             }
+            ShowSecondsLeft(secondsLeft);
+        }
+
+        private void ShowSecondsLeft(int secondsLeft)
+        {
             System.TimeSpan span = System.TimeSpan.FromSeconds(secondsLeft);
             text.text = span.Minutes.ToString("00") + ":" + span.Seconds.ToString("00");
         }
