@@ -19,6 +19,10 @@ namespace CompleteProject
             else
             {
                 grenadeThrowing = GetComponent<GrenadeThrowing>();
+                GameState.OnLevelOver += delegate()
+                {
+                    this.enabled = false;
+                };
             }
         }
 

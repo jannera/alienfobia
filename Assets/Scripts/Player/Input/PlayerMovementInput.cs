@@ -21,6 +21,11 @@ namespace CompleteProject
 
             playerMovement = GetComponent<PlayerMovement>();
             floorMask = LayerMask.GetMask("Floor");
+
+            GameState.OnLevelOver += delegate()
+            {
+                this.enabled = false;
+            };
         }
 
         void FixedUpdate()

@@ -26,6 +26,14 @@ namespace CompleteProject
             anim = GetComponent<Animator>();
             allAudio = GetComponent<AudioLibraryController>();
             attackSounds = allAudio.GetByTag("AudioAttack");
+
+            GameState.OnLevelOver += delegate()
+            {
+                if (this != null)
+                {
+                    this.enabled = false;
+                }
+            };
         }
 
 
@@ -72,10 +80,8 @@ namespace CompleteProject
             anim.SetTrigger("Attack");
             timer = 0f;
 
-            if (!allAudio.AreAnyPlaying(attackSounds))
-            {
-                allAudio.PlayOnlyOne(attackSounds);
-            }
+            allAudio.PlayOnlyOne(attackSounds);
+            
             if (playerHealth.currentHealth > 0)
             {
                 playerHealth.TakeDamage(attackDamage, transform.position);

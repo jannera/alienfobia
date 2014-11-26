@@ -21,10 +21,10 @@ namespace CompleteProject
 
         public void LevelEnded()
         {
-            Debug.Log("Level ended!");
-            ScoreManager.score = (int) (ScoreManager.score * 1.25f);
             gameObject.SetActive(false);
             gameState.SetTrigger("LevelEnded");
+
+            GameState.TimeIsUp();
         }
     }
 }

@@ -17,6 +17,15 @@ namespace CompleteProject
                 player = FindClosestPlayer(); 
                 enemyHealth = GetComponent<EnemyHealth>();
                 nav = GetComponent<NavMeshAgent>();
+
+                GameState.OnLevelOver += delegate()
+                {
+                    if (this != null)
+                    {
+                        this.enabled = false;
+                        nav.enabled = false;
+                    }
+                };
             }
             else
             {
@@ -47,16 +56,13 @@ namespace CompleteProject
             {
                 return;
             }
-            // If the enemy and the player have health left...
+            
             if (!enemyHealth.isDead && PlayerManager.AreAnyPlayersAlive())
             {
-                // ... set the destination of the nav mesh agent to the player.
                 nav.SetDestination(player.position);
             }
-            // Otherwise...
             else
             {
-                // ... disable the nav mesh agent.
                 nav.enabled = false;
             }
         }

@@ -4,14 +4,12 @@ namespace CompleteProject
 {
     public class GameOverManager : MonoBehaviour
     {
-        PlayerHealth playerHealth;       // Reference to the player's health.
+        PlayerHealth playerHealth;
 
-        Animator anim;                          // Reference to the animator component.
-        float restartTimer;     				// Timer to count up to restarting the level
+        Animator anim;
 
         void Awake()
         {
-            // Set up the reference.
             anim = GetComponent<Animator>();
         }
 
@@ -31,9 +29,7 @@ namespace CompleteProject
             if (playerHealth.isDead)
             {
                 this.enabled = false;
-                anim.SetTrigger("GameOver");
-                string playername = PhotonNetwork.player.name;
-                ScoreStorage.Store(new RowData(playername, ScoreManager.score, true));
+                anim.SetTrigger("GameOver"); // todo: put a script on animator to listen for state changes
             }
         }
     }

@@ -15,6 +15,11 @@ namespace CompleteProject
                 return;
             }
 
+            GameState.OnLevelOver += delegate()
+            {
+                this.enabled = false;
+            };
+
             weapon = GetComponent<FlamethrowerWeapon>();
             selector = PlayerManager.GetComponentFromMyPlayer<WeaponInventory>();
         }

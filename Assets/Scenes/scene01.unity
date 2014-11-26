@@ -1877,6 +1877,22 @@ Prefab:
       propertyPath: levelCountdownAnimator
       value: 
       objectReference: {fileID: 743733048}
+    - target: {fileID: 11400004, guid: 4f93161168608475d9b68750b2b88baf, type: 2}
+      propertyPath: m_Text
+      value: "Level Finished! \nx1.25 score!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 22400002, guid: 4f93161168608475d9b68750b2b88baf, type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22400002, guid: 4f93161168608475d9b68750b2b88baf, type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 181.600006
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400004, guid: 4f93161168608475d9b68750b2b88baf, type: 2}
+      propertyPath: m_FontData.m_VerticalOverflow
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4f93161168608475d9b68750b2b88baf, type: 2}
   m_RootGameObject: {fileID: 1920845372}
@@ -6731,7 +6747,7 @@ RectTransform:
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 674, y: 114.660004}
+  m_SizeDelta: {x: 674, y: 181.600006}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &531052601
 MonoBehaviour:
@@ -6772,9 +6788,9 @@ MonoBehaviour:
     m_Alignment: 4
     m_RichText: 1
     m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Level Finished!
+  m_Text: "Level Finished! \nx1.25 score!"
 --- !u!222 &531052603
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -3,6 +3,7 @@ using System.Collections;
 
 namespace CompleteProject
 {
+    // todo rename this to rifle shooting input or something
     public class MouseShootingInput : CompleteProject.PhotonBehaviour
     {
         Ray shootRay;                                   // A ray from the gun end forwards.
@@ -24,6 +25,11 @@ namespace CompleteProject
             playerGO = PlayerManager.GetMyPlayer();
             playerShooting = GetComponent<PlayerShooting>();
             barrelEnd = playerShooting.GetBarrelEnd();
+
+            GameState.OnLevelOver += delegate()
+            {
+                this.enabled = false;
+            };
         }
 
         // Update is called once per frame

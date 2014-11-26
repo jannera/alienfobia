@@ -3,49 +3,58 @@ using System.Collections;
 using UnityEngine.UI;
 using UnityEditor;
 
-public class CountdownClock : MonoBehaviour {
-    public Animator levelCountdownAnimator;
-
-    private Text text;
-
-    float stopTime = float.NaN;
-
-	void Start () {
-        text = GetComponent<Text>();
-        // todo: once level ending signal is given, freeze the clock
-	}
-	
-	void Update () {
-        if (float.IsNaN(stopTime))
-        {
-            AnimationClip clip = GetCurrentClip();
-            if (clip == null)
-            {
-                return;
-            }
-            stopTime = AnimationUtility.GetAnimationEvents(clip)[0].time;
-        }
-        AnimatorStateInfo info = levelCountdownAnimator.GetCurrentAnimatorStateInfo(0);
-        int secondsLeft = (int) (stopTime - info.length * info.normalizedTime);
-        if (secondsLeft < 0)
-        {
-            secondsLeft = 0;
-        }
-        System.TimeSpan span = System.TimeSpan.FromSeconds(secondsLeft);
-        text.text = span.Minutes.ToString("00") + ":" + span.Seconds.ToString("00");
-	}
-
-    private AnimationClip GetCurrentClip()
+namespace CompleteProject
+{
+    public class CountdownClock : MonoBehaviour
     {
-        AnimationInfo[] infos = levelCountdownAnimator.GetCurrentAnimationClipState(0);
-        if (infos == null)
+        public Animator levelCountdownAnimator;
+
+        private Text text;
+
+        float stopTime = float.NaN;
+
+        void Start()
         {
-            return null;
+            text = GetComponent<Text>();
+            GameState.OnLevelOver += delegate()
+            {
+                this.enabled = false; // on level over signal, stop updating the clock
+            };
         }
-        if (infos.Length == 0)
+
+        void Update()
         {
-            return null;
+            if (float.IsNaN(stopTime))
+            {
+                AnimationClip clip = GetCurrentClip();
+                if (clip == null)
+                {
+                    return;
+                }
+                stopTime = AnimationUtility.GetAnimationEvents(clip)[0].time;
+            }
+            AnimatorStateInfo info = levelCountdownAnimator.GetCurrentAnimatorStateInfo(0);
+            int secondsLeft = (int)(stopTime - info.length * info.normalizedTime);
+            if (secondsLeft < 0)
+            {
+                secondsLeft = 0;
+            }
+            System.TimeSpan span = System.TimeSpan.FromSeconds(secondsLeft);
+            text.text = span.Minutes.ToString("00") + ":" + span.Seconds.ToString("00");
         }
-        return infos[0].clip;
+
+        private AnimationClip GetCurrentClip()
+        {
+            AnimationInfo[] infos = levelCountdownAnimator.GetCurrentAnimationClipState(0);
+            if (infos == null)
+            {
+                return null;
+            }
+            if (infos.Length == 0)
+            {
+                return null;
+            }
+            return infos[0].clip;
+        }
     }
 }
