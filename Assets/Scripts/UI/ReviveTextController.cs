@@ -9,14 +9,12 @@ namespace CompleteProject
         private PlayerHealth health;
         private Text text;
 
-        // Use this for initialization
         void Awake()
         {
             text = GetComponent<Text>();
             HideText();
         }
 
-        // Update is called once per frame
         void Update()
         {
             if (health == null)

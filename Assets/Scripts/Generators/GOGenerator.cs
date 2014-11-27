@@ -39,7 +39,7 @@ namespace CompleteProject
 
             if (!PhotonNetwork.isMasterClient)
             {
-                Destroy(this); // removes this component
+                Destroy(this);
                 return;
             }
 
@@ -81,7 +81,6 @@ namespace CompleteProject
 
             if (tries == maxSpawnTries)
             {
-                // couldn't find a possible location
                 Debug.LogWarning("Canceled a spawn because was unable to find a location!");
                 return;
             }

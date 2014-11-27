@@ -6,14 +6,13 @@ namespace CompleteProject
     // todo rename this to rifle shooting input or something
     public class MouseShootingInput : CompleteProject.PhotonBehaviour
     {
-        Ray shootRay;                                   // A ray from the gun end forwards.
-        RaycastHit shootHit;                            // A raycast hit to get information about what was hit.
+        Ray shootRay;
+        RaycastHit shootHit;
         private GameObject playerGO;
         
         private PlayerShooting playerShooting;
         private GameObject barrelEnd;
 
-        // Use this for initialization
         void Start()
         {
             if (!photonView.isMine ||
@@ -32,7 +31,6 @@ namespace CompleteProject
             };
         }
 
-        // Update is called once per frame
         void Update()
         {
             if (Input.GetButton("Fire1") && playerShooting.CanFire())

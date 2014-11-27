@@ -102,7 +102,6 @@ namespace CompleteProject
             {
                 vel = syncVelocity;
             }
-            // Debug.Log(vel);
             return vel.magnitude > movementEpsilon;
         }
 

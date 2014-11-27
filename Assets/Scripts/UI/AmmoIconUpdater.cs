@@ -9,13 +9,11 @@ namespace CompleteProject
         private WeaponInventory weaponSelector;
         private Image ammoIcon;
 
-        // Use this for initialization
         void Start()
         {
             ammoIcon = GetComponent<Image>();
         }
 
-        // Update is called once per frame
         void Update()
         {
             if (weaponSelector == null)

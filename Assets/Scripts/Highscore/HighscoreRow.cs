@@ -8,7 +8,6 @@ namespace CompleteProject
     { 
         private Text pos, playerName, score;
 
-        // Use this for initialization
         void Awake()
         {
             pos = GetComponentsInChildren<Text>()[0];

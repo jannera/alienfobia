@@ -19,7 +19,6 @@ namespace CompleteProject
             inventory = GetComponent<WeaponInventory>();
         }
 
-        // Update is called once per frame
         void Update()
         {
             if (Input.GetKeyDown(KeyCode.E))

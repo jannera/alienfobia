@@ -18,7 +18,6 @@ namespace CompleteProject
         private float secondPerAmmo = 1f; // how many seconds of constant firing does one ammo give?
         private float fuelTimer = 0f;
 
-        // Use this for initialization
         void Awake()
         {
             particles = GetComponent<ParticleSystem>();

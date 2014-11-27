@@ -14,7 +14,6 @@ namespace CompleteProject
             positionSync = GetComponent<PositionSync>();
         }
 
-        // Use this for initialization
         void Start()
         {
             if (photonView.isMine)
@@ -25,7 +24,6 @@ namespace CompleteProject
             }
         }
 
-        // Update is called once per frame
         void Update()
         {
             playerMovement.Animating(positionSync.IsMoving());

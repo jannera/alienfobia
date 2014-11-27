@@ -69,7 +69,6 @@ namespace CompleteProject
 
             if (currentHealth <= 0 && !isDowned)
             {
-                // ... it should die.
                 RPC(Down, PhotonTargets.All);
             }
         }

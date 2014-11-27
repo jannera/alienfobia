@@ -5,13 +5,12 @@ namespace CompleteProject
 {
     public class EnemyMovement : MonoBehaviour
     {
-        Transform player;               // Reference to the player's position.
-        EnemyHealth enemyHealth;        // Reference to this enemy's health.
-        NavMeshAgent nav;               // Reference to the nav mesh agent.
+        Transform player;
+        EnemyHealth enemyHealth;
+        NavMeshAgent nav;
 
         void Awake()
         {
-            // Set up the references.
             if (PhotonNetwork.isMasterClient)
             {
                 player = FindClosestPlayer(); 

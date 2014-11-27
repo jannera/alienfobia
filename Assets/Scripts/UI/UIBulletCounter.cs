@@ -15,7 +15,6 @@ namespace CompleteProject
             slider = GetComponent<Slider>();
         }
 
-        // Update is called once per frame
         void Update()
         {
             if (weaponSelector == null)

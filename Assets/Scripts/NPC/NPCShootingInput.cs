@@ -16,8 +16,6 @@ namespace CompleteProject
         private PlayerMovement playerMovement;
         private PlayerShooting playerShooting;
         
-
-        // Use this for initialization
         void Start()
         {
             if (!PlayerManager.IsNPCClient() || !photonView.isMine)
@@ -33,7 +31,6 @@ namespace CompleteProject
             }
         }
 
-        // Update is called once per frame
         void Update()
         {
             if (ownHealth.isDead || ownHealth.isDowned)

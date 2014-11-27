@@ -4,18 +4,18 @@ namespace CompleteProject
 {
     public class PlayerShooting : Weapon
     {
-        public int damagePerShot = 20;                  // The damage inflicted by each bullet.
-        public float timeBetweenBullets = 0.15f;        // The time between each shot.
+        public int damagePerShot = 20;
+        public float timeBetweenBullets = 0.15f;
         public float timeToReload = 1f;
-        public float range = 100f;                      // The distance the gun can fire.
+        public float range = 100f;
 
-        float timer;                                    // A timer to determine when to fire.
+        float timer;
         float reloadTimer = 0;
-        ParticleSystem gunParticles;                    // Reference to the particle system.
-        LineRenderer gunLine;                           // Reference to the line renderer.
-        AudioSource gunAudio;                           // Reference to the audio source.
+        ParticleSystem gunParticles;
+        LineRenderer gunLine;
+        AudioSource gunAudio;
         AudioSource gunReload;
-        Light gunLight;                                 // Reference to the light component.
+        Light gunLight;
         float effectsDisplayTime = 0.2f;                // The proportion of the timeBetweenBullets that the effects will display for.
         private bool isReloading;
 
@@ -88,7 +88,6 @@ namespace CompleteProject
 
         public void DisableEffects()
         {
-            // Disable the line renderer and the light.
             gunLine.enabled = false;
             gunLight.enabled = false;
         }
@@ -124,13 +123,10 @@ namespace CompleteProject
         {
             timer = 0f;
 
-            // Play the gun shot audioclip.
             gunAudio.Play();
 
-            // Enable the light.
             gunLight.enabled = true;
 
-            // Stop the particles from playing if they were, then start the particles.
             gunParticles.Stop();
             gunParticles.Play();
 

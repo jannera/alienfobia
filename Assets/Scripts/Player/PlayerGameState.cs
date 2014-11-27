@@ -5,7 +5,6 @@ namespace CompleteProject
 {
     public class PlayerGameState : PhotonBehaviour
     {
-        // Use this for initialization
         void Start()
         {
             if (photonView.isMine)
@@ -16,12 +15,6 @@ namespace CompleteProject
             {
                 GameState.OtherPlayerJoined(photonView.owner);
             }
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
         }
     }
 }

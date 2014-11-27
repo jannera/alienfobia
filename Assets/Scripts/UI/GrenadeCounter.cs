@@ -8,13 +8,12 @@ namespace CompleteProject
     {
         private Text text;
         private GrenadeThrowing grenadeThrowing;
-        // Use this for initialization
+        
         void Start()
         {
             text = GetComponent<Text>();
         }
 
-        // Update is called once per frame
         void Update()
         {
             if (grenadeThrowing == null)

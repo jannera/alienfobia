@@ -20,7 +20,6 @@ namespace CompleteProject
 
         private bool playingExplosionSound = false;
 
-        // Use this for initialization
         void Start()
         {
             float angle = (float)photonView.instantiationData[0];
@@ -30,7 +29,6 @@ namespace CompleteProject
             rigidbody.velocity = new Vector3(Mathf.Sin(angle), 0, Mathf.Cos(angle)) * startSpeed;
         }
 
-        // Update is called once per frame
         void FixedUpdate()
         {
             if (playingExplosionSound)

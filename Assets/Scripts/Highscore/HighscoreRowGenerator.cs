@@ -14,7 +14,6 @@ namespace CompleteProject
         private int waitMaxSeconds = 10;
         private int secondsWaited = 0;
 
-        // Use this for initialization
         void Start()
         {
             // todo: fetch earlier global/local setting from playerprefs
@@ -97,7 +96,6 @@ namespace CompleteProject
             }
         }
 
-        // Update is called once per frame
         void Update()
         {
 

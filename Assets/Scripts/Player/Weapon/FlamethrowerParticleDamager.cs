@@ -33,7 +33,6 @@ namespace CompleteProject
             itemsInFlame.Add(go);
         }
 
-        // Update is called once per frame
         void FixedUpdate()
         {
             foreach (GameObject go in itemsInFlame)

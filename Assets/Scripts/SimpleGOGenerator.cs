@@ -17,13 +17,12 @@ namespace CompleteProject
 
         private const int maxSpawnTries = 1000;
 
-        // Use this for initialization
         void Start()
         {
             spawnTimer = secsBeforeInitialSpawn;
             if (!PhotonNetwork.isMasterClient)
             {
-                Destroy(this); // removes this component
+                Destroy(this);
                 return;
             }
         }
