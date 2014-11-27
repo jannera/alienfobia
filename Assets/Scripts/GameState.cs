@@ -8,25 +8,18 @@ namespace CompleteProject
     // for communicating about major gamestate changes cross all components
     public class GameState
     {
-        public static event DMyPlayerJoined OnMyPlayerJoined;
-        public static event DMyPlayerDied OnMyPlayerDied;
-        public static event DOtherPlayerJoined OnOtherPlayerJoined;
-        public static event DTimeIsUp OnTimeIsUp;
-        public static event DLevelOver OnLevelOver;
-        public static event DOtherPlayerDown OnOtherPlayerDown;
-        public static event DOtherPlayerRevived OnOtherPlayerRevived;
-        public static event DMyPlayerDown OnMyPlayerDown;
-        public static event DMyPlayerRevived OnMyPlayerRevived;
+        public static event DelegateNoParams OnMyPlayerJoined;
+        public static event DelegateNoParams OnMyPlayerDied;
+        public static event DelegatePlayer OnOtherPlayerJoined;
+        public static event DelegateNoParams OnTimeIsUp;
+        public static event DelegateNoParams OnLevelOver;
+        public static event DelegatePlayer OnOtherPlayerDown;
+        public static event DelegatePlayer OnOtherPlayerRevived;
+        public static event DelegateNoParams OnMyPlayerDown;
+        public static event DelegateNoParams OnMyPlayerRevived;
 
-        public delegate void DMyPlayerJoined();
-        public delegate void DMyPlayerDied();
-        public delegate void DOtherPlayerJoined(PhotonPlayer player);
-        public delegate void DLevelOver();
-        public delegate void DTimeIsUp();
-        public delegate void DOtherPlayerDown(PhotonPlayer player);
-        public delegate void DMyPlayerDown();
-        public delegate void DOtherPlayerRevived(PhotonPlayer player);
-        public delegate void DMyPlayerRevived();
+        public delegate void DelegateNoParams();
+        public delegate void DelegatePlayer(PhotonPlayer player);
 
         public static void TimeIsUp()
         {
