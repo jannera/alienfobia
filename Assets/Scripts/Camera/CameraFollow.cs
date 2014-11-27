@@ -11,17 +11,16 @@ namespace CompleteProject
 
         public Vector3 offset;
 
+        void Awake()
+        {
+            GameState.OnMyPlayerJoined += delegate()
+            {
+                target = PlayerManager.GetMyPlayer().transform;
+            };
+        }
+
         void FixedUpdate()
         {
-            if (target == null)
-            {
-                GameObject player = PlayerManager.GetMyPlayer();
-                if (player != null)
-                {
-                    target = player.transform;
-                }
-
-            }
             if (target == null)
             {
                 return;

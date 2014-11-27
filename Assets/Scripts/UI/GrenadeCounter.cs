@@ -12,19 +12,20 @@ namespace CompleteProject
         void Start()
         {
             text = GetComponent<Text>();
+
+            GameState.OnMyPlayerJoined += delegate()
+            {
+                grenadeThrowing = PlayerManager.GetComponentFromMyPlayer<GrenadeThrowing>();
+            };
         }
 
         void Update()
         {
             if (grenadeThrowing == null)
             {
-                grenadeThrowing = PlayerManager.GetComponentFromMyPlayer<GrenadeThrowing>();
-                if (grenadeThrowing == null)
-                {
-                    text.text = "";
-                    return;
-                }
-            }
+                text.text = "";
+                return;
+            }   
 
             text.text = "X " + grenadeThrowing.grenades;
         }

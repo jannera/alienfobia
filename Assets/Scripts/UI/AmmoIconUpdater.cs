@@ -12,23 +12,14 @@ namespace CompleteProject
         void Start()
         {
             ammoIcon = GetComponent<Image>();
-        }
 
-        void Update()
-        {
-            if (weaponSelector == null)
+            GameState.OnMyPlayerJoined += delegate()
             {
-                // todo: instead of this polling, create an event for creating player? or your own player?
-                // register once your player is created
                 weaponSelector = PlayerManager.GetComponentFromMyPlayer<WeaponInventory>();
-                if (weaponSelector == null)
-                {
-                    return;
-                }
                 OnWeaponChanged(weaponSelector.GetCurrentWeapon());
 
                 weaponSelector.OnWeaponChanged += OnWeaponChanged;
-            }
+            };
         }
 
         void OnWeaponChanged(Weapon w)

@@ -24,6 +24,7 @@ namespace CompleteProject
         void Start()
         {
             currentSpawns = spawnedPerWave;
+            Debug.LogError("Fix this class to use new events if you still intend to use it");
         }
 
         void Update()

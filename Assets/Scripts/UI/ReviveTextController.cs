@@ -13,17 +13,18 @@ namespace CompleteProject
         {
             text = GetComponent<Text>();
             HideText();
+
+            GameState.OnMyPlayerJoined += delegate()
+            {
+                health = PlayerManager.GetComponentFromMyPlayer<PlayerHealth>();
+            };
         }
 
         void Update()
         {
             if (health == null)
             {
-                health = PlayerManager.GetComponentFromMyPlayer<PlayerHealth>();
-                if (health == null)
-                {
-                    return;
-                }
+                return;
             }
 
             if (health.isDowned && !health.isDead && PlayerManager.AreAnyPlayersAlive())

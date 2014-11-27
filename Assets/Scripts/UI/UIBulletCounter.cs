@@ -13,29 +13,21 @@ namespace CompleteProject
         void Start()
         {
             slider = GetComponent<Slider>();
+
+            GameState.OnMyPlayerJoined += delegate()
+            {
+                weaponSelector = PlayerManager.GetComponentFromMyPlayer<WeaponInventory>();
+                activeWeapon = weaponSelector.GetCurrentWeapon();
+                weaponSelector.OnWeaponChanged += OnWeaponChanged;
+            };
         }
 
         void Update()
-        {
-            if (weaponSelector == null)
-            {
-                // todo: instead of this polling, create an event for creating player? or your own player?
-                // register once your player is created
-                weaponSelector = PlayerManager.GetComponentFromMyPlayer<WeaponInventory>();
-                if (weaponSelector == null)
-                {
-                    return;
-                }
-                activeWeapon = weaponSelector.GetCurrentWeapon();
-
-                weaponSelector.OnWeaponChanged += OnWeaponChanged;
-            }
-
+        {    
             if (activeWeapon == null)
             {
                 return;
             }
-
 
             slider.maxValue = activeWeapon.clipSize;
             int bullets = activeWeapon.currentAmmo;

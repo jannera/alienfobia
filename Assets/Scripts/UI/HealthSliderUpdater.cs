@@ -14,16 +14,20 @@ namespace CompleteProject
 
         PlayerHealth playerHealth;
 
-        void Update()
+        void Awake()
         {
-            if (playerHealth == null)
+            GameState.OnMyPlayerJoined += delegate()
             {
                 playerHealth = PlayerManager.GetComponentFromMyPlayer<PlayerHealth>();
-                if (playerHealth == null)
-                {
-                    return;
-                }
-            }
+            };
+        }
+
+        void Update()
+        {            
+            if (playerHealth == null)
+            {
+                return;
+            }   
 
             slider.value = playerHealth.currentHealth;
 

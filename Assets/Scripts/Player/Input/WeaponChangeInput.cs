@@ -17,6 +17,11 @@ namespace CompleteProject
                 return;
             }
             inventory = GetComponent<WeaponInventory>();
+
+            GameState.OnLevelOver += delegate()
+            {
+                this.enabled = false;
+            };
         }
 
         void Update()
