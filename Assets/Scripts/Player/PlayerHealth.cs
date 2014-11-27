@@ -10,8 +10,7 @@ namespace CompleteProject
         public int currentHealth { get; private set; }
 
         Animator anim;
-        PlayerMovementInput playerMovement;
-        PlayerShooting playerShooting;
+        
         public bool isDead { get; private set; }
         public bool isDowned { get; private set; } 
         public float automaticReviveTime = 10; // in seconds
@@ -28,8 +27,6 @@ namespace CompleteProject
         void Awake()
         {
             anim = GetComponentInChildren<Animator>();
-            playerMovement = GetComponent<PlayerMovementInput>();
-            playerShooting = GetComponentInChildren<PlayerShooting>();
 
             currentHealth = startingHealth;
 
@@ -49,6 +46,7 @@ namespace CompleteProject
                     {
                         RPC(Death, PhotonTargets.All);
                     }
+                    return;
                 }
                 downTimer += Time.deltaTime;
                 
@@ -94,13 +92,15 @@ namespace CompleteProject
             isDowned = true;
             downTimer = 0f;
 
-            playerShooting.DisableEffects();
-
             anim.SetTrigger("FallDown");
 
-            // Turn off the movement and shooting scripts.
-            playerMovement.enabled = false;
-            playerShooting.enabled = false;
+            if (photonView.isMine) {
+                GameState.MyPlayerDown();
+            }
+            else
+            {
+                GameState.OtherPlayerDown(photonView.owner);
+            }
         }
 
         [RPC]
@@ -109,8 +109,14 @@ namespace CompleteProject
             isDowned = false;
             currentHealth = (int)(startingHealth * reviveHealthPercentage);
             anim.SetTrigger("GetUp");
-            playerMovement.enabled = true;
-            playerShooting.enabled = true;
+            if (photonView.isMine)
+            {
+                GameState.MyPlayerRevived();
+            }
+            else
+            {
+                GameState.OtherPlayerRevived(photonView.owner);
+            } 
         }
 
         [RPC]
@@ -119,7 +125,10 @@ namespace CompleteProject
             isDead = true;
             AudioSource src = Utility.PickRandomly(deathSounds);
             src.Play();
-            GameState.MyPlayerDied();
+            if (photonView.isMine)
+            {
+                GameState.MyPlayerDied();
+            }
         }
 
         public void AddHealth(int amount)

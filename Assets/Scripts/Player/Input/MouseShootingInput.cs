@@ -13,7 +13,7 @@ namespace CompleteProject
         private PlayerShooting playerShooting;
         private GameObject barrelEnd;
 
-        void Start()
+        void Awake()
         {
             if (!photonView.isMine ||
                 PlayerManager.IsNPCClient())
@@ -28,6 +28,16 @@ namespace CompleteProject
             GameState.OnLevelOver += delegate()
             {
                 this.enabled = false;
+            };
+
+            GameState.OnMyPlayerDown += delegate()
+            {
+                this.enabled = false;
+            };
+
+            GameState.OnMyPlayerRevived += delegate()
+            {
+                this.enabled = true;
             };
         }
 

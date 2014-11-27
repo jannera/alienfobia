@@ -15,6 +15,16 @@ namespace CompleteProject
                 return;
             }
 
+            GameState.OnMyPlayerDown += delegate()
+            {
+                this.enabled = false;
+            };
+
+            GameState.OnMyPlayerRevived += delegate()
+            {
+                this.enabled = true;
+            };
+
             GameState.OnLevelOver += delegate()
             {
                 this.enabled = false;

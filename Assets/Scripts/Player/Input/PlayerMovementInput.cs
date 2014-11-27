@@ -26,6 +26,16 @@ namespace CompleteProject
             {
                 this.enabled = false;
             };
+
+            GameState.OnMyPlayerDown += delegate()
+            {
+                this.enabled = false;
+            };
+
+            GameState.OnMyPlayerRevived += delegate()
+            {
+                this.enabled = true;
+            };
         }
 
         void FixedUpdate()

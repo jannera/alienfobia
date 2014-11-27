@@ -35,6 +35,38 @@ namespace CompleteProject
             gunAudio = GetComponents<AudioSource>()[0];
             gunReload = GetComponents<AudioSource>()[1];
             gunLight = barrelEnd.GetComponent<Light>();
+
+            if (photonView.isMine)
+            {
+                GameState.OnMyPlayerDown += delegate()
+                {
+                    PlayerDown(photonView.owner);
+                };
+
+                GameState.OnMyPlayerRevived += delegate()
+                {
+                    PlayerUp(photonView.owner);
+                };
+            }
+
+            GameState.OnOtherPlayerDown += PlayerDown;
+            GameState.OnOtherPlayerRevived += PlayerUp;
+        }
+
+        private void PlayerDown(PhotonPlayer player)
+        {
+            if (photonView.owner == player)
+            {
+                DisableEffects();
+            }
+        }
+
+        private void PlayerUp(PhotonPlayer player)
+        {
+            if (photonView.owner == player)
+            {
+
+            }
         }
 
         public GameObject GetBarrelEnd()
