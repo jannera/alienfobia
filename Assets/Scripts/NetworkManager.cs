@@ -10,27 +10,15 @@ namespace CompleteProject
         public AudioSource gameMusic;
         public bool automaticGameStarting = true; // used for automatically creating a game. if a game already is running on this computer, join it
 
-        private bool playerExists = false;
-
         void Awake()
         {
             menuMusic.loop = true;
             menuMusic.Play();
-            if (GameObject.FindGameObjectWithTag("Player"))
-            {
-                // if a player already exists in scene, go with the offline mode
-                PhotonNetwork.offlineMode = true;
-                playerExists = true;
-                PhotonNetwork.CreateRoom(roomName);
-            }
         }
 
         void Start()
         {
-            if (!PhotonNetwork.offlineMode)
-            {
-                PhotonNetwork.ConnectUsingSettings("0.1");
-            }
+            PhotonNetwork.ConnectUsingSettings("0.1");
             
             roomName = System.Environment.UserName + "@" + System.Environment.MachineName;
             SetPlayerName();
@@ -44,30 +32,6 @@ namespace CompleteProject
             if (!PhotonNetwork.connected)
             {
                 GUILayout.Label(PhotonNetwork.connectionStateDetailed.ToString());
-            }
-            else if (PhotonNetwork.room == null)
-            {
-                if (automaticGameStarting)
-                {
-                    return;
-                }
-                // Create Room
-                if (GUI.Button(new Rect(100, 100, 250, 100), "Start Server"))
-                {
-                    PhotonNetwork.CreateRoom(roomName);
-                }
-
-                // Join Room
-                if (roomsList != null)
-                {
-                    for (int i = 0; i < roomsList.Length; i++)
-                    {
-                        if (GUI.Button(new Rect(100, 250 + (110 * i), 250, 100), "Join " + roomsList[i].name))
-                        {
-                            PhotonNetwork.JoinRoom(roomsList[i].name);
-                        }
-                    }
-                }
             }
         }
 
@@ -87,7 +51,7 @@ namespace CompleteProject
                 }
 
                 // there was no running game on this computer to join, so set one up
-                Debug.Log("Created new game and joined it as master client");
+                Debug.Log("Created new game and joining it as master client");
                 PhotonNetwork.CreateRoom(roomName);
             }
 
@@ -95,14 +59,22 @@ namespace CompleteProject
         void OnJoinedRoom()
         {
             Debug.Log("Connected to Room");
+            
+        }
+
+        public void StartPlaying()
+        {
+            RPC(ReallyStartPlaying, PhotonTargets.All);
+        }
+
+        [RPC]
+        private void ReallyStartPlaying()
+        {
             menuMusic.Stop();
             gameMusic.Play();
 
-            if (!playerExists)
-            {
-                PhotonNetwork.Instantiate(playerPrefab.name, Vector3.zero,
+            PhotonNetwork.Instantiate(playerPrefab.name, Vector3.zero,
                 Quaternion.identity, 0, new object[] { PhotonNetwork.player.ID });
-            }
         }
 
         void SetPlayerName()

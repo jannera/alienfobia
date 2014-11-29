@@ -45,4 +45,5 @@ MonoBehaviour:
   - ActivateProxy
   - Down
   - Up
+  - ReallyStartPlaying
   DisableAutoOpenWizard: 0
