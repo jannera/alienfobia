@@ -19,7 +19,7 @@ namespace CompleteProject
         private static GameService gameService;
 
         private static string gameName;
-        private static string levelRevision = "003";
+        private static string levelRevision = "006";
         private static string currentGameScoreId; 
 
         public static RowData[] localScores { get; private set; }
@@ -76,6 +76,10 @@ namespace CompleteProject
             scoreBoardService.GetTopNRankers(gameName, 100, Wrap(delegate(object response)
             {
                 globalScores = TransformScoresToRows((Game)response);
+                System.Array.ForEach(globalScores, delegate(RowData d)
+                {
+                    d.lastGame = d.name == localPlayerName;
+                });
             }));
         }
 
@@ -86,7 +90,7 @@ namespace CompleteProject
             for (int i = 0; i < scores.Count; i++)
             {
                 Game.Score s = scores[i];
-                rows[i] = new RowData(s.userName, (float)s.GetValue(), s.GetScoreId() == currentGameScoreId); // TODO handle the comparison differently in global list
+                rows[i] = new RowData(s.userName, (float)s.GetValue(), s.GetScoreId() == currentGameScoreId, s.createdOn);
             }
             Sort(rows);
             return rows;
@@ -164,7 +168,7 @@ namespace CompleteProject
                 }
 
                 float score = Random.Range(1, 100000);
-                results[i] = new RowData(name, score, first);
+                results[i] = new RowData(name, score, first, new System.DateTime());
                 if (first)
                 {
                     first = false;
@@ -178,6 +182,10 @@ namespace CompleteProject
         {
             System.Array.Sort(results, delegate(RowData a, RowData b)
             {
+                if (a.score == b.score)
+                {
+                    return a.createdOn.CompareTo(b.createdOn);
+                }
                 return b.score.CompareTo(a.score);
             });
         }

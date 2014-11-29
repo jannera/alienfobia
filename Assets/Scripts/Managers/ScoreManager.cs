@@ -23,12 +23,12 @@ namespace CompleteProject
             {
                 score = (int)(score * 1.25f);
 
-                ScoreStorage.Store(new RowData(PhotonNetwork.player.name, score, true));
+                ScoreStorage.Store(new RowData(PhotonNetwork.player.name, score, true, new System.DateTime()));
             };
 
             GameState.OnMyPlayerDied += delegate()
             {
-                ScoreStorage.Store(new RowData(PhotonNetwork.player.name, score, true));
+                ScoreStorage.Store(new RowData(PhotonNetwork.player.name, score, true, new System.DateTime()));
             };
         }
 

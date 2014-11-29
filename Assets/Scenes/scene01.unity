@@ -6312,6 +6312,18 @@ Prefab:
       propertyPath: m_Text
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 100038, guid: 4f93161168608475d9b68750b2b88baf, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22400010, guid: 4f93161168608475d9b68750b2b88baf, type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: -281
+      objectReference: {fileID: 0}
+    - target: {fileID: 22400010, guid: 4f93161168608475d9b68750b2b88baf, type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 351
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4f93161168608475d9b68750b2b88baf, type: 2}
   m_RootGameObject: {fileID: 1920845372}
@@ -9961,8 +9973,8 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: .5, y: 1}
   m_AnchorMax: {x: .5, y: 1}
-  m_AnchoredPosition: {x: 6, y: -295}
-  m_SizeDelta: {x: 478, y: 379}
+  m_AnchoredPosition: {x: 6, y: -281}
+  m_SizeDelta: {x: 478, y: 351}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1022385841
 MonoBehaviour:
