@@ -17,6 +17,8 @@ namespace CompleteProject
 
         private const int maxSpawnTries = 1000;
 
+        public float difficultyAmountMultiplier = 1f;
+
         void Start()
         {
             spawnTimer = secsBeforeInitialSpawn;
@@ -41,7 +43,7 @@ namespace CompleteProject
 
         private int GetCount()
         {
-            return (int)Random.Range(minAmount, maxAmount);
+            return (int) (Random.Range(minAmount, maxAmount) * difficultyAmountMultiplier);
         }
 
         private void GenerateGameObjects(int count)

@@ -7,7 +7,7 @@ namespace CompleteProject
     public class PlayerHealth : CompleteProject.PhotonBehaviour
     {
         public int startingHealth = 100;
-        public int currentHealth { get; private set; }
+        public float currentHealth { get; private set; }
 
         Animator anim;
         
@@ -59,7 +59,7 @@ namespace CompleteProject
         }
 
 
-        public void TakeDamage(int amount, Vector3 attackerPosition)
+        public void TakeDamage(float amount, Vector3 attackerPosition)
         {
             currentHealth -= amount;
 

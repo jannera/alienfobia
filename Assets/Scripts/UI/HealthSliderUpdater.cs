@@ -7,7 +7,7 @@ namespace CompleteProject
     {
         public UnityEngine.UI.Slider slider;
         public UnityEngine.UI.Image hitImage;
-        int lastHealth;
+        float lastHealth;
 
         public float flashSpeed = 5f;
         public Color flashColour = new Color(1f, 0f, 0f, 0.1f);

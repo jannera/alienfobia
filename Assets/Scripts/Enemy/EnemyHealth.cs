@@ -5,10 +5,10 @@ namespace CompleteProject
 {
     public class EnemyHealth : CompleteProject.PhotonBehaviour
     {
-        public int startingHealth = 100;
-        private int currentHealth;
+        public float startingHealth = 100;
+        private float currentHealth;
         public float sinkSpeed = 2.5f;
-        public int scoreValue = 10;
+        public float scoreValue = 10;
 
 
         Animator anim;

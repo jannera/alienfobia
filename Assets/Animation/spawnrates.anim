@@ -308,7 +308,7 @@ AnimationClip:
     script: {fileID: 11500000, guid: dfc384ee71fdae64784c618a4eb0e085, type: 3}
   m_EulerEditorCurves: []
   m_Events:
-  - time: 48
+  - time: 180
     functionName: LevelEnded
     data: 
     objectReferenceParameter: {fileID: 0}
