@@ -26,6 +26,15 @@ namespace CompleteProject
             particles.Stop();
             weaponAudio.Stop();
             isFiring = false;
+
+            GameState.OnLevelOver += StopEffectsImmediately;
+        }
+
+        private void StopEffectsImmediately()
+        {
+            audio.Stop();
+            particles.Stop();
+            isFiring = false;
         }
 
         public void Update()

@@ -139,8 +139,6 @@ namespace CompleteProject
             {
                 currentHealth = startingHealth;
             }
-
-            Debug.Log("Gained health: " + currentHealth);
         }
 
         public float DownSecondsLeft()

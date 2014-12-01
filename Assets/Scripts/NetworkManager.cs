@@ -9,6 +9,7 @@ namespace CompleteProject
         public AudioSource menuMusic;
         public AudioSource gameMusic;
         public bool automaticGameStarting = true; // used for automatically creating a game. if a game already is running on this computer, join it
+        public GameObject startMenu;
 
         void Awake()
         {
@@ -59,7 +60,10 @@ namespace CompleteProject
         void OnJoinedRoom()
         {
             Debug.Log("Connected to Room");
-            
+            if (!startMenu.GetActive())
+            {
+                startMenu.SetActive(true);
+            }
         }
 
         public void StartPlaying()

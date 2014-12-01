@@ -10,10 +10,10 @@ namespace CompleteProject
         void Start()
         {
             bonusDefininitions = new OptionMultiplier[] {
-                new OptionMultiplier(Option.Health, new float[] {0, 0.25f, 0.5f, 1f}),
+                new OptionMultiplier(Option.Health, new float[] {0, 0.5f, 1f, 1.5f}),
                 new OptionMultiplier(Option.Speed, new float[]  {0, 0.5f,  1f, 1.5f}),
                 new OptionMultiplier(Option.Damage, new float[] {0, 0.25f, 0.5f, 1f}),
-                new OptionMultiplier(Option.Amount, new float[] {0, 0, 0, 0}),
+                new OptionMultiplier(Option.Amount, new float[] {0, 0.1f, 0.2f, 0.3f}),
             };
         }
 
