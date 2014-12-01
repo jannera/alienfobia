@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
-using UnityEditor;
 
 namespace CompleteProject
 {
@@ -36,7 +35,7 @@ namespace CompleteProject
                 {
                     return;
                 }
-                stopTime = AnimationUtility.GetAnimationEvents(clip)[0].time;
+                stopTime = clip.length;
             }
             AnimatorStateInfo info = levelCountdownAnimator.GetCurrentAnimatorStateInfo(0);
             int secondsLeft = (int)(stopTime - info.length * info.normalizedTime);

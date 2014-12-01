@@ -84,7 +84,7 @@ namespace CompleteProject
         void SetPlayerName()
         {
             string name;
-            if (automaticGameStarting)
+            if (automaticGameStarting && Application.isEditor)
             {
                 string path = Application.dataPath;
                 string[] parts = path.Split('/');
