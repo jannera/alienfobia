@@ -14,13 +14,10 @@ namespace CompleteProject
         {
             score = 0;
             kills = 0;
-        }
 
-        static ScoreManager()
-        {
-            // if game ends because of time running out, give 25% score bonus
             GameState.OnTimeIsUp += delegate()
             {
+                // if game ends because of time running out, give 25% score bonus
                 score = (int)(score * 1.25f);
 
                 ScoreStorage.Store(new RowData(PhotonNetwork.player.name, score, true, new System.DateTime()));

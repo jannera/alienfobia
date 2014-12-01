@@ -63,6 +63,11 @@ namespace CompleteProject
 
         static GameState()
         {
+            AddBasicListeners();
+        }
+
+        private static void AddBasicListeners ()
+        {
             // these local listeners ensure that at least one listener exists for every event (so there's no need to check for nulls)
             OnMyPlayerJoined += delegate() { };
             OnOtherPlayerJoined += delegate(PhotonPlayer player) { };
@@ -76,6 +81,19 @@ namespace CompleteProject
             OnTimeIsUp += delegate() { OnLevelOver(); };
         }
 
-        
+        public static void ResetListeners ()
+        {
+            OnMyPlayerJoined = null;
+            OnMyPlayerDied = null;
+            OnOtherPlayerJoined = null;
+            OnTimeIsUp = null;
+            OnLevelOver = null;
+            OnOtherPlayerDown = null;
+            OnOtherPlayerRevived = null;
+            OnMyPlayerDown = null;
+            OnMyPlayerRevived = null;
+
+            AddBasicListeners();
+        }
     }
 }

@@ -14,7 +14,6 @@ namespace CompleteProject
         private static string SECRET_KEY = "8fc18bd8fe13255ce908a26b800ea4bb938504b3965bbbe138854a498ba259c1";
 
         private static ServiceAPI serviceApi;
-        private static ScoreService scoreService;
         private static ScoreBoardService scoreBoardService;
         private static GameService gameService;
 
@@ -191,5 +190,18 @@ namespace CompleteProject
         }
 
         private const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz";
+
+        public static void Reset()
+        {
+            serviceApi = null;
+            scoreBoardService = null;
+            gameService = null;
+
+            currentGameScoreId = null;
+
+            localScores = null;
+            globalScores = null;
+        
+        }
     }
 }

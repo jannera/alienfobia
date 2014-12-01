@@ -147,7 +147,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   toBeGenerated: {fileID: 100000, guid: 8980328e2fb8c274fb1f06600bcb3a4e, type: 2}
   spawnRange: 20
-  playerSafetyDistance: 10
+  playerSafetyDistance: 15
   secsBetweenSpawn: 20
   secsBeforeInitialSpawn: 3
   minAmount: 10
@@ -166,7 +166,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   toBeGenerated: {fileID: 100006, guid: ae40eb198d1235040b29aabda1bcad6e, type: 2}
   spawnRange: 20
-  playerSafetyDistance: 10
+  playerSafetyDistance: 15
   secsBetweenSpawn: 20
   secsBeforeInitialSpawn: 3
   minAmount: 10
@@ -185,7 +185,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   toBeGenerated: {fileID: 100000, guid: 548c56f4bcf4db24b8aa057e9846a005, type: 2}
   spawnRange: 20
-  playerSafetyDistance: 10
+  playerSafetyDistance: 15
   secsBetweenSpawn: 20
   secsBeforeInitialSpawn: 3
   minAmount: 4
