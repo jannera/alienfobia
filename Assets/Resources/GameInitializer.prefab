@@ -100,11 +100,11 @@ AudioSource:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   serializedVersion: 3
-  m_audioClip: {fileID: 8300000, guid: 1110b3a79f212f1488961cd003f68989, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 60e48b3bb3fff3d4987d4639a4c3ba6d, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: .159999996
+  m_Volume: .349999994
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Priority: 128
   DopplerLevel: 1
