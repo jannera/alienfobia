@@ -323,6 +323,7 @@ GameObject:
   - 222: {fileID: 22200008}
   - 114: {fileID: 11400050}
   - 114: {fileID: 11400062}
+  - 114: {fileID: 11400074}
   m_Layer: 5
   m_Name: CountdownClock
   m_TagString: Untagged
@@ -408,6 +409,7 @@ GameObject:
   - 222: {fileID: 22200036}
   - 114: {fileID: 11400064}
   - 114: {fileID: 11400014}
+  - 114: {fileID: 11400076}
   m_Layer: 5
   m_Name: ScoreText
   m_TagString: Untagged
@@ -1296,6 +1298,34 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11400074
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: .5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
+--- !u!114 &11400076
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: .5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!222 &22200000
 CanvasRenderer:
   m_ObjectHideFlags: 1
