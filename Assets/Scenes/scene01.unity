@@ -5073,6 +5073,26 @@ Prefab:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: e14ba4ad11de19540b1d9020e7361646, type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400004, guid: e14ba4ad11de19540b1d9020e7361646, type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: e14ba4ad11de19540b1d9020e7361646, type: 2}
+      propertyPath: m_Name
+      value: Slug Generator
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: e14ba4ad11de19540b1d9020e7361646, type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: e14ba4ad11de19540b1d9020e7361646, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e14ba4ad11de19540b1d9020e7361646, type: 2}
   m_RootGameObject: {fileID: 743733047}
@@ -23243,7 +23263,7 @@ GameObject:
   - 114: {fileID: 1843956871}
   - 114: {fileID: 1843956873}
   m_Layer: 0
-  m_Name: Hellephant Generator
+  m_Name: Slug Generator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
