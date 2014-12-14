@@ -183,7 +183,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfc384ee71fdae64784c618a4eb0e085, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  toBeGenerated: {fileID: 100000, guid: 548c56f4bcf4db24b8aa057e9846a005, type: 2}
+  toBeGenerated: {fileID: 100010, guid: 5226c97746ef23b4fbaeed84bde069bf, type: 2}
   spawnRange: 20
   playerSafetyDistance: 15
   secsBetweenSpawn: 20
