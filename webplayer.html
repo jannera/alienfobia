@@ -15,8 +15,8 @@
 		<script type="text/javascript">
 		<!--
 			var config = {
-				width: 1400, 
-				height: 900,
+				width: '100%', 
+				height: '100%',
 				params: { enableDebugging:"0", disableContextMenu: true }
 				
 			};
@@ -62,11 +62,18 @@
 		</script>
 		<style type="text/css">
 		<!--
+		html {
+			height: 100%;
+			width: 100%;
+		}
 		body {
 			font-family: Helvetica, Verdana, Arial, sans-serif;
 			background-color: black;
 			color: white;
 			text-align: center;
+			padding: 0px;
+			margin: 0px;
+			height: 100%;
 		}
 		a:link, a:visited {
 			color: #bfbfbf;
@@ -85,7 +92,12 @@
 		}
 		div.content {
 			margin: auto;
-			width: 1400px;
+			width: 100%;
+			height: 90%;
+		}
+		div.help {
+			width: 100%;
+			height: 10%;
 		}
 		div.broken,
 		div.missing {
@@ -109,8 +121,8 @@
 		}
 		div#unityPlayer {
 			cursor: default;
-			height: 900px;
-			width: 1400px;
+			height: 100%;
+			width: 100%;
 		}
 		-->
 		</style>
@@ -125,7 +137,9 @@
 				</div>
 			</div>
 		</div>
-		<p>WASD to move. Mouse 1 to fire, Mouse 2 for grenades. E = switch weapon. R = Reload. Highscore only works with desktop version ATM!</p>
-		<p class="footer">&laquo; created with <a href="http://unity3d.com/unity/" title="Go to unity3d.com">Unity</a> &raquo;</p>
+		</div class="help">
+			<p>WASD to move. Mouse 1 to fire, Mouse 2 for grenades. E = switch weapon. R = Reload. Highscore only works with desktop version ATM!</p>
+			<p class="footer">&laquo; created with <a href="http://unity3d.com/unity/" title="Go to unity3d.com">Unity</a> &raquo;</p>
+		</div>
 	</body>
 </html>
