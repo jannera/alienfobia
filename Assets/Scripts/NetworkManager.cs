@@ -60,7 +60,7 @@ namespace CompleteProject
         void OnJoinedRoom()
         {
             Debug.Log("Connected to Room");
-            if (!startMenu.GetActive())
+            if (!startMenu.GetActive() && PhotonNetwork.isMasterClient)
             {
                 startMenu.SetActive(true);
             }
